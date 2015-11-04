@@ -220,4 +220,8 @@ pip-log.txt
 #############
 
 _logs/
-Dx9
+Dx9/
+build_tps/
+Shine/
+
+
