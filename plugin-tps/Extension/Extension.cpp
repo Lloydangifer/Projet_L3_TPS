@@ -9,7 +9,7 @@ static CShPluginGame plugin;
 extern "C"
 {
 
-SAMPLE_EXTENSION_EXPORT void SH_EXTENSION_INITIALIZE(void)
+TPS_EXTENSION_EXPORT void ExtensionInitialize(void)
 {
 	// Initialize the Rotate Plugin
 	const CShIdentifier & topPoolIdentifier = CShPooledObjectManagerManager::GetInstance()->GetTopPoolIdentifier();
@@ -19,7 +19,7 @@ SAMPLE_EXTENSION_EXPORT void SH_EXTENSION_INITIALIZE(void)
 	ShApplication::RegisterPlugin(&plugin);
 }
 
-SAMPLE_EXTENSION_EXPORT void SH_EXTENSION_RELEASE(void)
+TPS_EXTENSION_EXPORT void ExtensionRelease(void)
 {
 	// Release the Rotate Plugin
 	plugin.Release();
