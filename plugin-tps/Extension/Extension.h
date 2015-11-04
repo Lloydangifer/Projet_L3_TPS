@@ -3,21 +3,18 @@
 
 #if defined(_WIN32) 
 #	if defined(ExtensionTPS_EXPORTS)
-#		define SAMPLE_EXTENSION_EXPORT __declspec(dllexport)
+#		define TPS_EXTENSION_EXPORT __declspec(dllexport)
 #	else
-#		define SAMPLE_EXTENSION_EXPORT __declspec(dllimport)
+#		define TPS_EXTENSION_EXPORT __declspec(dllimport)
 #	endif // ExtensionTPS_EXPORTS
 #else // defined(_WIN32)
-#	define SAMPLE_EXTENSION_EXPORT
+#	define TPS_EXTENSION_EXPORT
 #endif
-
-#define SH_EXTENSION_INITIALIZE		PluginInitialize
-#define SH_EXTENSION_RELEASE		PluginRelease
 
 extern "C"
 {
-	SAMPLE_EXTENSION_EXPORT void	SH_EXTENSION_INITIALIZE		(void);
-	SAMPLE_EXTENSION_EXPORT void	SH_EXTENSION_RELEASE		(void);
+	TPS_EXTENSION_EXPORT void	ExtensionInitialize		(void);
+	TPS_EXTENSION_EXPORT void	ExtensionRelease		(void);
 }
 
 #endif // __EXTENSION_H
