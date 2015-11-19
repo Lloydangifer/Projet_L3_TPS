@@ -3,6 +3,7 @@
 
 #include <ShSDK/ShSDK.h>
 #include <ShEngineExt/ShEngineExt.h>
+#include "CShTPSPlayer.h"
 
 class CShPluginGame : public CShPlugin
 {
@@ -33,8 +34,7 @@ private:
 
 	ShEntity2 * m_pBackground;
 	ShEntity2 * m_pPlayer;
-
-	float m_fScale;
+	CShTPSPlayer * m_pTpsPlayer;
 };
 
 #endif // __CSHPLUGINGAME_H

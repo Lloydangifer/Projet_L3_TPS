@@ -4,6 +4,15 @@ BEGIN_DERIVED_CLASS(CShPluginGame, CShPlugin)
 	// ...
 END_CLASS()
 
+
+// Inputs to move and turn
+ShInput *					g_pInputUp				= shNULL;
+ShInput *					g_pInputLeft			= shNULL;
+ShInput *					g_pInputRight			= shNULL;
+
+
+
+
 /**
  * Constructor
  */
@@ -12,7 +21,7 @@ CShPluginGame::CShPluginGame(void)
 , m_levelIdentifier(GID(NULL))
 , m_pBackground(shNULL)
 , m_pPlayer(shNULL)
-, m_fScale(0.0f)
+, m_pTpsPlayer()
 {
 
 }
@@ -44,7 +53,7 @@ bool CShPluginGame::Release(void)
 
 	return(true);
 }
-
+	
 /**
  * Called when the plugin is started
  */
@@ -58,9 +67,12 @@ void CShPluginGame::OnPlayStart(void)
 	SH_ASSERT(shNULL != m_pPlayer);
 
 	//create inputs
-	ShInput * up = ShInput::CreateInputPressed(ShInput::e_input_device_keyboard, ShInput::e_input_device_control_pc_key_up, 0.5f);
-	ShInput * right = ShInput::CreateInputPressed(ShInput::e_input_device_keyboard, ShInput::e_input_device_control_pc_key_right, 0.5f);
-	ShInput * left = ShInput::CreateInputPressed(ShInput::e_input_device_keyboard, ShInput::e_input_device_control_pc_key_left, 0.5f);
+	g_pInputUp = ShInput::CreateInputPressed(ShInput::e_input_device_keyboard, ShInput::e_input_device_control_pc_key_up, 0.5f);
+	g_pInputRight = ShInput::CreateInputPressed(ShInput::e_input_device_keyboard, ShInput::e_input_device_control_pc_key_right, 0.5f);
+	g_pInputLeft = ShInput::CreateInputPressed(ShInput::e_input_device_keyboard, ShInput::e_input_device_control_pc_key_left, 0.5f);
+
+	//set the position of the TPSPlayer to the position of the sprite
+	m_pTpsPlayer->SetPosition(ShObject::GetPosition2(m_pPlayer));
 }
 
 /**
@@ -100,5 +112,27 @@ void CShPluginGame::OnPreUpdate(void)
  */
 void CShPluginGame::OnPostUpdate(float dt)
 {
+	// Change the walk speed/direction
+	if (ShInput::GetValue(g_pInputUp) > 0.2f)
+	{
+		m_pTpsPlayer->SetSpeed(5.0f);
+	}
+	else
+	{
+		m_pTpsPlayer->SetSpeed(0.0f);
+	}
 
+	if (ShInput::GetValue(g_pInputLeft) > 0.2f)
+	{
+		m_pTpsPlayer->GetDirection().Rotate(0.05f);
+	}
+	
+	if (ShInput::GetValue(g_pInputRight) > 0.2f)
+	{
+		m_pTpsPlayer->GetDirection().Rotate(-0.05f);
+	}
+
+	m_pTpsPlayer->Update();
+	ShEntity2::SetPositionX(m_pPlayer,m_pTpsPlayer->GetPosition().m_x);
+	ShEntity2::SetPositionY(m_pPlayer,m_pTpsPlayer->GetPosition().m_y);
 }
