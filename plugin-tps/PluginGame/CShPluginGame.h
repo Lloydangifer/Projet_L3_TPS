@@ -33,7 +33,6 @@ private:
 	CShIdentifier m_levelIdentifier;
 
 	ShEntity2 * m_pBackground;
-	ShEntity2 * m_pPlayer;
 	CShTPSPlayer * m_pTpsPlayer;
 };
 

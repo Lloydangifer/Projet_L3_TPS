@@ -1,12 +1,10 @@
 #include "CShTPSPlayer.h"
 
-
-
-
 CShTPSPlayer::CShTPSPlayer(void)
 {
 	m_Speed=0.0f;
-	m_Direction.SetXY(0.0f,0.0f);
+	m_Direction.SetXY(0.0f,1.0f);
+	m_pSprite= shNULL;
 }
 CShTPSPlayer::~CShTPSPlayer(void)
 {
@@ -41,4 +39,12 @@ void CShTPSPlayer::SetSpeed(float speed){
 }
 float CShTPSPlayer::GetSpeed(void){
 	return m_Speed;
+}
+void CShTPSPlayer::SetSprite(ShEntity2 * sprite)
+{
+	m_pSprite = sprite;
+}
+ShEntity2 * CShTPSPlayer::GetSprite (void)
+{
+	return m_pSprite;
 }

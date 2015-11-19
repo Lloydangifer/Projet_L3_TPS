@@ -25,12 +25,16 @@ public:
 	void						SetSpeed					(float speed);
 	float						GetSpeed					(void);
 
+	void						SetSprite					(ShEntity2 * sprite);
+	ShEntity2 *					GetSprite					(void);
+
 
 
 private:
-	CShVector2 m_Position;
-	CShVector2 m_Direction;	
-	float m_Speed;
+	CShVector2		m_Position;
+	CShVector2		m_Direction;	
+	float			m_Speed;
+	ShEntity2 *		m_pSprite;
 };
 
 #endif // __CSHTPSPLAYER_H

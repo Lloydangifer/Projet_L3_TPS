@@ -20,8 +20,7 @@ CShPluginGame::CShPluginGame(void)
 : CShPlugin(CShIdentifier("TPS"))
 , m_levelIdentifier(GID(NULL))
 , m_pBackground(shNULL)
-, m_pPlayer(shNULL)
-, m_pTpsPlayer()
+, m_pTpsPlayer(new CShTPSPlayer())
 {
 
 }
@@ -63,8 +62,8 @@ void CShPluginGame::OnPlayStart(void)
 	m_pBackground = ShEntity2::Find(m_levelIdentifier, CShIdentifier("sprite_tps_background"));
 	SH_ASSERT(shNULL != m_pBackground);
 
-	m_pPlayer = ShEntity2::Find(m_levelIdentifier, CShIdentifier("sprite_tps_player"));
-	SH_ASSERT(shNULL != m_pPlayer);
+	m_pTpsPlayer->SetSprite(ShEntity2::Find(m_levelIdentifier, CShIdentifier("sprite_tps_player")));
+	SH_ASSERT(shNULL != m_pTpsPlayer->GetSprite());
 
 	//create inputs
 	g_pInputUp = ShInput::CreateInputPressed(ShInput::e_input_device_keyboard, ShInput::e_input_device_control_pc_key_up, 0.5f);
@@ -72,7 +71,7 @@ void CShPluginGame::OnPlayStart(void)
 	g_pInputLeft = ShInput::CreateInputPressed(ShInput::e_input_device_keyboard, ShInput::e_input_device_control_pc_key_left, 0.5f);
 
 	//set the position of the TPSPlayer to the position of the sprite
-	m_pTpsPlayer->SetPosition(ShObject::GetPosition2(m_pPlayer));
+	m_pTpsPlayer->SetPosition(ShObject::GetPosition2(m_pTpsPlayer->GetSprite()));
 }
 
 /**
@@ -124,15 +123,21 @@ void CShPluginGame::OnPostUpdate(float dt)
 
 	if (ShInput::GetValue(g_pInputLeft) > 0.2f)
 	{
-		m_pTpsPlayer->GetDirection().Rotate(0.05f);
+		CShVector2 direction=m_pTpsPlayer->GetDirection();
+		direction.Rotate(0.05f);
+		m_pTpsPlayer->SetDirection(direction);
+		ShEntity2::Rotate(m_pTpsPlayer->GetSprite(),CShEulerAngles(0, 0, 0.05f));
 	}
 	
 	if (ShInput::GetValue(g_pInputRight) > 0.2f)
 	{
-		m_pTpsPlayer->GetDirection().Rotate(-0.05f);
+		CShVector2 direction=m_pTpsPlayer->GetDirection();
+		direction.Rotate(-0.05f);
+		m_pTpsPlayer->SetDirection(direction);
+		ShEntity2::Rotate(m_pTpsPlayer->GetSprite(),CShEulerAngles(0, 0, -0.05f));
 	}
 
 	m_pTpsPlayer->Update();
-	ShEntity2::SetPositionX(m_pPlayer,m_pTpsPlayer->GetPosition().m_x);
-	ShEntity2::SetPositionY(m_pPlayer,m_pTpsPlayer->GetPosition().m_y);
+	ShEntity2::SetPositionX(m_pTpsPlayer->GetSprite(),m_pTpsPlayer->GetPosition().m_x);
+	ShEntity2::SetPositionY(m_pTpsPlayer->GetSprite(),m_pTpsPlayer->GetPosition().m_y);
 }
