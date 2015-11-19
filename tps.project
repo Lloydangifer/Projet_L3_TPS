@@ -27,4 +27,7 @@
         <splashscreen path="splashscreen.png"/>
         <orientation landscape="true" portrait="true"/>
     </project_settings>
+    <extensions>
+        <extensions name="ExtensionTPS"/>
+    </extensions>
 </project>

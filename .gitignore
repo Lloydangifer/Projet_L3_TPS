@@ -223,5 +223,4 @@ _logs/
 Dx9/
 build_tps/
 Shine/
-
-
+*.bat

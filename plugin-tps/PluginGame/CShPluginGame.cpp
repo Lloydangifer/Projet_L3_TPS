@@ -50,13 +50,17 @@ bool CShPluginGame::Release(void)
  */
 void CShPluginGame::OnPlayStart(void)
 {
-	m_fScale = 1.0f;
 
 	m_pBackground = ShEntity2::Find(m_levelIdentifier, CShIdentifier("sprite_tps_background"));
 	SH_ASSERT(shNULL != m_pBackground);
 
 	m_pPlayer = ShEntity2::Find(m_levelIdentifier, CShIdentifier("sprite_tps_player"));
 	SH_ASSERT(shNULL != m_pPlayer);
+
+	//create inputs
+	ShInput * up = ShInput::CreateInputPressed(ShInput::e_input_device_keyboard, ShInput::e_input_device_control_pc_key_up, 0.5f);
+	ShInput * right = ShInput::CreateInputPressed(ShInput::e_input_device_keyboard, ShInput::e_input_device_control_pc_key_right, 0.5f);
+	ShInput * left = ShInput::CreateInputPressed(ShInput::e_input_device_keyboard, ShInput::e_input_device_control_pc_key_left, 0.5f);
 }
 
 /**
@@ -96,7 +100,5 @@ void CShPluginGame::OnPreUpdate(void)
  */
 void CShPluginGame::OnPostUpdate(float dt)
 {
-	m_fScale += dt;
 
-	ShEntity2::SetScale(m_pPlayer, m_fScale, 1.0f, 1.0f);
 }

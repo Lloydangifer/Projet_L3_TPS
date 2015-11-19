@@ -1,5 +1,5 @@
-#ifndef __CSHPLUGINTRANSLATE_H
-#define __CSHPLUGINTRANSLATE_H
+#ifndef __CSHPLUGINGAME_H
+#define __CSHPLUGINGAME_H
 
 #include <ShSDK/ShSDK.h>
 #include <ShEngineExt/ShEngineExt.h>
@@ -37,4 +37,4 @@ private:
 	float m_fScale;
 };
 
-#endif // __CSHPLUGINROTATE_H
+#endif // __CSHPLUGINGAME_H
