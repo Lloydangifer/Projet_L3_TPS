@@ -28,13 +28,15 @@ public:
 	void						SetSprite					(ShEntity2 * sprite);
 	ShEntity2 *					GetSprite					(void);
 
-
+	void						SetCharacterController		(ShCharacterController * charactercontroller);
+	ShCharacterController *		GetCharacterController		(void);
 
 private:
-	CShVector2		m_Position;
-	CShVector2		m_Direction;	
-	float			m_Speed;
-	ShEntity2 *		m_pSprite;
+	CShVector2					m_Position;
+	CShVector2					m_Direction;	
+	float						m_Speed;
+	ShEntity2 *					m_pSprite;
+	ShCharacterController *		m_pCharacterController;
 };
 
 #endif // __CSHTPSPLAYER_H

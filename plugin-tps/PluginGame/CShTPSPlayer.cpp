@@ -48,3 +48,11 @@ ShEntity2 * CShTPSPlayer::GetSprite (void)
 {
 	return m_pSprite;
 }
+void CShTPSPlayer::SetCharacterController(ShCharacterController * charactercontroller)
+{
+	m_pCharacterController = charactercontroller;
+}
+ShCharacterController *	CShTPSPlayer::GetCharacterController(void)
+{
+	return m_pCharacterController;
+}
