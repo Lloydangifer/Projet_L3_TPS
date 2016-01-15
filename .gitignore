@@ -224,3 +224,13 @@ Dx9/
 build_tps/
 Shine/
 *.bat
+
+############
+## Cmake
+############
+
+CMakeFiles/
+*.vcxproj
+*.vcxproj.filters
+*.cmake
+*.sln

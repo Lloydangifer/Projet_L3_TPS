@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 3.2.1)
 
 project(ExtensionTPS)
 
-set(SH_ROOT_DIR "../Shine" CACHE PATH "Shine root directory")
+set(SH_ROOT_DIR "C:\/Users\/Lloyd\/Documents\/Shine\/ShSDK" CACHE PATH "Shine root directory")
 
 include_directories("${SH_ROOT_DIR}/include")
 

@@ -2,7 +2,7 @@ mkdir build_tps
 cd build_tps
 
 REM on veut que les extensions sortent dans le dossier "Extensions" à côté de l'éditeur
-SET OUTPUT_DIR=C:Users\Lloyd\Documents\Shine\ShGameEditor\Extensions\
+SET OUTPUT_DIR=C:\Users\Lloyd\Documents\Shine\ShGameEditor\Extensions\
 
 REM on cherche le dossier Include et Lib fournit dans le zip "SDK"
 SET SHINE_DIR=C:\Users\Lloyd\Documents\Shine\ShSDK

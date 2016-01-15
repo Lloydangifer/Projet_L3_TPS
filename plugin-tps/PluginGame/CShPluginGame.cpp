@@ -56,7 +56,7 @@ bool CShPluginGame::Release(void)
 /**
  * Called when the plugin is started
  */
-void CShPluginGame::OnPlayStart(void)
+void CShPluginGame::OnPlayStart(const CShIdentifier & levelIdentifier)
 {
 
 	m_pBackground = ShEntity2::Find(m_levelIdentifier, CShIdentifier("sprite_tps_background"));
@@ -77,7 +77,7 @@ void CShPluginGame::OnPlayStart(void)
 /**
  * Called when the plugin is stopped
  */
-void CShPluginGame::OnPlayStop(void)
+void CShPluginGame::OnPlayStop(const CShIdentifier & levelIdentifier)
 {
 	// nothing here
 }
@@ -85,7 +85,7 @@ void CShPluginGame::OnPlayStop(void)
 /**
  * Called when the plugin is paused
  */
-void CShPluginGame::OnPlayPause(void)
+void CShPluginGame::OnPlayPause(const CShIdentifier & levelIdentifier)
 {
 	// nothing here
 }
@@ -93,7 +93,7 @@ void CShPluginGame::OnPlayPause(void)
 /**
  * Called when the plugin is resumed
  */
-void CShPluginGame::OnPlayResume(void)
+void CShPluginGame::OnPlayResume(const CShIdentifier & levelIdentifier)
 {
 	// nothing here
 }
