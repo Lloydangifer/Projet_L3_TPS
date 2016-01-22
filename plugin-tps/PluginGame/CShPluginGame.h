@@ -3,6 +3,7 @@
 
 #include <ShSDK/ShSDK.h>
 #include <ShEngineExt/ShEngineExt.h>
+
 #include "CShTPSPlayer.h"
 
 class CShPluginGame : public CShPlugin
@@ -31,7 +32,6 @@ public:
 private:
 
 	CShIdentifier m_levelIdentifier;
-
 	ShEntity2 * m_pBackground;
 	CShTPSPlayer * m_pTpsPlayer;
 };

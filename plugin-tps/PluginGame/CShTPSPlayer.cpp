@@ -1,18 +1,53 @@
 #include "CShTPSPlayer.h"
 
 CShTPSPlayer::CShTPSPlayer(void)
+: m_Position(0.0f,0.0f)
+, m_Direction(0.0f,1.0f)
+, m_Speed(0.0f)
+, m_pSprite(shNULL)
+, m_pCharacterController(shNULL)
+, m_pGun(shNULL)
 {
-	m_Speed=0.0f;
-	m_Direction.SetXY(0.0f,1.0f);
-	m_pSprite= shNULL;
 }
 CShTPSPlayer::~CShTPSPlayer(void)
 {
 }
 
+void CShTPSPlayer::Initialize(const CShIdentifier & levelIdentifier, CShTPSGun * defaultGun)
+{
+	m_pSprite = ShEntity2::Find(levelIdentifier, CShIdentifier("sprite_tps_player"));
+	SH_ASSERT(shNULL != GetSprite());
+	//set the position of the TPSPlayer to the position of the sprite
+	m_Position = ShObject::GetPosition2(m_pSprite);
+	// Initialize the character controller with the level, the identifier, the position, the radius, the direction, the speed.
+	/*ShCharacterController *	pCharacterController = shNULL;
+	pCharacterController = ShCharacterController::Create(levelIdentifier, CShIdentifier("character_controller_character_001"), m_Position, 10.0, m_Direction, m_Speed);
+	m_pCharacterController = pCharacterController;
+	SH_ASSERT(shNULL != m_pCharacterController);*/
+
+	m_pGun = defaultGun;
+}
+
 void CShTPSPlayer::Update(void)
 {
 	m_Position += m_Direction*m_Speed;
+	/*ShCharacterController::SetWalkSpeed(m_pCharacterController, m_Speed());
+	ShCharacterController::SetWalkDirection(m_pCharacterController, m_Direction());*/
+	// Update the character controller to change the position
+	//ShCharacterController::Update(m_pCharacterController);
+}
+
+void CShTPSPlayer::Render(void)
+{
+	// Change the position of the character according to the position of the character controller
+	//m_pTpsPlayer->SetPosition(ShCharacterController::GetPosition(m_pTpsPlayer->GetCharacterController()));
+	ShEntity2::SetPositionX(m_pSprite,m_Position.m_x);
+	ShEntity2::SetPositionY(m_pSprite,m_Position.m_y);
+}
+
+void CShTPSPlayer::Shoot(void)
+{
+	m_pGun->Shoot(m_Position, m_Direction); // TODO position given is position+length of the sprite for shooting from the gun of the sprite
 }
 
 void CShTPSPlayer::SetPosition(CShVector2 position)

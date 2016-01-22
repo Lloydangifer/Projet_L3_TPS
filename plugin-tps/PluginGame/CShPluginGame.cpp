@@ -9,6 +9,7 @@ END_CLASS()
 ShInput *					g_pInputUp				= shNULL;
 ShInput *					g_pInputLeft			= shNULL;
 ShInput *					g_pInputRight			= shNULL;
+ShInput *					g_pInputShoot			= shNULL;
 
 
 
@@ -58,20 +59,18 @@ bool CShPluginGame::Release(void)
  */
 void CShPluginGame::OnPlayStart(const CShIdentifier & levelIdentifier)
 {
-
 	m_pBackground = ShEntity2::Find(m_levelIdentifier, CShIdentifier("sprite_tps_background"));
 	SH_ASSERT(shNULL != m_pBackground);
 
-	m_pTpsPlayer->SetSprite(ShEntity2::Find(m_levelIdentifier, CShIdentifier("sprite_tps_player")));
-	SH_ASSERT(shNULL != m_pTpsPlayer->GetSprite());
+	CShTPSGun * pDefaultGun = new CShTPSGun(5.0f, CShString("Desert Eagle"));
+
+	m_pTpsPlayer->Initialize(m_levelIdentifier, pDefaultGun);
 
 	//create inputs
 	g_pInputUp = ShInput::CreateInputPressed(ShInput::e_input_device_keyboard, ShInput::e_input_device_control_pc_key_up, 0.5f);
 	g_pInputRight = ShInput::CreateInputPressed(ShInput::e_input_device_keyboard, ShInput::e_input_device_control_pc_key_right, 0.5f);
 	g_pInputLeft = ShInput::CreateInputPressed(ShInput::e_input_device_keyboard, ShInput::e_input_device_control_pc_key_left, 0.5f);
-
-	//set the position of the TPSPlayer to the position of the sprite
-	m_pTpsPlayer->SetPosition(ShObject::GetPosition2(m_pTpsPlayer->GetSprite()));
+	g_pInputShoot = ShInput::CreateInputPressed(ShInput::e_input_device_keyboard, ShInput::e_input_device_control_pc_key_space, 0.5f);
 }
 
 /**
@@ -123,7 +122,7 @@ void CShPluginGame::OnPostUpdate(float dt)
 
 	if (ShInput::GetValue(g_pInputLeft) > 0.2f)
 	{
-		CShVector2 direction=m_pTpsPlayer->GetDirection();
+		CShVector2 direction = m_pTpsPlayer->GetDirection();
 		direction.Rotate(0.05f);
 		m_pTpsPlayer->SetDirection(direction);
 		ShEntity2::Rotate(m_pTpsPlayer->GetSprite(),CShEulerAngles(0, 0, 0.05f));
@@ -131,13 +130,18 @@ void CShPluginGame::OnPostUpdate(float dt)
 	
 	if (ShInput::GetValue(g_pInputRight) > 0.2f)
 	{
-		CShVector2 direction=m_pTpsPlayer->GetDirection();
+		CShVector2 direction = m_pTpsPlayer->GetDirection();
 		direction.Rotate(-0.05f);
 		m_pTpsPlayer->SetDirection(direction);
 		ShEntity2::Rotate(m_pTpsPlayer->GetSprite(),CShEulerAngles(0, 0, -0.05f));
 	}
 
+	if (ShInput::GetValue(g_pInputShoot) > 0.2f)
+	{
+		m_pTpsPlayer->Shoot();
+	}
+
 	m_pTpsPlayer->Update();
-	ShEntity2::SetPositionX(m_pTpsPlayer->GetSprite(),m_pTpsPlayer->GetPosition().m_x);
-	ShEntity2::SetPositionY(m_pTpsPlayer->GetSprite(),m_pTpsPlayer->GetPosition().m_y);
+	m_pTpsPlayer->Render();
+
 }

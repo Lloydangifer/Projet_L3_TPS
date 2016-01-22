@@ -20,15 +20,91 @@
         <prefab_list/>
     </preload>
     <layer_list>
-        <layer name="layer_default" type="3d" show="true" position_x="0.000000" position_y="0.000000" position_z="0.000000" min_x="0.000000" min_y="0.000000" max_x="640.000000" max_y="480.000000"/>
-        <layer name="layer_gui" type="3d" show="true" position_x="0.000000" position_y="0.000000" position_z="0.000000" min_x="0.000000" min_y="0.000000" max_x="0.000000" max_y="0.000000"/>
+        <layer name="layer_default" show="true" position_x="0.000000" position_y="0.000000" position_z="0.000000" min_x="0.000000" min_y="0.000000" max_x="640.000000" max_y="480.000000"/>
+        <layer name="layer_gui" show="true" position_x="0.000000" position_y="0.000000" position_z="0.000000" min_x="0.000000" min_y="0.000000" max_x="0.000000" max_y="0.000000"/>
     </layer_list>
     <object_list>
-        <entity2 name="sprite_tps_background" position_x="0.000000" position_y="0.000000" position_z="0.000000" rotation_x="0.000000" rotation_y="0.000000" rotation_z="0.000000" scale_x="1.000000" scale_y="1.000000" scale_z="1.000000" layer="layer_default" show="true" color_r="1.000000" color_g="1.000000" color_b="1.000000" color_a="1.000000" blinking="false" pivot="center_center" pivot_custom_x="0.500000" pivot_custom_y="0.500000" sprite_library="tps" sprite_name="background" blend_function="alpha"/>
-        <entity2 name="sprite_tps_player" position_x="49.882099" position_y="33.905499" position_z="1.000000" rotation_x="0.000000" rotation_y="0.000000" rotation_z="0.000000" scale_x="1.000000" scale_y="1.000000" scale_z="1.000000" layer="layer_default" show="true" color_r="1.000000" color_g="1.000000" color_b="1.000000" color_a="1.000000" blinking="false" pivot="center_center" pivot_custom_x="0.500000" pivot_custom_y="0.500000" sprite_library="tps" sprite_name="player" blend_function="alpha"/>
+        <collision_shape_point name="collision_shape_inside_wall.0" position_x="-299.762177" position_y="213.019989" position_z="0.000000" rotation_x="0.000000" rotation_y="0.000000" rotation_z="0.000000" scale_x="1.000000" scale_y="1.000000" scale_z="1.000000" index="0" parent_point="collision_shape_inside_wall"/>
+        <collision_shape_point name="collision_shape_inside_wall.1" position_x="293.694977" position_y="213.019989" position_z="0.000000" rotation_x="0.000000" rotation_y="0.000000" rotation_z="0.000000" scale_x="1.000000" scale_y="1.000000" scale_z="1.000000" index="1" parent_point="collision_shape_inside_wall"/>
+        <collision_shape_point name="collision_shape_inside_wall.2" position_x="292.807892" position_y="-214.553040" position_z="0.000000" rotation_x="0.000000" rotation_y="0.000000" rotation_z="0.000000" scale_x="1.000000" scale_y="1.000000" scale_z="1.000000" index="2" parent_point="collision_shape_inside_wall"/>
+        <collision_shape_point name="collision_shape_inside_wall.3" position_x="-298.875092" position_y="-215.440125" position_z="0.000000" rotation_x="0.000000" rotation_y="0.000000" rotation_z="0.000000" scale_x="1.000000" scale_y="1.000000" scale_z="1.000000" index="3" parent_point="collision_shape_inside_wall"/>
+        <collision_shape_point name="collision_shape_inside_wall.4" position_x="-299.762177" position_y="213.019989" position_z="0.000000" rotation_x="0.000000" rotation_y="0.000000" rotation_z="0.000000" scale_x="1.000000" scale_y="1.000000" scale_z="1.000000" index="4" parent_point="collision_shape_inside_wall"/>
+        <collision_shape_point name="collision_shape_outside_wall.0" position_x="-319.277954" position_y="240.519516" position_z="0.000000" rotation_x="0.000000" rotation_y="0.000000" rotation_z="0.000000" scale_x="1.000000" scale_y="1.000000" scale_z="1.000000" index="0" parent_point="collision_shape_outside_wall"/>
+        <collision_shape_point name="collision_shape_outside_wall.1" position_x="319.420380" position_y="239.632401" position_z="0.000000" rotation_x="0.000000" rotation_y="0.000000" rotation_z="0.000000" scale_x="1.000000" scale_y="1.000000" scale_z="1.000000" index="1" parent_point="collision_shape_outside_wall"/>
+        <collision_shape_point name="collision_shape_outside_wall.2" position_x="319.420380" position_y="-241.165482" position_z="0.000000" rotation_x="0.000000" rotation_y="0.000000" rotation_z="0.000000" scale_x="1.000000" scale_y="1.000000" scale_z="1.000000" index="2" parent_point="collision_shape_outside_wall"/>
+        <collision_shape_point name="collision_shape_outside_wall.3" position_x="-320.165039" position_y="-240.278397" position_z="0.000000" rotation_x="0.000000" rotation_y="0.000000" rotation_z="0.000000" scale_x="1.000000" scale_y="1.000000" scale_z="1.000000" index="3" parent_point="collision_shape_outside_wall"/>
+        <collision_shape_point name="collision_shape_outside_wall.4" position_x="-320.165039" position_y="240.519516" position_z="0.000000" rotation_x="0.000000" rotation_y="0.000000" rotation_z="0.000000" scale_x="1.000000" scale_y="1.000000" scale_z="1.000000" index="4" parent_point="collision_shape_outside_wall"/>
+        <collision_shape_point name="collision_shape_left_top_wall.0" position_x="-241.214859" position_y="142.940582" position_z="0.000000" rotation_x="0.000000" rotation_y="0.000000" rotation_z="0.000000" scale_x="1.000000" scale_y="1.000000" scale_z="1.000000" index="0" parent_point="collision_shape_left_top_wall"/>
+        <collision_shape_point name="collision_shape_left_top_wall.1" position_x="-71.782364" position_y="142.940582" position_z="0.000000" rotation_x="0.000000" rotation_y="0.000000" rotation_z="0.000000" scale_x="1.000000" scale_y="1.000000" scale_z="1.000000" index="1" parent_point="collision_shape_left_top_wall"/>
+        <collision_shape_point name="collision_shape_left_top_wall.2" position_x="-71.782364" position_y="116.328163" position_z="0.000000" rotation_x="0.000000" rotation_y="0.000000" rotation_z="0.000000" scale_x="1.000000" scale_y="1.000000" scale_z="1.000000" index="2" parent_point="collision_shape_left_top_wall"/>
+        <collision_shape_point name="collision_shape_left_top_wall.3" position_x="-212.828262" position_y="117.215233" position_z="0.000000" rotation_x="0.000000" rotation_y="0.000000" rotation_z="0.000000" scale_x="1.000000" scale_y="1.000000" scale_z="1.000000" index="3" parent_point="collision_shape_left_top_wall"/>
+        <collision_shape_point name="collision_shape_left_top_wall.4" position_x="-213.715317" position_y="-8.750248" position_z="0.000000" rotation_x="0.000000" rotation_y="0.000000" rotation_z="0.000000" scale_x="1.000000" scale_y="1.000000" scale_z="1.000000" index="4" parent_point="collision_shape_left_top_wall"/>
+        <collision_shape_point name="collision_shape_left_top_wall.5" position_x="-242.101913" position_y="-9.637337" position_z="0.000000" rotation_x="0.000000" rotation_y="0.000000" rotation_z="0.000000" scale_x="1.000000" scale_y="1.000000" scale_z="1.000000" index="5" parent_point="collision_shape_left_top_wall"/>
+        <collision_shape_point name="collision_shape_left_top_wall.6" position_x="-242.101913" position_y="142.940582" position_z="0.000000" rotation_x="0.000000" rotation_y="0.000000" rotation_z="0.000000" scale_x="1.000000" scale_y="1.000000" scale_z="1.000000" index="6" parent_point="collision_shape_left_top_wall"/>
+        <collision_shape_point name="collision_shape_left_bottom_wall.0" position_x="-208.392838" position_y="-122.296616" position_z="0.000000" rotation_x="0.000000" rotation_y="0.000000" rotation_z="0.000000" scale_x="1.000000" scale_y="1.000000" scale_z="1.000000" index="0" parent_point="collision_shape_left_bottom_wall"/>
+        <collision_shape_point name="collision_shape_left_bottom_wall.1" position_x="16.038643" position_y="-123.183685" position_z="0.000000" rotation_x="0.000000" rotation_y="0.000000" rotation_z="0.000000" scale_x="1.000000" scale_y="1.000000" scale_z="1.000000" index="1" parent_point="collision_shape_left_bottom_wall"/>
+        <collision_shape_point name="collision_shape_left_bottom_wall.2" position_x="16.038643" position_y="-149.796127" position_z="0.000000" rotation_x="0.000000" rotation_y="0.000000" rotation_z="0.000000" scale_x="1.000000" scale_y="1.000000" scale_z="1.000000" index="2" parent_point="collision_shape_left_bottom_wall"/>
+        <collision_shape_point name="collision_shape_left_bottom_wall.3" position_x="-208.392838" position_y="-151.570282" position_z="0.000000" rotation_x="0.000000" rotation_y="0.000000" rotation_z="0.000000" scale_x="1.000000" scale_y="1.000000" scale_z="1.000000" index="3" parent_point="collision_shape_left_bottom_wall"/>
+        <collision_shape_point name="collision_shape_left_bottom_wall.4" position_x="-208.392838" position_y="-123.183685" position_z="0.000000" rotation_x="0.000000" rotation_y="0.000000" rotation_z="0.000000" scale_x="1.000000" scale_y="1.000000" scale_z="1.000000" index="4" parent_point="collision_shape_left_bottom_wall"/>
+        <collision_shape_point name="collision_shape_right_top_wall.0" position_x="36.441513" position_y="131.408539" position_z="0.000000" rotation_x="0.000000" rotation_y="0.000000" rotation_z="0.000000" scale_x="1.000000" scale_y="1.000000" scale_z="1.000000" index="0" parent_point="collision_shape_right_top_wall"/>
+        <collision_shape_point name="collision_shape_right_top_wall.1" position_x="231.599319" position_y="130.521469" position_z="0.000000" rotation_x="0.000000" rotation_y="0.000000" rotation_z="0.000000" scale_x="1.000000" scale_y="1.000000" scale_z="1.000000" index="1" parent_point="collision_shape_right_top_wall"/>
+        <collision_shape_point name="collision_shape_right_top_wall.2" position_x="231.599319" position_y="96.812378" position_z="0.000000" rotation_x="0.000000" rotation_y="0.000000" rotation_z="0.000000" scale_x="1.000000" scale_y="1.000000" scale_z="1.000000" index="2" parent_point="collision_shape_right_top_wall"/>
+        <collision_shape_point name="collision_shape_right_top_wall.3" position_x="38.215675" position_y="97.699448" position_z="0.000000" rotation_x="0.000000" rotation_y="0.000000" rotation_z="0.000000" scale_x="1.000000" scale_y="1.000000" scale_z="1.000000" index="3" parent_point="collision_shape_right_top_wall"/>
+        <collision_shape_point name="collision_shape_right_bottom_wall.0" position_x="-0.815895" position_y="-13.185652" position_z="0.000000" rotation_x="0.000000" rotation_y="0.000000" rotation_z="0.000000" scale_x="1.000000" scale_y="1.000000" scale_z="1.000000" index="0" parent_point="collision_shape_right_bottom_wall"/>
+        <collision_shape_point name="collision_shape_right_bottom_wall.1" position_x="167.729507" position_y="-12.298565" position_z="0.000000" rotation_x="0.000000" rotation_y="0.000000" rotation_z="0.000000" scale_x="1.000000" scale_y="1.000000" scale_z="1.000000" index="1" parent_point="collision_shape_right_bottom_wall"/>
+        <collision_shape_point name="collision_shape_right_bottom_wall.2" position_x="167.729507" position_y="-161.328186" position_z="0.000000" rotation_x="0.000000" rotation_y="0.000000" rotation_z="0.000000" scale_x="1.000000" scale_y="1.000000" scale_z="1.000000" index="2" parent_point="collision_shape_right_bottom_wall"/>
+        <collision_shape_point name="collision_shape_right_bottom_wall.3" position_x="142.004166" position_y="-161.328186" position_z="0.000000" rotation_x="0.000000" rotation_y="0.000000" rotation_z="0.000000" scale_x="1.000000" scale_y="1.000000" scale_z="1.000000" index="3" parent_point="collision_shape_right_bottom_wall"/>
+        <collision_shape_point name="collision_shape_right_bottom_wall.4" position_x="142.891251" position_y="-41.572247" position_z="0.000000" rotation_x="0.000000" rotation_y="0.000000" rotation_z="0.000000" scale_x="1.000000" scale_y="1.000000" scale_z="1.000000" index="4" parent_point="collision_shape_right_bottom_wall"/>
+        <collision_shape_point name="collision_shape_right_bottom_wall.5" position_x="-0.815895" position_y="-40.685154" position_z="0.000000" rotation_x="0.000000" rotation_y="0.000000" rotation_z="0.000000" scale_x="1.000000" scale_y="1.000000" scale_z="1.000000" index="5" parent_point="collision_shape_right_bottom_wall"/>
+        <entity2 name="sprite_tps_background" position_x="0.000000" position_y="0.000000" position_z="0.000000" rotation_x="0.000000" rotation_y="0.000000" rotation_z="0.000000" scale_x="1.000000" scale_y="1.000000" scale_z="1.000000" layer="layer_default" show="true" color_r="1.000000" color_g="1.000000" color_b="1.000000" color_a="1.000000" pivot="center_center" pivot_custom_x="0.500000" pivot_custom_y="0.500000" sprite_library="tps" sprite_name="background" blend_function="alpha"/>
+        <entity2 name="sprite_tps_player" position_x="49.882099" position_y="33.905499" position_z="1.000000" rotation_x="0.000000" rotation_y="0.000000" rotation_z="0.000000" scale_x="1.000000" scale_y="1.000000" scale_z="1.000000" layer="layer_default" show="true" color_r="1.000000" color_g="1.000000" color_b="1.000000" color_a="1.000000" pivot="center_center" pivot_custom_x="0.500000" pivot_custom_y="0.500000" sprite_library="tps" sprite_name="player" blend_function="alpha"/>
+        <collision_shape name="collision_shape_inside_wall" type="none" prohibited="0" closed="1">
+            <point name="collision_shape_inside_wall.0" index="0"/>
+            <point name="collision_shape_inside_wall.1" index="1"/>
+            <point name="collision_shape_inside_wall.2" index="2"/>
+            <point name="collision_shape_inside_wall.3" index="3"/>
+            <point name="collision_shape_inside_wall.4" index="4"/>
+        </collision_shape>
+        <collision_shape name="collision_shape_outside_wall" type="none" prohibited="0" closed="1">
+            <point name="collision_shape_outside_wall.0" index="0"/>
+            <point name="collision_shape_outside_wall.1" index="1"/>
+            <point name="collision_shape_outside_wall.2" index="2"/>
+            <point name="collision_shape_outside_wall.3" index="3"/>
+            <point name="collision_shape_outside_wall.4" index="4"/>
+        </collision_shape>
+        <collision_shape name="collision_shape_left_top_wall" type="none" prohibited="0" closed="1">
+            <point name="collision_shape_left_top_wall.0" index="0"/>
+            <point name="collision_shape_left_top_wall.1" index="1"/>
+            <point name="collision_shape_left_top_wall.2" index="2"/>
+            <point name="collision_shape_left_top_wall.3" index="3"/>
+            <point name="collision_shape_left_top_wall.4" index="4"/>
+            <point name="collision_shape_left_top_wall.5" index="5"/>
+            <point name="collision_shape_left_top_wall.6" index="6"/>
+        </collision_shape>
+        <collision_shape name="collision_shape_left_bottom_wall" type="none" prohibited="1" closed="1">
+            <point name="collision_shape_left_bottom_wall.0" index="0"/>
+            <point name="collision_shape_left_bottom_wall.1" index="1"/>
+            <point name="collision_shape_left_bottom_wall.2" index="2"/>
+            <point name="collision_shape_left_bottom_wall.3" index="3"/>
+            <point name="collision_shape_left_bottom_wall.4" index="4"/>
+        </collision_shape>
+        <collision_shape name="collision_shape_right_top_wall" type="none" prohibited="1" closed="1">
+            <point name="collision_shape_right_top_wall.0" index="0"/>
+            <point name="collision_shape_right_top_wall.1" index="1"/>
+            <point name="collision_shape_right_top_wall.2" index="2"/>
+            <point name="collision_shape_right_top_wall.3" index="3"/>
+        </collision_shape>
+        <collision_shape name="collision_shape_right_bottom_wall" type="none" prohibited="1" closed="1">
+            <point name="collision_shape_right_bottom_wall.0" index="0"/>
+            <point name="collision_shape_right_bottom_wall.1" index="1"/>
+            <point name="collision_shape_right_bottom_wall.2" index="2"/>
+            <point name="collision_shape_right_bottom_wall.3" index="3"/>
+            <point name="collision_shape_right_bottom_wall.4" index="4"/>
+            <point name="collision_shape_right_bottom_wall.5" index="5"/>
+        </collision_shape>
     </object_list>
     <plugins>
-        <plugin name="TPS"/>
+        <plugin name="tps"/>
     </plugins>
     <editor_settings>
         <snap_x enabled="false" value="100.000000"/>
@@ -40,11 +116,49 @@
         <translate_z enabled="true"/>
         <grid enabled="false" position_x="0.000000" position_y="0.000000" position_z="0.000000" size_x="1000.000000" size_y="1000.000000" subdivision_x="10" subdivision_y="10"/>
         <show_markers enabled="false"/>
-        <camera position_x="56.844379" position_y="-40.685131" position_z="905.092346" target_x="56.844379" target_y="-40.685169" target_z="0.000002" znear="1.000000" zfar="40000.000000" zoom="0.905092" camera_angle_x="1.570796" camera_angle_z="0.000000" type="0" arcball_x="0.000000" arcball_y="-905.092346" arcball_z="0.000000" camera_up_x="0.000000" camera_up_y="0.000000" camera_up_z="1.000000"/>
+        <camera position_x="55.957298" position_y="19.636066" position_z="887.081055" target_x="55.957298" target_y="19.636345" target_z="0.000021" znear="1.000000" zfar="40000.000000" zoom="0.887081" camera_angle_x="1.570796" camera_angle_z="0.000000" type="0" arcball_x="0.000000" arcball_y="-887.081055" arcball_z="0.000000" camera_up_x="0.000000" camera_up_y="0.000000" camera_up_z="1.000000"/>
         <scene_explorer scene_explorer_add_folder="Root">
             <scene_explorer_item scene_explorer_item_name="Root" scene_explorer_item_text="Root" scene_explorer_item_type="0" scene_explorer_item_expanded="true" scene_explorer_item_parent="NULL"/>
+            <scene_explorer_item scene_explorer_item_name="collision_shape_inside_wall" scene_explorer_item_text="collision_shape_inside_wall" scene_explorer_item_type="234" scene_explorer_item_expanded="false" scene_explorer_item_parent="Root"/>
+            <scene_explorer_item scene_explorer_item_name="collision_shape_inside_wall.0" scene_explorer_item_text="collision_shape_inside_wall.0" scene_explorer_item_type="195" scene_explorer_item_expanded="false" scene_explorer_item_parent="collision_shape_inside_wall"/>
+            <scene_explorer_item scene_explorer_item_name="collision_shape_inside_wall.1" scene_explorer_item_text="collision_shape_inside_wall.1" scene_explorer_item_type="195" scene_explorer_item_expanded="false" scene_explorer_item_parent="collision_shape_inside_wall"/>
+            <scene_explorer_item scene_explorer_item_name="collision_shape_inside_wall.2" scene_explorer_item_text="collision_shape_inside_wall.2" scene_explorer_item_type="195" scene_explorer_item_expanded="false" scene_explorer_item_parent="collision_shape_inside_wall"/>
+            <scene_explorer_item scene_explorer_item_name="collision_shape_inside_wall.3" scene_explorer_item_text="collision_shape_inside_wall.3" scene_explorer_item_type="195" scene_explorer_item_expanded="false" scene_explorer_item_parent="collision_shape_inside_wall"/>
+            <scene_explorer_item scene_explorer_item_name="collision_shape_inside_wall.4" scene_explorer_item_text="collision_shape_inside_wall.4" scene_explorer_item_type="195" scene_explorer_item_expanded="false" scene_explorer_item_parent="collision_shape_inside_wall"/>
+            <scene_explorer_item scene_explorer_item_name="collision_shape_outside_wall" scene_explorer_item_text="collision_shape_outside_wall" scene_explorer_item_type="234" scene_explorer_item_expanded="false" scene_explorer_item_parent="Root"/>
+            <scene_explorer_item scene_explorer_item_name="collision_shape_outside_wall.0" scene_explorer_item_text="collision_shape_outside_wall.0" scene_explorer_item_type="195" scene_explorer_item_expanded="false" scene_explorer_item_parent="collision_shape_outside_wall"/>
+            <scene_explorer_item scene_explorer_item_name="collision_shape_outside_wall.1" scene_explorer_item_text="collision_shape_outside_wall.1" scene_explorer_item_type="195" scene_explorer_item_expanded="false" scene_explorer_item_parent="collision_shape_outside_wall"/>
+            <scene_explorer_item scene_explorer_item_name="collision_shape_outside_wall.2" scene_explorer_item_text="collision_shape_outside_wall.2" scene_explorer_item_type="195" scene_explorer_item_expanded="false" scene_explorer_item_parent="collision_shape_outside_wall"/>
+            <scene_explorer_item scene_explorer_item_name="collision_shape_outside_wall.3" scene_explorer_item_text="collision_shape_outside_wall.3" scene_explorer_item_type="195" scene_explorer_item_expanded="false" scene_explorer_item_parent="collision_shape_outside_wall"/>
+            <scene_explorer_item scene_explorer_item_name="collision_shape_outside_wall.4" scene_explorer_item_text="collision_shape_outside_wall.4" scene_explorer_item_type="195" scene_explorer_item_expanded="false" scene_explorer_item_parent="collision_shape_outside_wall"/>
             <scene_explorer_item scene_explorer_item_name="sprite_tps_background" scene_explorer_item_text="sprite_tps_background" scene_explorer_item_type="232" scene_explorer_item_expanded="false" scene_explorer_item_parent="Root"/>
             <scene_explorer_item scene_explorer_item_name="sprite_tps_player" scene_explorer_item_text="sprite_tps_player" scene_explorer_item_type="232" scene_explorer_item_expanded="false" scene_explorer_item_parent="Root"/>
+            <scene_explorer_item scene_explorer_item_name="collision_shape_left_top_wall" scene_explorer_item_text="collision_shape_left_top_wall" scene_explorer_item_type="234" scene_explorer_item_expanded="true" scene_explorer_item_parent="Root"/>
+            <scene_explorer_item scene_explorer_item_name="collision_shape_left_top_wall.0" scene_explorer_item_text="collision_shape_left_top_wall.0" scene_explorer_item_type="195" scene_explorer_item_expanded="false" scene_explorer_item_parent="collision_shape_left_top_wall"/>
+            <scene_explorer_item scene_explorer_item_name="collision_shape_left_top_wall.1" scene_explorer_item_text="collision_shape_left_top_wall.1" scene_explorer_item_type="195" scene_explorer_item_expanded="false" scene_explorer_item_parent="collision_shape_left_top_wall"/>
+            <scene_explorer_item scene_explorer_item_name="collision_shape_left_top_wall.2" scene_explorer_item_text="collision_shape_left_top_wall.2" scene_explorer_item_type="195" scene_explorer_item_expanded="false" scene_explorer_item_parent="collision_shape_left_top_wall"/>
+            <scene_explorer_item scene_explorer_item_name="collision_shape_left_top_wall.3" scene_explorer_item_text="collision_shape_left_top_wall.3" scene_explorer_item_type="195" scene_explorer_item_expanded="false" scene_explorer_item_parent="collision_shape_left_top_wall"/>
+            <scene_explorer_item scene_explorer_item_name="collision_shape_left_bottom_wall" scene_explorer_item_text="collision_shape_left_bottom_wall" scene_explorer_item_type="234" scene_explorer_item_expanded="true" scene_explorer_item_parent="Root"/>
+            <scene_explorer_item scene_explorer_item_name="collision_shape_left_bottom_wall.0" scene_explorer_item_text="collision_shape_left_bottom_wall.0" scene_explorer_item_type="195" scene_explorer_item_expanded="false" scene_explorer_item_parent="collision_shape_left_bottom_wall"/>
+            <scene_explorer_item scene_explorer_item_name="collision_shape_left_bottom_wall.1" scene_explorer_item_text="collision_shape_left_bottom_wall.1" scene_explorer_item_type="195" scene_explorer_item_expanded="false" scene_explorer_item_parent="collision_shape_left_bottom_wall"/>
+            <scene_explorer_item scene_explorer_item_name="collision_shape_left_bottom_wall.2" scene_explorer_item_text="collision_shape_left_bottom_wall.2" scene_explorer_item_type="195" scene_explorer_item_expanded="false" scene_explorer_item_parent="collision_shape_left_bottom_wall"/>
+            <scene_explorer_item scene_explorer_item_name="collision_shape_left_bottom_wall.3" scene_explorer_item_text="collision_shape_left_bottom_wall.3" scene_explorer_item_type="195" scene_explorer_item_expanded="false" scene_explorer_item_parent="collision_shape_left_bottom_wall"/>
+            <scene_explorer_item scene_explorer_item_name="collision_shape_left_bottom_wall.4" scene_explorer_item_text="collision_shape_left_bottom_wall.4" scene_explorer_item_type="195" scene_explorer_item_expanded="false" scene_explorer_item_parent="collision_shape_left_bottom_wall"/>
+            <scene_explorer_item scene_explorer_item_name="collision_shape_left_bottom_wall.5" scene_explorer_item_text="collision_shape_left_bottom_wall.5" scene_explorer_item_type="195" scene_explorer_item_expanded="false" scene_explorer_item_parent="collision_shape_left_bottom_wall"/>
+            <scene_explorer_item scene_explorer_item_name="collision_shape_right_top_wall" scene_explorer_item_text="collision_shape_right_top_wall" scene_explorer_item_type="234" scene_explorer_item_expanded="true" scene_explorer_item_parent="Root"/>
+            <scene_explorer_item scene_explorer_item_name="collision_shape_right_top_wall.0" scene_explorer_item_text="collision_shape_right_top_wall.0" scene_explorer_item_type="195" scene_explorer_item_expanded="false" scene_explorer_item_parent="collision_shape_right_top_wall"/>
+            <scene_explorer_item scene_explorer_item_name="collision_shape_right_top_wall.1" scene_explorer_item_text="collision_shape_right_top_wall.1" scene_explorer_item_type="195" scene_explorer_item_expanded="false" scene_explorer_item_parent="collision_shape_right_top_wall"/>
+            <scene_explorer_item scene_explorer_item_name="collision_shape_right_top_wall.2" scene_explorer_item_text="collision_shape_right_top_wall.2" scene_explorer_item_type="195" scene_explorer_item_expanded="false" scene_explorer_item_parent="collision_shape_right_top_wall"/>
+            <scene_explorer_item scene_explorer_item_name="collision_shape_right_top_wall.3" scene_explorer_item_text="collision_shape_right_top_wall.3" scene_explorer_item_type="195" scene_explorer_item_expanded="false" scene_explorer_item_parent="collision_shape_right_top_wall"/>
+            <scene_explorer_item scene_explorer_item_name="collision_shape_right_top_wall.4" scene_explorer_item_text="collision_shape_right_top_wall.4" scene_explorer_item_type="195" scene_explorer_item_expanded="false" scene_explorer_item_parent="collision_shape_right_top_wall"/>
+            <scene_explorer_item scene_explorer_item_name="collision_shape_right_bottom_wall" scene_explorer_item_text="collision_shape_right_bottom_wall" scene_explorer_item_type="234" scene_explorer_item_expanded="true" scene_explorer_item_parent="Root"/>
+            <scene_explorer_item scene_explorer_item_name="collision_shape_right_bottom_wall.0" scene_explorer_item_text="collision_shape_right_bottom_wall.0" scene_explorer_item_type="195" scene_explorer_item_expanded="false" scene_explorer_item_parent="collision_shape_right_bottom_wall"/>
+            <scene_explorer_item scene_explorer_item_name="collision_shape_right_bottom_wall.1" scene_explorer_item_text="collision_shape_right_bottom_wall.1" scene_explorer_item_type="195" scene_explorer_item_expanded="false" scene_explorer_item_parent="collision_shape_right_bottom_wall"/>
+            <scene_explorer_item scene_explorer_item_name="collision_shape_right_bottom_wall.2" scene_explorer_item_text="collision_shape_right_bottom_wall.2" scene_explorer_item_type="195" scene_explorer_item_expanded="false" scene_explorer_item_parent="collision_shape_right_bottom_wall"/>
+            <scene_explorer_item scene_explorer_item_name="collision_shape_right_bottom_wall.3" scene_explorer_item_text="collision_shape_right_bottom_wall.3" scene_explorer_item_type="195" scene_explorer_item_expanded="false" scene_explorer_item_parent="collision_shape_right_bottom_wall"/>
+            <scene_explorer_item scene_explorer_item_name="collision_shape_right_bottom_wall.4" scene_explorer_item_text="collision_shape_right_bottom_wall.4" scene_explorer_item_type="195" scene_explorer_item_expanded="false" scene_explorer_item_parent="collision_shape_right_bottom_wall"/>
+            <scene_explorer_item scene_explorer_item_name="collision_shape_right_bottom_wall.5" scene_explorer_item_text="collision_shape_right_bottom_wall.5" scene_explorer_item_type="195" scene_explorer_item_expanded="false" scene_explorer_item_parent="collision_shape_right_bottom_wall"/>
+            <scene_explorer_item scene_explorer_item_name="collision_shape_right_bottom_wall.6" scene_explorer_item_text="collision_shape_right_bottom_wall.6" scene_explorer_item_type="195" scene_explorer_item_expanded="false" scene_explorer_item_parent="collision_shape_right_bottom_wall"/>
         </scene_explorer>
     </editor_settings>
 </level>
