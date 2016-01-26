@@ -31,9 +31,10 @@ public:
 
 private:
 
-	CShIdentifier m_levelIdentifier;
-	ShEntity2 * m_pBackground;
-	CShTPSPlayer * m_pTpsPlayer;
+	CShIdentifier					m_levelIdentifier;
+	ShEntity2 *						m_pBackground;
+	CShTPSPlayer *					m_pTpsPlayer;
+	CShArray<CShTPSAmmo *>			m_Bullets;
 };
 
 #endif // __CSHPLUGINGAME_H

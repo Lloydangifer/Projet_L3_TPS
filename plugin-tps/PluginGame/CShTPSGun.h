@@ -13,9 +13,11 @@ public:
 								CShTPSGun					(float power, CShString name);
 	virtual						~CShTPSGun					(void);
 
-
+	void						Initialize					(const CShIdentifier & levelIdentifier);
 	void						Update						(void);
-	void						Shoot						(CShVector2 position, CShVector2 direction);
+	void						Render						(void);
+	CShTPSAmmo			*		Shoot						(CShVector2 position, CShVector2 direction);
+	bool						ClipIsEmpty					(void);
 
 
 		// Setters & Getters
@@ -25,10 +27,13 @@ public:
 	void						SetName						(CShString name);
 	CShString					GetName						(void);
 
+	void						SetClip						(CShArray<CShTPSAmmo *>	clip);
+	CShArray<CShTPSAmmo *>		GetClip						(void);
+
 private:
 	float						m_Power;	//Value given by the gun as speed to its ammo
 	CShString					m_Name;
-	CShArray<CShTPSAmmo*>		m_Clip;
+	CShArray<CShTPSAmmo *>		m_Clip;
 };
 
 #endif // __CSHTPSGUN_H

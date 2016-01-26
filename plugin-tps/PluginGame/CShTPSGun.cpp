@@ -5,15 +5,23 @@
 CShTPSGun::CShTPSGun(float power, CShString name)
 : m_Power(power)
 , m_Name(name)
+, m_Clip()
+{
+}
+
+CShTPSGun::~CShTPSGun(void)
+{
+}
+
+void CShTPSGun::Initialize(const CShIdentifier & levelIdentifier)
 {
 	for(int i=0; i<DEFAULT_AMMO_NUMBER; i++)
 	{
 		CShTPSAmmo * ammo = new CShTPSAmmo(m_Power);
+		ammo->Initialize(levelIdentifier);
 		m_Clip.Add(ammo);
 	}
-}
-CShTPSGun::~CShTPSGun(void)
-{
+	SH_ASSERT(true != m_Clip.IsEmpty());
 }
 
 void CShTPSGun::Update(void)
@@ -21,9 +29,21 @@ void CShTPSGun::Update(void)
 	// ??
 }
 
-void CShTPSGun::Shoot(CShVector2 position, CShVector2 direction)
+CShTPSAmmo * CShTPSGun::Shoot(CShVector2 position, CShVector2 direction)
 {
-	// TODO
+		CShTPSAmmo * ammo = new CShTPSAmmo(m_Power);
+		ammo = m_Clip.Back();
+		m_Clip.RemoveBack();
+		ammo->SetPosition(position);
+		ammo->SetDirection(direction);
+		ammo->SetMoving(true);
+		ShObject::SetShow(ammo->GetSprite(),true);
+		return ammo;
+}
+
+bool CShTPSGun::ClipIsEmpty(void)
+{
+	return m_Clip.IsEmpty();
 }
 
 void CShTPSGun::SetPower(float power)
@@ -44,4 +64,14 @@ void CShTPSGun::SetName(CShString name)
 CShString CShTPSGun::GetName(void)
 {
 	return m_Name;
+}
+
+void CShTPSGun::SetClip(CShArray<CShTPSAmmo *>	clip)
+{
+	m_Clip = clip;
+}
+
+CShArray<CShTPSAmmo *> CShTPSGun::GetClip(void)
+{
+	return m_Clip;
 }

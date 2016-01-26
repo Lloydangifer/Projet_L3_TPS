@@ -8,12 +8,13 @@ class CShTPSAmmo
 {
 public:
 		// Constructor / Destructor
-								CShTPSAmmo				(float speed);
-	virtual						~CShTPSAmmo				(void);
+								CShTPSAmmo					(float speed);
+	virtual						~CShTPSAmmo					(void);
 
 
-	void						Update						(void);
-
+	void						Initialize					(const CShIdentifier & levelIdentifier);
+	void						Update						(float dt);
+	void						Render						(void);
 
 		// Setters & Getters
 	void						SetPosition					(CShVector2 position);
@@ -24,6 +25,9 @@ public:
 
 	void						SetSpeed					(float speed);
 	float						GetSpeed					(void);
+
+	void						SetMoving					(bool moving);
+	bool						GetMoving					(void);
 
 	void						SetSprite					(ShEntity2 * sprite);
 	ShEntity2 *					GetSprite					(void);

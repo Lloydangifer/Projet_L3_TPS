@@ -17,8 +17,8 @@ public:
 	void						Initialize					(const CShIdentifier & levelIdentifier, CShTPSGun * defaultGun);
 	void						Update						(void);
 	void						Render						(void);
-	void						Shoot						(void);
-
+	CShTPSAmmo		*			Shoot						(void);
+	bool						GunIsEmpty					(void);
 
 		// Setters & Getters
 	void						SetPosition					(CShVector2 position);

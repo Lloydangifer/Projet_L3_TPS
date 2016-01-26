@@ -70,7 +70,7 @@ void CShPluginGame::OnPlayStart(const CShIdentifier & levelIdentifier)
 	g_pInputUp = ShInput::CreateInputPressed(ShInput::e_input_device_keyboard, ShInput::e_input_device_control_pc_key_up, 0.5f);
 	g_pInputRight = ShInput::CreateInputPressed(ShInput::e_input_device_keyboard, ShInput::e_input_device_control_pc_key_right, 0.5f);
 	g_pInputLeft = ShInput::CreateInputPressed(ShInput::e_input_device_keyboard, ShInput::e_input_device_control_pc_key_left, 0.5f);
-	g_pInputShoot = ShInput::CreateInputPressed(ShInput::e_input_device_keyboard, ShInput::e_input_device_control_pc_key_space, 0.5f);
+	g_pInputShoot = ShInput::CreateInputJustPressed(ShInput::e_input_device_keyboard, ShInput::e_input_device_control_pc_key_space, 0.5f);
 }
 
 /**
@@ -113,7 +113,7 @@ void CShPluginGame::OnPostUpdate(float dt)
 	// Change the walk speed/direction
 	if (ShInput::GetValue(g_pInputUp) > 0.2f)
 	{
-		m_pTpsPlayer->SetSpeed(5.0f);
+		m_pTpsPlayer->SetSpeed(100.0f);
 	}
 	else
 	{
@@ -138,10 +138,14 @@ void CShPluginGame::OnPostUpdate(float dt)
 
 	if (ShInput::GetValue(g_pInputShoot) > 0.2f)
 	{
-		m_pTpsPlayer->Shoot();
+		if(!m_pTpsPlayer->GunIsEmpty())
+		{
+			m_Bullets.Add(m_pTpsPlayer->Shoot());
+		}
 	}
 
 	m_pTpsPlayer->Update();
-	m_pTpsPlayer->Render();
+	m_Bullets.ElementsUpdate(dt);
 
+	m_pTpsPlayer->Render();
 }

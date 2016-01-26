@@ -25,10 +25,12 @@
         <version major="0" minor="1"/>
         <icon path="icon.png"/>
         <splashscreen path="splashscreen.png"/>
-        <orientation landscape="true" portrait="true"/>
+        <orientation landscape="false" portrait="true"/>
         <directory value="C:/Users/Lloyd/Documents/Shine/Projet_L3_TPS"/>
         <resource_path value="../Projet_L3_TPSGeneric"/>
         <languages language="1"/>
+        <generic value="Generic"/>
+        <temp value="tmp"/>
     </project_settings>
     <extensions>
         <extensions name="ExtensionTPS"/>
