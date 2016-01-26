@@ -71,6 +71,8 @@ void CShPluginGame::OnPlayStart(const CShIdentifier & levelIdentifier)
 	g_pInputRight = ShInput::CreateInputPressed(ShInput::e_input_device_keyboard, ShInput::e_input_device_control_pc_key_right, 0.5f);
 	g_pInputLeft = ShInput::CreateInputPressed(ShInput::e_input_device_keyboard, ShInput::e_input_device_control_pc_key_left, 0.5f);
 	g_pInputShoot = ShInput::CreateInputJustPressed(ShInput::e_input_device_keyboard, ShInput::e_input_device_control_pc_key_space, 0.5f);
+
+	ShCollisionShape::GetCollisionShapeArray(levelIdentifier,m_aCollisionShape);
 }
 
 /**
@@ -140,12 +142,17 @@ void CShPluginGame::OnPostUpdate(float dt)
 	{
 		if(!m_pTpsPlayer->GunIsEmpty())
 		{
-			m_Bullets.Add(m_pTpsPlayer->Shoot());
+			m_aBullets.Add(m_pTpsPlayer->Shoot());
 		}
 	}
-
+	for(int i=0; i<m_aBullets.GetCount(); i++)
+	{
+		if(false == m_aBullets.At(i)->GetMoving())
+		{
+			m_pTpsPlayer->Reload(m_aBullets.At(i));
+			m_aBullets.Remove(i);
+		}
+	}
 	m_pTpsPlayer->Update();
-	m_Bullets.ElementsUpdate(dt);
-
-	m_pTpsPlayer->Render();
+	m_aBullets.ElementsUpdate(dt);
 }

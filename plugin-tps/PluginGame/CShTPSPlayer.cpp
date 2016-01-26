@@ -38,10 +38,6 @@ void CShTPSPlayer::Update(void)
 	ShCharacterController::Update(m_pCharacterController);
 	// Change the position of the character according to the position of the character controller
 	m_Position = ShCharacterController::GetPosition(m_pCharacterController);
-}
-
-void CShTPSPlayer::Render(void)
-{
 	ShEntity2::SetPositionX(m_pSprite,m_Position.m_x);
 	ShEntity2::SetPositionY(m_pSprite,m_Position.m_y);
 }
@@ -54,6 +50,11 @@ CShTPSAmmo * CShTPSPlayer::Shoot(void)
 bool CShTPSPlayer::GunIsEmpty(void)
 {
 	return m_pGun->ClipIsEmpty();
+}
+
+void CShTPSPlayer::Reload(CShTPSAmmo * ammo)
+{
+	m_pGun->Reload(ammo);
 }
 
 void CShTPSPlayer::SetPosition(CShVector2 position)

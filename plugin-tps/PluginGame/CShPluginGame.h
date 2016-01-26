@@ -34,7 +34,8 @@ private:
 	CShIdentifier					m_levelIdentifier;
 	ShEntity2 *						m_pBackground;
 	CShTPSPlayer *					m_pTpsPlayer;
-	CShArray<CShTPSAmmo *>			m_Bullets;
+	CShArray<CShTPSAmmo *>			m_aBullets;
+	CShArray<ShCollisionShape *>	m_aCollisionShape;
 };
 
 #endif // __CSHPLUGINGAME_H

@@ -18,6 +18,7 @@ public:
 	void						Render						(void);
 	CShTPSAmmo			*		Shoot						(CShVector2 position, CShVector2 direction);
 	bool						ClipIsEmpty					(void);
+	void						Reload						(CShTPSAmmo * ammo);
 
 
 		// Setters & Getters
@@ -33,7 +34,7 @@ public:
 private:
 	float						m_Power;	//Value given by the gun as speed to its ammo
 	CShString					m_Name;
-	CShArray<CShTPSAmmo *>		m_Clip;
+	CShArray<CShTPSAmmo *>		m_aClip;
 };
 
 #endif // __CSHTPSGUN_H
