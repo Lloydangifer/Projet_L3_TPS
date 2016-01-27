@@ -145,6 +145,32 @@ void CShPluginGame::OnPostUpdate(float dt)
 			m_aBullets.Add(m_pTpsPlayer->Shoot());
 		}
 	}
+	for(int a=0; a<m_aBullets.GetCount(); a++) // pour chaque balle
+	{
+		CShVector2 position = m_aBullets.At(a)->GetPosition()+ m_aBullets.At(a)->GetDirection()*m_aBullets.At(a)->GetSpeed();
+		CShSegment2 * trajectoire = new CShSegment2(m_aBullets.At(a)->GetPosition(),position);
+		for(int i=0; i<m_aCollisionShape.GetCount(); i++) // pour chaque collision shape
+		{
+			int nbPoints = ShCollisionShape::GetPointCount(m_aCollisionShape.At(i)); // on récupère le nombre de point du collisionshape
+			for(int j=0; j<nbPoints; j++) // pour chaque point on va établir un segment avec le point contiguë pour vérifier l'intersection avec la trajectoire de la balle
+			{
+				int k;
+				if(j == nbPoints-1)
+				{
+					k=0;
+				}
+				else
+				{
+					k=j+1;
+				}
+				CShSegment2 * segment = new CShSegment2(ShCollisionShape::GetPoint(m_aCollisionShape.At(i),j), ShCollisionShape::GetPoint(m_aCollisionShape.At(i),k));
+				if(shTRUE == shIntersect(*trajectoire, *segment))
+				{
+					m_aBullets.At(a)->SetMoving(false);
+				}
+			}
+		}
+	}
 	for(int i=0; i<m_aBullets.GetCount(); i++)
 	{
 		if(false == m_aBullets.At(i)->GetMoving())
