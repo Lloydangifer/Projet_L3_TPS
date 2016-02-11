@@ -73,28 +73,6 @@ void CShPluginGame::OnPlayStart(const CShIdentifier & levelIdentifier)
 	g_pInputShoot = ShInput::CreateInputJustPressed(ShInput::e_input_device_keyboard, ShInput::e_input_device_control_pc_key_space, 0.5f);
 
 	ShCollisionShape::GetCollisionShapeArray(levelIdentifier,m_aCollisionShape);
-
-	//create and initialize the ennemies
-	bool searchEnemies = true;
-	int nbEnemies = 0;
-	while(searchEnemies)
-	{
-		nbEnemies++;
-		CShString enemyIdentifier("sprite_tps_enemy_");
-		enemyIdentifier += CShString::FromInt(nbEnemies);
-		ShEntity2 * pEnemySprite = ShEntity2::Find(levelIdentifier, CShIdentifier(enemyIdentifier));
-		if(shNULL == pEnemySprite) // if there is no more enemies in the level we stop the research
-		{
-			searchEnemies = false;
-		}
-		else
-		{
-			CShTPSGun * pEnemyGun = new CShTPSGun(5.0f, CShString("Desert Eagle"));
-			CShTPSEnemy * enemy = new CShTPSEnemy();
-			enemy->Initialize(m_levelIdentifier, pEnemyGun, pEnemySprite);
-			m_aEnemies.Add(enemy);
-		}
-	}
 }
 
 /**

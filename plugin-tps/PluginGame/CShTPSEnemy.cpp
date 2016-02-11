@@ -1,6 +1,6 @@
-#include "CShTPSPlayer.h"
+#include "CShTPSEnemy.h"
 
-CShTPSPlayer::CShTPSPlayer(void)
+CShTPSEnemy::CShTPSEnemy(void)
 : m_Position(0.0f,0.0f)
 , m_Direction(0.0f,1.0f)
 , m_Speed(0.0f)
@@ -9,13 +9,13 @@ CShTPSPlayer::CShTPSPlayer(void)
 , m_pGun(shNULL)
 {
 }
-CShTPSPlayer::~CShTPSPlayer(void)
+CShTPSEnemy::~CShTPSEnemy(void)
 {
 }
 
-void CShTPSPlayer::Initialize(const CShIdentifier & levelIdentifier, CShTPSGun * defaultGun)
+void CShTPSEnemy::Initialize(const CShIdentifier & levelIdentifier, CShTPSGun * defaultGun,ShEntity2 * sprite)
 {
-	m_pSprite = ShEntity2::Find(levelIdentifier, CShIdentifier("sprite_tps_player"));
+	m_pSprite = sprite;
 	SH_ASSERT(shNULL != m_pSprite);
 	//set the position of the TPSPlayer to the position of the sprite
 	m_Position = ShObject::GetPosition2(m_pSprite);
@@ -29,7 +29,7 @@ void CShTPSPlayer::Initialize(const CShIdentifier & levelIdentifier, CShTPSGun *
 	m_pGun->Initialize(levelIdentifier);
 }
 
-void CShTPSPlayer::Update(void)
+void CShTPSEnemy::Update(void)
 {
 	//m_Position += m_Direction*m_Speed;
 	ShCharacterController::SetWalkSpeed(m_pCharacterController, m_Speed);
@@ -42,75 +42,75 @@ void CShTPSPlayer::Update(void)
 	ShEntity2::SetPositionY(m_pSprite,m_Position.m_y);
 }
 
-CShTPSAmmo * CShTPSPlayer::Shoot(void)
+CShTPSAmmo * CShTPSEnemy::Shoot(void)
 {
 	//+ShEntity2::GetHeight(m_pSprite)
 	return m_pGun->Shoot(m_Position, m_Direction); // TODO position given is position+length of the sprite for shooting from the gun of the sprite
 }
 
-bool CShTPSPlayer::GunIsEmpty(void)
+bool CShTPSEnemy::GunIsEmpty(void)
 {
 	return m_pGun->ClipIsEmpty();
 }
 
-void CShTPSPlayer::Reload(CShTPSAmmo * ammo)
+void CShTPSEnemy::Reload(CShTPSAmmo * ammo)
 {
 	m_pGun->Reload(ammo);
 }
 
-void CShTPSPlayer::SetPosition(CShVector2 position)
+void CShTPSEnemy::SetPosition(CShVector2 position)
 {
 	m_Position = position;
 }
 
-CShVector2 CShTPSPlayer::GetPosition(void)
+CShVector2 CShTPSEnemy::GetPosition(void)
 {
 	return m_Position;
 }
 
-void CShTPSPlayer::SetDirection(CShVector2 direction)
+void CShTPSEnemy::SetDirection(CShVector2 direction)
 {
 	m_Direction = direction;
 }
 
-CShVector2 CShTPSPlayer::GetDirection(void)
+CShVector2 CShTPSEnemy::GetDirection(void)
 {
 	return m_Direction;
 }
 
-void CShTPSPlayer::SetSpeed(float speed){
+void CShTPSEnemy::SetSpeed(float speed){
 	m_Speed = speed;
 }
 
-float CShTPSPlayer::GetSpeed(void){
+float CShTPSEnemy::GetSpeed(void){
 	return m_Speed;
 }
 
-void CShTPSPlayer::SetSprite(ShEntity2 * sprite)
+void CShTPSEnemy::SetSprite(ShEntity2 * sprite)
 {
 	m_pSprite = sprite;
 }
 
-ShEntity2 * CShTPSPlayer::GetSprite (void)
+ShEntity2 * CShTPSEnemy::GetSprite (void)
 {
 	return m_pSprite;
 }
 
-void CShTPSPlayer::SetCharacterController(ShCharacterController * charactercontroller)
+void CShTPSEnemy::SetCharacterController(ShCharacterController * charactercontroller)
 {
 	m_pCharacterController = charactercontroller;
 }
 
-ShCharacterController *	CShTPSPlayer::GetCharacterController(void)
+ShCharacterController *	CShTPSEnemy::GetCharacterController(void)
 {
 	return m_pCharacterController;
 }
 
-void CShTPSPlayer::SetGun(CShTPSGun * gun)
+void CShTPSEnemy::SetGun(CShTPSGun * gun)
 {
 	m_pGun = gun;
 }
-CShTPSGun *	CShTPSPlayer::GetGun(void)
+CShTPSGun *	CShTPSEnemy::GetGun(void)
 {
 	return m_pGun;
 }
