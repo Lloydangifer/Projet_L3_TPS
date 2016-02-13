@@ -16,7 +16,7 @@ public:
 	void						Initialize					(const CShIdentifier & levelIdentifier);
 	void						Update						(void);
 	void						Render						(void);
-	CShTPSAmmo			*		Shoot						(CShVector2 position, CShVector2 direction);
+	CShTPSAmmo			*		Shoot						(CShVector2 position, CShVector2 direction, CShEulerAngles rotation);
 	bool						ClipIsEmpty					(void);
 	void						Reload						(CShTPSAmmo * ammo);
 

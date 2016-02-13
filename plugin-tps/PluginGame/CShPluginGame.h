@@ -6,6 +6,7 @@
 
 #include "CShTPSPlayer.h"
 #include "CShTPSEnemy.h"
+#include "CShTPSCollisionsManager.h"
 
 class CShPluginGame : public CShPlugin
 {
@@ -36,8 +37,8 @@ private:
 	ShEntity2 *						m_pBackground;
 	CShTPSPlayer *					m_pTpsPlayer;
 	CShArray<CShTPSAmmo *>			m_aBullets;
-	CShArray<ShCollisionShape *>	m_aCollisionShape;
 	CShArray<CShTPSEnemy *>			m_aEnemies;
+	CShTPSCollisionsManager	*		m_pCollisionsManager;
 };
 
 #endif // __CSHPLUGINGAME_H

@@ -22,8 +22,8 @@ CShPluginGame::CShPluginGame(void)
 , m_levelIdentifier(GID(NULL))
 , m_pBackground(shNULL)
 , m_pTpsPlayer(new CShTPSPlayer())
+, m_pCollisionsManager(new CShTPSCollisionsManager())
 {
-
 }
 
 /**
@@ -31,7 +31,6 @@ CShPluginGame::CShPluginGame(void)
  */
 CShPluginGame::~CShPluginGame(void)
 {
-
 }
 
 /**
@@ -66,13 +65,13 @@ void CShPluginGame::OnPlayStart(const CShIdentifier & levelIdentifier)
 
 	m_pTpsPlayer->Initialize(m_levelIdentifier, pDefaultGun);
 
+	m_pCollisionsManager->Initialize(m_levelIdentifier);
+
 	//create inputs
 	g_pInputUp = ShInput::CreateInputPressed(ShInput::e_input_device_keyboard, ShInput::e_input_device_control_pc_key_up, 0.5f);
 	g_pInputRight = ShInput::CreateInputPressed(ShInput::e_input_device_keyboard, ShInput::e_input_device_control_pc_key_right, 0.5f);
 	g_pInputLeft = ShInput::CreateInputPressed(ShInput::e_input_device_keyboard, ShInput::e_input_device_control_pc_key_left, 0.5f);
 	g_pInputShoot = ShInput::CreateInputJustPressed(ShInput::e_input_device_keyboard, ShInput::e_input_device_control_pc_key_space, 0.5f);
-
-	ShCollisionShape::GetCollisionShapeArray(levelIdentifier,m_aCollisionShape);
 
 	//create and initialize the ennemies
 	bool searchEnemies = true;
@@ -81,7 +80,9 @@ void CShPluginGame::OnPlayStart(const CShIdentifier & levelIdentifier)
 	{
 		nbEnemies++;
 		CShString enemyIdentifier("sprite_tps_enemy_");
+		CShString enemyCharacterControlleridentifier("character_controller_enemy_");
 		enemyIdentifier += CShString::FromInt(nbEnemies);
+		enemyCharacterControlleridentifier += CShString::FromInt(nbEnemies);
 		ShEntity2 * pEnemySprite = ShEntity2::Find(levelIdentifier, CShIdentifier(enemyIdentifier));
 		if(shNULL == pEnemySprite) // if there is no more enemies in the level we stop the research
 		{
@@ -91,7 +92,7 @@ void CShPluginGame::OnPlayStart(const CShIdentifier & levelIdentifier)
 		{
 			CShTPSGun * pEnemyGun = new CShTPSGun(5.0f, CShString("Desert Eagle"));
 			CShTPSEnemy * enemy = new CShTPSEnemy();
-			enemy->Initialize(m_levelIdentifier, pEnemyGun, pEnemySprite);
+			enemy->Initialize(m_levelIdentifier, pEnemyGun, pEnemySprite, enemyCharacterControlleridentifier);
 			m_aEnemies.Add(enemy);
 		}
 	}
@@ -167,34 +168,20 @@ void CShPluginGame::OnPostUpdate(float dt)
 			m_aBullets.Add(m_pTpsPlayer->Shoot());
 		}
 	}
-	for(int a=0; a<m_aBullets.GetCount(); a++) // pour chaque balle
+	int bulletCount = m_aBullets.GetCount();
+	int enemiesCount = m_aEnemies.GetCount();
+	for(int i = 0; i < m_aBullets.GetCount(); i++) // for each bullet
 	{
-		CShVector2 position = m_aBullets.At(a)->GetPosition()+ m_aBullets.At(a)->GetDirection()*m_aBullets.At(a)->GetSpeed();
-		CShSegment2 * trajectoire = new CShSegment2(m_aBullets.At(a)->GetPosition(),position);
-		for(int i=0; i<m_aCollisionShape.GetCount(); i++) // pour chaque collision shape
+		m_pCollisionsManager->CheckBulletCollisionShapeCollision(m_aBullets.At(i));
+		//m_pCollisionsManager->CheckBulletCharacterCollision(m_aBullets.At(i), m_pTpsPlayer);
+		for(int j = 0; j < m_aEnemies.GetCount(); j++)
 		{
-			int nbPoints = ShCollisionShape::GetPointCount(m_aCollisionShape.At(i)); // on récupère le nombre de point du collisionshape
-			for(int j=0; j<nbPoints; j++) // pour chaque point on va établir un segment avec le point contiguë pour vérifier l'intersection avec la trajectoire de la balle
+			m_pCollisionsManager->CheckBulletCharacterCollision(m_aBullets.At(i), m_aEnemies.At(j));
+			if(!m_aEnemies.At(j)->isAlive())
 			{
-				int k;
-				if(j == nbPoints-1)
-				{
-					k=0;
-				}
-				else
-				{
-					k=j+1;
-				}
-				CShSegment2 * segment = new CShSegment2(ShCollisionShape::GetPoint(m_aCollisionShape.At(i),j), ShCollisionShape::GetPoint(m_aCollisionShape.At(i),k));
-				if(shTRUE == shIntersect(*trajectoire, *segment))
-				{
-					m_aBullets.At(a)->SetMoving(false);
-				}
+				m_aEnemies.Remove(j);
 			}
 		}
-	}
-	for(int i=0; i<m_aBullets.GetCount(); i++)
-	{
 		if(false == m_aBullets.At(i)->GetMoving())
 		{
 			m_pTpsPlayer->Reload(m_aBullets.At(i));

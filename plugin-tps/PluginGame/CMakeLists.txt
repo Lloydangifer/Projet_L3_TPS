@@ -9,7 +9,7 @@ if (WIN32)
 	include_directories("${DirectX9_INCLUDE_DIR}")
 endif (WIN32)
 
-set(SOURCES_CSHPLUGINGAME CShPluginGame.cpp CShPluginGame.h CShTPSPlayer.cpp CShTPSPlayer.h CShTPSAmmo.cpp CShTPSAmmo.h CShTPSGun.cpp CShTPSGun.h CShTPSEnemy.cpp CShTPSEnemy.h)
+set(SOURCES_CSHPLUGINGAME CShPluginGame.cpp CShPluginGame.h CShTPSPlayer.cpp CShTPSPlayer.h CShTPSAmmo.cpp CShTPSAmmo.h CShTPSGun.cpp CShTPSGun.h CShTPSEnemy.cpp CShTPSEnemy.h CShTPSCollisionsManager.cpp CShTPSCollisionsManager.h CShTPSCharacter.cpp CShTPSCharacter.h)
 source_group("TPS" FILES ${SOURCES_CSHPLUGINGAME})
 
 # Compile to use it on Runtime

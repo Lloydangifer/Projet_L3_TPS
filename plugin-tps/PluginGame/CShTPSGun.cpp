@@ -29,7 +29,7 @@ void CShTPSGun::Update(void)
 	// ??
 }
 
-CShTPSAmmo * CShTPSGun::Shoot(CShVector2 position, CShVector2 direction)
+CShTPSAmmo * CShTPSGun::Shoot(CShVector2 position, CShVector2 direction, CShEulerAngles rotation)
 {
 		CShTPSAmmo * ammo = new CShTPSAmmo(m_Power);
 		ammo = m_aClip.Back();
@@ -37,6 +37,7 @@ CShTPSAmmo * CShTPSGun::Shoot(CShVector2 position, CShVector2 direction)
 		ammo->SetPosition(position);
 		ammo->SetDirection(direction);
 		ammo->SetMoving(true);
+		ShEntity2::SetRotation(ammo->GetSprite(), rotation);
 		ShObject::SetShow(ammo->GetSprite(),true);
 		return ammo;
 }
