@@ -12,6 +12,7 @@ CShTPSCharacter::CShTPSCharacter(void)
 }
 CShTPSCharacter::~CShTPSCharacter(void)
 {
+	delete m_pGun;
 }
 
 void CShTPSCharacter::Initialize(const CShIdentifier & levelIdentifier, CShTPSGun * defaultGun)
@@ -59,7 +60,7 @@ bool CShTPSCharacter::isAlive(void)
 void CShTPSCharacter::death(void)
 {
 	m_Alive = false;
-	ShObject::SetShow(m_pSprite,false);
+	ShEntity2::SetShow(m_pSprite, false);
 	ShCharacterController::Disable(m_pCharacterController);
 }
 

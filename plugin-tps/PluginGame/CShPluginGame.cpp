@@ -168,26 +168,28 @@ void CShPluginGame::OnPostUpdate(float dt)
 			m_aBullets.Add(m_pTpsPlayer->Shoot());
 		}
 	}
-	int bulletCount = m_aBullets.GetCount();
-	int enemiesCount = m_aEnemies.GetCount();
-	for(int i = 0; i < m_aBullets.GetCount(); i++) // for each bullet
+
+	for(int bulletCount = 0; bulletCount < m_aBullets.GetCount(); bulletCount++) // for each bullet
 	{
-		m_pCollisionsManager->CheckBulletCollisionShapeCollision(m_aBullets.At(i));
-		//m_pCollisionsManager->CheckBulletCharacterCollision(m_aBullets.At(i), m_pTpsPlayer);
-		for(int j = 0; j < m_aEnemies.GetCount(); j++)
+		m_pCollisionsManager->CheckBulletCollisionShapeCollision(m_aBullets.At(bulletCount));
+		//m_pCollisionsManager->CheckBulletCharacterCollision(m_aBullets.At(bulletCount), m_pTpsPlayer);
+		for(int enemiesCount = 0; enemiesCount < m_aEnemies.GetCount(); enemiesCount++)
 		{
-			m_pCollisionsManager->CheckBulletCharacterCollision(m_aBullets.At(i), m_aEnemies.At(j));
-			if(!m_aEnemies.At(j)->isAlive())
+			m_pCollisionsManager->CheckBulletCharacterCollision(m_aBullets.At(bulletCount), m_aEnemies.At(enemiesCount));
+			if(!m_aEnemies.At(enemiesCount)->isAlive())
 			{
-				m_aEnemies.Remove(j);
+				CShTPSEnemy * enemy = m_aEnemies.At(enemiesCount);
+				m_aEnemies.Remove(enemiesCount);
+				delete enemy;
 			}
 		}
-		if(false == m_aBullets.At(i)->GetMoving())
+		if(!m_aBullets.At(bulletCount)->GetMoving())
 		{
-			m_pTpsPlayer->Reload(m_aBullets.At(i));
-			m_aBullets.Remove(i);
+			m_pTpsPlayer->Reload(m_aBullets.At(bulletCount));
+			m_aBullets.Remove(bulletCount);
 		}
 	}
+
 	m_pTpsPlayer->Update();
 	m_aBullets.ElementsUpdate(dt);
 }

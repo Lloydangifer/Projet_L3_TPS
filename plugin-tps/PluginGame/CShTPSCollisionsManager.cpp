@@ -55,3 +55,29 @@ void CShTPSCollisionsManager::CheckBulletCharacterCollision(CShTPSAmmo* bullet, 
 		character->death();
 	}
 }
+
+void CShTPSCollisionsManager::CheckPlayerEnemyViewField(CShTPSPlayer* player, CShTPSEnemy* enemy)
+{
+	CShSegment2 * view = new CShSegment2(player->GetPosition(),enemy->GetPosition());
+	for(int i = 0; i < m_CollisionShapeCount; i++) //for each collision shape
+	{
+		int nbPoints = ShCollisionShape::GetPointCount(m_aCollisionShape.At(i)); // on récupère le nombre de point du collisionshape
+		for(int j = 0; j < nbPoints; j++) // pour chaque point on va établir un segment avec le point contiguë pour vérifier l'intersection avec la ligne de vue de l'ennemi
+		{
+			int k;
+			if(j == nbPoints-1)
+			{
+				k = 0;
+			}
+			else
+			{
+				k = j+1;
+			}
+			CShSegment2 * segment = new CShSegment2(ShCollisionShape::GetPoint(m_aCollisionShape.At(i),j), ShCollisionShape::GetPoint(m_aCollisionShape.At(i),k));
+			if(shFALSE == shIntersect(*view, *segment)) // If the enemy see the player, he will go on the player position
+			{
+				enemy->SetTarget(player->GetPosition());
+			}
+		}
+	}
+}

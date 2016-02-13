@@ -4,7 +4,8 @@
 #include <ShSDK/ShSDK.h>
 #include <ShEngineExt/ShEngineExt.h>
 
-#include "CShTPSCharacter.h"
+#include "CShTPSEnemy.h"
+#include "CShTPSPlayer.h"
 
 class CShTPSCollisionsManager
 {
@@ -17,6 +18,7 @@ public:
 	void						Initialize								(const CShIdentifier & levelIdentifier);
 	void						CheckBulletCollisionShapeCollision		(CShTPSAmmo* bullet);
 	void						CheckBulletCharacterCollision			(CShTPSAmmo* bullet, CShTPSCharacter* character);
+	void						CheckPlayerEnemyViewField				(CShTPSPlayer* player, CShTPSEnemy* Enemy);
 
 private:
 		CShArray<ShCollisionShape *>	m_aCollisionShape;
