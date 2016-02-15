@@ -58,7 +58,8 @@ void CShTPSCollisionsManager::CheckBulletCharacterCollision(CShTPSAmmo* bullet, 
 
 void CShTPSCollisionsManager::CheckPlayerEnemyViewField(CShTPSPlayer* player, CShTPSEnemy* enemy)
 {
-	CShSegment2 * view = new CShSegment2(player->GetPosition(),enemy->GetPosition());
+	bool seen = true;
+	CShSegment2 * view = new CShSegment2(enemy->GetPosition(), player->GetPosition());
 	for(int i = 0; i < m_CollisionShapeCount; i++) //for each collision shape
 	{
 		int nbPoints = ShCollisionShape::GetPointCount(m_aCollisionShape.At(i)); // on récupère le nombre de point du collisionshape
@@ -74,10 +75,24 @@ void CShTPSCollisionsManager::CheckPlayerEnemyViewField(CShTPSPlayer* player, CS
 				k = j+1;
 			}
 			CShSegment2 * segment = new CShSegment2(ShCollisionShape::GetPoint(m_aCollisionShape.At(i),j), ShCollisionShape::GetPoint(m_aCollisionShape.At(i),k));
-			if(shFALSE == shIntersect(*view, *segment)) // If the enemy see the player, he will go on the player position
+			if(shTRUE == shIntersect(*view, *segment)) // If the enemy see the player, he will go on the player position
 			{
-				enemy->SetTarget(player->GetPosition());
+				seen = false;
+			}
+			if(!seen)
+			{
+				break;
 			}
 		}
+		if(!seen)
+		{
+			break;
+		}
 	}
+
+	if(seen)
+	{
+		enemy->SetTarget(player->GetPosition());
+	}
+
 }

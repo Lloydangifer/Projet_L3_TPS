@@ -17,7 +17,7 @@ class CShTPSEnemy: public CShTPSCharacter
 public:
 					CShTPSEnemy			(void);
 	void			Initialize			(const CShIdentifier & levelIdentifier, CShTPSGun * defaultGun, ShEntity2 *	sprite, CShString enemyCharacterControlleridentifier);
-	void			Update				(void);
+	void			Update				(float dt);
 
 	// Setters & Getters
 	void			SetTarget			(CShVector2 target);

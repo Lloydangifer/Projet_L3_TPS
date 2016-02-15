@@ -148,17 +148,17 @@ void CShPluginGame::OnPostUpdate(float dt)
 	if (ShInput::GetValue(g_pInputLeft) > 0.2f)
 	{
 		CShVector2 direction = m_pTpsPlayer->GetDirection();
-		direction.Rotate(0.05f);
+		direction.Rotate(ROTATION_SPEED);
 		m_pTpsPlayer->SetDirection(direction);
-		ShEntity2::Rotate(m_pTpsPlayer->GetSprite(),CShEulerAngles(0, 0, 0.05f));
+		ShEntity2::Rotate(m_pTpsPlayer->GetSprite(),CShEulerAngles(0, 0, ROTATION_SPEED));
 	}
 	
 	if (ShInput::GetValue(g_pInputRight) > 0.2f)
 	{
 		CShVector2 direction = m_pTpsPlayer->GetDirection();
-		direction.Rotate(-0.05f);
+		direction.Rotate(-ROTATION_SPEED);
 		m_pTpsPlayer->SetDirection(direction);
-		ShEntity2::Rotate(m_pTpsPlayer->GetSprite(),CShEulerAngles(0, 0, -0.05f));
+		ShEntity2::Rotate(m_pTpsPlayer->GetSprite(),CShEulerAngles(0, 0, -ROTATION_SPEED));
 	}
 
 	if (ShInput::GetValue(g_pInputShoot) > 0.2f)
@@ -190,6 +190,12 @@ void CShPluginGame::OnPostUpdate(float dt)
 		}
 	}
 
+	for(int enemiesCount = 0; enemiesCount < m_aEnemies.GetCount(); enemiesCount++)
+	{
+		m_pCollisionsManager->CheckPlayerEnemyViewField(m_pTpsPlayer, m_aEnemies.At(enemiesCount));
+	}
+
 	m_pTpsPlayer->Update();
 	m_aBullets.ElementsUpdate(dt);
+	m_aEnemies.ElementsUpdate(dt);
 }

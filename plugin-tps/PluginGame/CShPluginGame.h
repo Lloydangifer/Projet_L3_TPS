@@ -8,6 +8,8 @@
 #include "CShTPSEnemy.h"
 #include "CShTPSCollisionsManager.h"
 
+#define ROTATION_SPEED 0.05f
+
 class CShPluginGame : public CShPlugin
 {
 
