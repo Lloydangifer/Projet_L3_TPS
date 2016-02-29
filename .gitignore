@@ -234,3 +234,14 @@ CMakeFiles/
 *.vcxproj.filters
 *.cmake
 *.sln
+plugin-tps/CMakeLists.txt
+
+
+#latex
+
+latex/*.aux
+latex/*.bbl
+latex/*.blg
+latex/*.out
+latex/*.synctex
+latex/*.toc
