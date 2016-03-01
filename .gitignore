@@ -245,3 +245,5 @@ latex/*.blg
 latex/*.out
 latex/*.synctex
 latex/*.toc
+*.glo
+*.ist

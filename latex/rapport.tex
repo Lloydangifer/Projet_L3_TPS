@@ -1,0 +1,127 @@
+\documentclass[12pt]{report}
+
+
+\usepackage[latin1]{inputenc} % un package
+\usepackage[T1]{fontenc}      % un second package
+\usepackage[francais]{babel}  % un troisième package
+\usepackage{lipsum}
+\usepackage{aeguill} % Police moins floue
+\usepackage{graphicx} % Insérer des images 
+
+\usepackage{titling} % image on title page
+
+\usepackage{hyperref} % Créer des liens et des signets, utile pour la table des matières
+\hypersetup{	
+	colorlinks=true, %colorise les liens 
+	breaklinks=true, %permet le retour à la ligne dans les liens trop longs 
+	urlcolor= blue, %couleur des hyperliens 
+	linkcolor= black,	%couleur des liens internes 
+	citecolor=black,	%couleur des références 
+	pdftitle={Rapport de projet}, %informations apparaissant dans 
+	pdfauthor={Virgil Manrique, Quentin Guillien}, %les informations du document 
+	pdfsubject={TPS avec le Shine Engine}	%sous Acrobat. 
+} 
+
+\usepackage[margin=3cm]{geometry}
+
+\usepackage{titlesec}
+\titleformat{\chapter}[hang]{\bf\huge}{\thechapter}{2pc}{}
+\titlespacing*{\chapter}{0pt}{0pt}{40pt}
+
+%Glossaire
+\usepackage{glossaries}
+\makeglossaries
+\newacronym{TPS}{TPS}{Third-Person Shooter}
+
+\begin{document}
+
+
+\begin{titlepage}
+	\centering
+	\includegraphics[width=4.5cm]{logo-ufc.jpg}\par\vspace{2mm}
+	{\scshape\large Université de Franche-Comté \par}
+	\vspace{1cm}
+	{\scshape\Large Rapport de projet tuteuré\par
+	Licence informatique 3\up{ème} Année\par}
+	\vspace{1.5cm}
+	{\huge\bfseries Création d'un Third-Person Shooter avec le \textsc{Shine Engine}\par}
+	\vspace{9mm}
+	\includegraphics[width=6cm]{logo_shine.png}\par\vspace{15mm}
+	{\Large Virgil \textsc{Manrique} \hspace{5mm} Quentin \textsc{Guillien}\par}
+	\vfill
+	Encadrant : \par
+	Sylvain \textsc{Grosdemouge}
+
+	\vfill
+
+% Bottom of the page
+	{\large Année 2015-2016\par}
+\end{titlepage}
+
+
+\setlength{\parskip}{2.5mm}
+
+\section*{\centering Remerciements}
+\phantomsection
+\addscontentsline
+\vspace{1cm}
+
+Ce projet tuteuré n'aurait pu être réalisé sans l'aide de plusieurs personnes que nous tenons à remercier.
+\vspace{4mm}
+
+Tout d'abord, nous remercions notre encadrant M. Sylvain \bsc{Grosdemouge} pour nous avoir guidé et prodigué ses conseils durant la réalisation de ce projet.
+
+Ensuite, nous voulons remercier M. Bastien \bsc{Schatt}, pour nous avoir aidés lors de notre apprentissage de l'utilisation du Shine Engine ainsi que pour sa réactivité lorsque nous avons rencontré des problèmes.
+
+Nous voulons également remercier M. Nicolas \bsc{Diot}, pour son assistance apportée par rapport au fonctionnement de l'éditeur de niveaux du Shine Engine et des ressources graphiques.
+
+Nous tenons enfin à remercier toutes les personnes qui nous ont aidés de près ou de loin.
+
+
+% Table des matières, sans numérotation
+\renewcommand{\thepage}{}
+\tableofcontents
+\newpage
+\renewcommand{\thepage}{\arabic{page}}
+
+
+% Introduction
+\chapter{Cadre du projet}
+Dans le cadre de notre 3\up{ème} année de licence informatique à l'université de Franche-Comté, il nous a été demandé de réaliser un projet dans le cadre du module projet tuteuré. La durée du projet s'étendait d'Octobre à Mars.
+
+Parmis les sujets proposés, l'un d'entre eux a particulièrement retenu notre attention. Il s'agissait du développement d'un Third-Person Shooter en utilisant un moteur jeu : le \bsc{Shine Engine} développé par M. Sylvain \bsc{Grosdemouge}.
+
+Nous avons pu nous voir attribuer ce sujet l'ayant placé en première position dans notre liste de choix.
+
+Pour comprendre l'intérêt que nous portions à ce sujet, il faut nous pencher sur les différents éléments qui le constituent, à savoir les Third-Person Shooter, les moteurs de jeu, et le \bsc{Shine Engine}.
+
+\section{Les Third-Person Shooter}
+
+Un TPS (Third-Person Shooter ou jeu de tir à la troisième personne en français) est un sous-genre des jeux de tir et donc des jeux d'action. Les jeux de tir mettent souvent la rapidité et la réactivité du joueur à l'épreuve. L'objectif de ce genre de jeu est de vaincre ses ennemis en utilisant une arme de tir. La particularité des \texttt{TPS}\footnote{\textbf{T}hird-\textbf{P}erson \textbf{S}hooter} est que le joueur voit son personnage de manière externe contrairement aux \texttt{FPS}\footnote{\textbf{F}irst-\textbf{P}erson \textbf{S}hooter : Jeu de tir à la 1\up{ère} personne} où le joueur voit à travers les yeux de son personnage.
+
+\begin{figure}[!h] %on ouvre l'environnement figure
+\centering
+\includegraphics[width=7cm]{re4_1.jpg} %ou image.png, .jpeg etc.
+\caption{Un exemple de \texttt{TPS} : Resident Evil 4} %la légende
+\label{re4} %l'étiquette pour faire référence à cette image
+\end{figure} %on ferme l'environnement figure
+
+\section{}
+
+
+% Alé mdr
+\chapter{La vie} 
+\lipsum[4] 
+\section{Oh, une section !} 
+\lipsum[4] 
+\subsection{sous-section} 
+\lipsum[4] 
+\section{une autre ! } 
+\lipsum[4] 
+\subsection{sous-section a} 
+\lipsum[4] 
+
+
+\printglossaries
+
+\end{document}
