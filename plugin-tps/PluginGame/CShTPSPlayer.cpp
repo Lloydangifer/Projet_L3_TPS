@@ -19,6 +19,7 @@ void CShTPSPlayer::Initialize(const CShIdentifier & levelIdentifier, CShTPSGun *
 		SH_ASSERT(shNULL != m_pAnimAttack);*/
 		ShEntity3::AnimationPlay((ShEntity3 *)m_pSprite, m_pAnimIdle,true);
 		radius= CHARACTER_CONTROLLER_RADIUS_3D;
+		m_3d = true;
 	}
 	SH_ASSERT(shNULL != m_pSprite);
 
@@ -36,15 +37,24 @@ void CShTPSPlayer::Initialize(const CShIdentifier & levelIdentifier, CShTPSGun *
 
 void CShTPSPlayer::SwitchToAnimationRun(void)
 {
-	ShEntity3::AnimationPlay((ShEntity3 *)m_pSprite, m_pAnimRun,true);
+	if(m_3d)
+	{
+		ShEntity3::AnimationPlay((ShEntity3 *)m_pSprite, m_pAnimRun,true);
+	}
 }
 
 void CShTPSPlayer::SwitchToAnimationIdle(void)
 {
-	ShEntity3::AnimationPlay((ShEntity3 *)m_pSprite, m_pAnimIdle,true);
+	if(m_3d)
+	{
+		ShEntity3::AnimationPlay((ShEntity3 *)m_pSprite, m_pAnimIdle,true);
+	}
 }
 
 void CShTPSPlayer::SwitchToAnimationAttack(void)
 {
-	ShEntity3::AnimationPlay((ShEntity3 *)m_pSprite, m_pAnimRun,true); // TODO change to attack animation if it ever works
+	if(m_3d)
+	{
+		ShEntity3::AnimationPlay((ShEntity3 *)m_pSprite, m_pAnimRun,true); // TODO change to attack animation if it ever works
+	}
 }

@@ -10,6 +10,7 @@ CShTPSCharacter::CShTPSCharacter(void)
 , m_pCharacterController(shNULL)
 , m_pGun(shNULL)
 , m_Alive(true)
+, m_3d(false)
 {
 }
 CShTPSCharacter::~CShTPSCharacter(void)
@@ -139,4 +140,9 @@ void CShTPSCharacter::SetGun(CShTPSGun * gun)
 CShTPSGun *	CShTPSCharacter::GetGun(void)
 {
 	return m_pGun;
+}
+
+bool CShTPSCharacter::Is3D(void)
+{
+	return m_3d;
 }

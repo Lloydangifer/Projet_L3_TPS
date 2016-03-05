@@ -1,4 +1,5 @@
 #include "CShTPSAmmo.h"
+#include "CShTPSCharacter.h"
 
 CShTPSAmmo::CShTPSAmmo(float speed)
 : m_Position(0.0f,0.0f)
@@ -7,6 +8,7 @@ CShTPSAmmo::CShTPSAmmo(float speed)
 , m_Moving(false)
 , m_pSprite(shNULL)
 , m_Origin(shNULL)
+, m_3d(false)
 {
 }
 CShTPSAmmo::~CShTPSAmmo(void)
@@ -15,10 +17,18 @@ CShTPSAmmo::~CShTPSAmmo(void)
 
 void CShTPSAmmo::Initialize(const CShIdentifier & levelIdentifier, CShTPSCharacter * origin)
 {
-	m_pSprite = ShEntity2::Create(levelIdentifier, CShIdentifier(), GID(layer_default), CShIdentifier("tps"), CShIdentifier("bullet"), CShVector3(0.0f,0.0f,1.0f), CShEulerAngles(0.0f, 0.0f, 0.0f), CShVector3(1.0f, 1.0f, 1.0f));
+	m_Origin = origin;
+	if( origin->Is3D() )
+	{
+		m_pSprite = ShEntity3::CreateEntity3(levelIdentifier, CShIdentifier(), ShLayer::Find(GID(layer_default)), false, CShVector3(0.0f,0.0f,150.0f), CShEulerAngles(0.0f,0.0f,0.0f), CShVector3(1.0f,1.0f,1.0f), ShMesh::Find(CShIdentifier("arrow_standard")));
+		m_3d = true;
+	}
+	else
+	{
+		m_pSprite = ShEntity2::Create(levelIdentifier, CShIdentifier(), GID(layer_default), CShIdentifier("tps"), CShIdentifier("bullet"), CShVector3(0.0f,0.0f,1.0f), CShEulerAngles(0.0f, 0.0f, 0.0f), CShVector3(1.0f, 1.0f, 1.0f));
+	}
 	SH_ASSERT(shNULL != m_pSprite);
 	ShObject::SetShow(m_pSprite,false);
-	m_Origin = origin;
 }
 
 void CShTPSAmmo::Update(float dt)
@@ -71,7 +81,7 @@ void CShTPSAmmo::SetSprite(ShEntity2 * sprite)
 	m_pSprite = sprite;
 }
 
-ShEntity2 * CShTPSAmmo::GetSprite(void)
+ShObject * CShTPSAmmo::GetSprite(void)
 {
 	return m_pSprite;
 }
@@ -84,4 +94,9 @@ void CShTPSAmmo::SetOrigin(CShTPSCharacter * origin)
 CShTPSCharacter * CShTPSAmmo::GetOrigin(void)
 {
 	return m_Origin;
+}
+
+bool CShTPSAmmo::Is3D(void)
+{
+	return m_3d;
 }

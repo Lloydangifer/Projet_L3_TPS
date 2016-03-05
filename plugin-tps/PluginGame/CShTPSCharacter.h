@@ -42,6 +42,8 @@ public:
 	void						SetGun						(CShTPSGun * gun);
 	CShTPSGun *					GetGun						(void);
 
+	bool						Is3D						(void);
+
 protected:
 	CShVector2					m_Position;
 	CShVector2					m_Direction;	
@@ -53,6 +55,7 @@ protected:
 	ShCharacterController *		m_pCharacterController;
 	CShTPSGun *					m_pGun;
 	bool						m_Alive;
+	bool						m_3d;
 };
 
 #endif // __CSHTPSCHARACTER_H

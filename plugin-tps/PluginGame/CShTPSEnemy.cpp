@@ -18,6 +18,7 @@ void CShTPSEnemy::Initialize(const CShIdentifier & levelIdentifier, CShTPSGun * 
 
 	if(ShObject::e_type_entity3 == ShObject::GetType(m_pSprite))
 	{
+		m_3d = true;
 		m_pAnimIdle = ShAnimation::Find(CShIdentifier(ENEMY_ANIM_IDLE));
 		SH_ASSERT(shNULL != m_pAnimIdle);
 		m_pAnimRun = ShAnimation::Find(CShIdentifier(ENEMY_ANIM_RUN));
@@ -63,14 +64,20 @@ void CShTPSEnemy::Update(float dt)
 	{
 		case e_state_idle:
 			ShCharacterController::SetWalkSpeed(m_pCharacterController, 0.0f);
-			ShEntity3::AnimationPlay((ShEntity3 *)m_pSprite, m_pAnimIdle,true);
+			if(m_3d)
+			{
+				ShEntity3::AnimationPlay((ShEntity3 *)m_pSprite, m_pAnimIdle,true);
+			}
 			break;
 		case e_state_attack:
 			ShCharacterController::Update(m_pCharacterController);
 			m_Position = ShCharacterController::GetPosition(m_pCharacterController);
 			ShObject::SetPositionX(m_pSprite,m_Position.m_x);
 			ShObject::SetPositionY(m_pSprite,m_Position.m_y);
-			ShEntity3::AnimationPlay((ShEntity3 *)m_pSprite, m_pAnimRun,true); //TODO changer animation en attaque si ça marche un jour
+			if(m_3d)
+			{
+				ShEntity3::AnimationPlay((ShEntity3 *)m_pSprite, m_pAnimRun,true); //TODO changer animation en attaque si ça marche un jour
+			}
 			//ShEntity2::SetRotation(m_pSprite, CShEulerAngles(0.0f, 0.0f, shAcosf(m_Direction.m_x/m_Direction.m_y)));
 			break;
 	}
