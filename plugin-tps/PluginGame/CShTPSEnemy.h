@@ -29,6 +29,8 @@ public:
 private:
 	EState			m_CurrentState;
 	CShVector2		m_Target;
+
+	bool			HasReachedTarget	(void);
 };
 
 #endif // __CSHTPSENEMY_H
