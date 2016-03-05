@@ -4,11 +4,10 @@
 #include <ShSDK/ShSDK.h>
 #include <ShEngineExt/ShEngineExt.h>
 
+#include "CShTPSGlobal.h"
 #include "CShTPSPlayer.h"
 #include "CShTPSEnemy.h"
 #include "CShTPSCollisionsManager.h"
-
-#define ROTATION_SPEED 0.05f
 
 class CShPluginGame : public CShPlugin
 {
@@ -36,11 +35,12 @@ public:
 private:
 
 	CShIdentifier					m_levelIdentifier;
-	ShEntity2 *						m_pBackground;
+	CShArray<ShObject *>			m_aBackground;
 	CShTPSPlayer *					m_pTpsPlayer;
 	CShArray<CShTPSAmmo *>			m_aBullets;
 	CShArray<CShTPSEnemy *>			m_aEnemies;
 	CShTPSCollisionsManager	*		m_pCollisionsManager;
+	ShCamera *						m_pCamera;
 };
 
 #endif // __CSHPLUGINGAME_H

@@ -224,6 +224,9 @@ Dx9/
 build_tps/
 Shine/
 *.bat
+Generic/Resources/
+Generic/Resources/SpritesTemp/
+Generic/Resources/Sprites/
 
 ############
 ## Cmake

@@ -1,0 +1,204 @@
+<level engine_save_ver="1.3.1">
+    <settings>
+        <vertical_fog enabled="false" color_red="0.196078" color_green="0.233333" color_blue="0.266667" start="-100.000000" end="0.000000"/>
+        <directional color_red="0.150000" color_green="0.150000" color_blue="0.150000" color_alpha="1.000000" directional_x="-0.532667" directional_y="-0.631308" directional_z="0.775983"/>
+        <wind enabled="0" dir_x="1.000000" dir_y="0.000000" dir_z="0.000000" speed="0.000000"/>
+        <scene_settings ambient_red="0.000000" ambient_green="0.000000" ambient_blue="0.000000" glow_threshold="1.000000" glow_intensity="1.000000" ssao_intensity="0.700000"/>
+        <camera offset_x="-746.000000" offset_y="-993.000000" offset_z="1086.000000"/>
+        <render_if_occluded enabled="true" render_if_occluded_player_mul_color_red="0.700000" render_if_occluded_player_mul_color_green="0.700000" render_if_occluded_player_mul_color_blue="0.700000" render_if_occluded_player_add_color_red="0.000000" render_if_occluded_player_add_color_green="0.000000" render_if_occluded_player_add_color_blue="0.100000" render_if_occluded_enemy_mul_color_red="0.700000" render_if_occluded_enemy_mul_color_green="0.700000" render_if_occluded_enemy_mul_color_blue="0.700000" render_if_occluded_enemy_add_color_red="0.100000" render_if_occluded_enemy_add_color_green="0.000000" render_if_occluded_enemy_add_color_blue="0.000000" render_if_occluded_item_mul_color_red="0.700000" render_if_occluded_item_mul_color_green="0.700000" render_if_occluded_item_mul_color_blue="0.700000" render_if_occluded_item_add_color_red="0.000000" render_if_occluded_item_add_color_green="0.000000" render_if_occluded_item_add_color_blue="0.000000"/>
+    </settings>
+    <preload>
+        <texture_list>
+            <texture name="_envmap_interior_brown.tga"/>
+            <texture name="_nomap_black.tga"/>
+            <texture name="_nomap_white.tga"/>
+            <texture name="enemy_skeleton_archer_gear_color.tga"/>
+            <texture name="enemy_skeleton_archer_gear_envmsk.tga"/>
+            <texture name="enemy_skeleton_archer_gear_nrm.tga"/>
+            <texture name="enemy_skeleton_archer_gear_spec.tga"/>
+            <texture name="enemy_skeleton_common_armor_color.tga"/>
+            <texture name="enemy_skeleton_common_armor_envmsk.tga"/>
+            <texture name="enemy_skeleton_common_armor_nrm.tga"/>
+            <texture name="enemy_skeleton_common_armor_opa.tga"/>
+            <texture name="enemy_skeleton_common_armor_spec.tga"/>
+            <texture name="enemy_skeleton_common_color.tga"/>
+            <texture name="enemy_skeleton_common_nrm.tga"/>
+            <texture name="enemy_skeleton_common_opa.tga"/>
+            <texture name="enemy_skeleton_common_spec.tga"/>
+            <texture name="pc_wizard_color.tga"/>
+            <texture name="pc_wizard_envmsk.tga"/>
+            <texture name="pc_wizard_illu.tga"/>
+            <texture name="pc_wizard_nrm.tga"/>
+            <texture name="pc_wizard_opa.tga"/>
+            <texture name="pc_wizard_spec.tga"/>
+            <texture name="w01_ext01_floor04_color.tga"/>
+            <texture name="w01_ext01_floor04_nrm.tga"/>
+            <texture name="w01_ext01_floor04_spec.tga"/>
+            <texture name="w01_ext01_wall01_color.tga"/>
+            <texture name="w01_ext01_wall01_nrm.tga"/>
+            <texture name="w01_ext01_wall01_spec.tga"/>
+            <texture name="w01_ext01_wall02_color.tga"/>
+            <texture name="w01_ext01_wall02_nrm.tga"/>
+            <texture name="w01_ext01_wall02_spec.tga"/>
+        </texture_list>
+        <animated_texture_list/>
+        <sprite_texture_list/>
+        <material_library_list/>
+        <submesh_list>
+            <submesh name="enemy_skeleton_archer_000"/>
+            <submesh name="enemy_skeleton_archer_001"/>
+            <submesh name="enemy_skeleton_archer_002"/>
+            <submesh name="pc_wizard_000"/>
+            <submesh name="w01_ext01_floor04_000"/>
+            <submesh name="w01_ext01_swall02_000"/>
+            <submesh name="w01_ext01_swall_000"/>
+            <submesh name="w01_ext01_swall_corner_000"/>
+        </submesh_list>
+        <mesh_list>
+            <mesh name="enemy_skeleton_archer"/>
+            <mesh name="pc_wizard"/>
+            <mesh name="w01_ext01_floor04"/>
+            <mesh name="w01_ext01_swall"/>
+            <mesh name="w01_ext01_swall02"/>
+            <mesh name="w01_ext01_swall_corner"/>
+        </mesh_list>
+        <prefab_list/>
+    </preload>
+    <layer_list>
+        <layer name="layer_default" show="true" position_x="0.000000" position_y="0.000000" position_z="0.000000" min_x="-168000288.000000" min_y="-168000656.000000" max_x="167999680.000000" max_y="167999312.000000"/>
+        <layer name="layer_gui" show="true" position_x="0.000000" position_y="0.000000" position_z="0.000000" min_x="0.000000" min_y="0.000000" max_x="0.000000" max_y="0.000000"/>
+    </layer_list>
+    <object_list>
+        <collision_shape_point name="collision_shape_auto_001.0" position_x="-1154.646240" position_y="171.167969" position_z="0.000000" rotation_x="0.000000" rotation_y="0.000000" rotation_z="0.000000" scale_x="1.000000" scale_y="1.000000" scale_z="1.000000" index="0" parent_point="collision_shape_auto_001"/>
+        <collision_shape_point name="collision_shape_auto_001.1" position_x="-1165.279053" position_y="-1080.276245" position_z="0.000000" rotation_x="0.000000" rotation_y="0.000000" rotation_z="0.000000" scale_x="1.000000" scale_y="1.000000" scale_z="1.000000" index="1" parent_point="collision_shape_auto_001"/>
+        <collision_shape_point name="collision_shape_auto_001.2" position_x="-1068.339233" position_y="-1164.154419" position_z="0.000000" rotation_x="0.000000" rotation_y="0.000000" rotation_z="0.000000" scale_x="1.000000" scale_y="1.000000" scale_z="1.000000" index="2" parent_point="collision_shape_auto_001"/>
+        <collision_shape_point name="collision_shape_auto_001.3" position_x="221.581787" position_y="-1166.424561" position_z="0.000000" rotation_x="0.000000" rotation_y="0.000000" rotation_z="0.000000" scale_x="1.000000" scale_y="1.000000" scale_z="1.000000" index="3" parent_point="collision_shape_auto_001"/>
+        <collision_shape_point name="collision_shape_auto_001.4" position_x="330.562347" position_y="-1060.124390" position_z="0.000000" rotation_x="0.000000" rotation_y="0.000000" rotation_z="0.000000" scale_x="1.000000" scale_y="1.000000" scale_z="1.000000" index="4" parent_point="collision_shape_auto_001"/>
+        <collision_shape_point name="collision_shape_auto_001.5" position_x="370.835846" position_y="217.957275" position_z="0.000000" rotation_x="0.000000" rotation_y="0.000000" rotation_z="0.000000" scale_x="1.000000" scale_y="1.000000" scale_z="1.000000" index="5" parent_point="collision_shape_auto_001"/>
+        <collision_shape_point name="collision_shape_auto_001.6" position_x="280.832458" position_y="349.233154" position_z="0.000000" rotation_x="0.000000" rotation_y="0.000000" rotation_z="0.000000" scale_x="1.000000" scale_y="1.000000" scale_z="1.000000" index="6" parent_point="collision_shape_auto_001"/>
+        <collision_shape_point name="collision_shape_auto_001.7" position_x="-1060.583252" position_y="366.894531" position_z="0.000000" rotation_x="0.000000" rotation_y="0.000000" rotation_z="0.000000" scale_x="1.000000" scale_y="1.000000" scale_z="1.000000" index="7" parent_point="collision_shape_auto_001"/>
+        <collision_shape_point name="collision_shape_auto_002.0" position_x="-779.022156" position_y="-582.111633" position_z="0.000000" rotation_x="0.000000" rotation_y="0.000000" rotation_z="0.000000" scale_x="1.000000" scale_y="1.000000" scale_z="1.000000" index="0" parent_point="collision_shape_auto_002"/>
+        <collision_shape_point name="collision_shape_auto_002.1" position_x="-680.718628" position_y="-600.679626" position_z="0.000000" rotation_x="0.000000" rotation_y="0.000000" rotation_z="0.000000" scale_x="1.000000" scale_y="1.000000" scale_z="1.000000" index="1" parent_point="collision_shape_auto_002"/>
+        <collision_shape_point name="collision_shape_auto_002.2" position_x="-430.700836" position_y="-607.830383" position_z="0.000000" rotation_x="0.000000" rotation_y="0.000000" rotation_z="0.000000" scale_x="1.000000" scale_y="1.000000" scale_z="1.000000" index="2" parent_point="collision_shape_auto_002"/>
+        <collision_shape_point name="collision_shape_auto_002.3" position_x="-214.491302" position_y="-617.209351" position_z="0.000000" rotation_x="0.000000" rotation_y="0.000000" rotation_z="0.000000" scale_x="1.000000" scale_y="1.000000" scale_z="1.000000" index="3" parent_point="collision_shape_auto_002"/>
+        <collision_shape_point name="collision_shape_auto_002.4" position_x="-11.003510" position_y="-587.031677" position_z="0.000000" rotation_x="0.000000" rotation_y="0.000000" rotation_z="0.000000" scale_x="1.000000" scale_y="1.000000" scale_z="1.000000" index="4" parent_point="collision_shape_auto_002"/>
+        <collision_shape_point name="collision_shape_auto_002.5" position_x="24.617676" position_y="-474.495056" position_z="0.000000" rotation_x="0.000000" rotation_y="0.000000" rotation_z="0.000000" scale_x="1.000000" scale_y="1.000000" scale_z="1.000000" index="5" parent_point="collision_shape_auto_002"/>
+        <collision_shape_point name="collision_shape_auto_002.6" position_x="31.010498" position_y="-319.946442" position_z="0.000000" rotation_x="0.000000" rotation_y="0.000000" rotation_z="0.000000" scale_x="1.000000" scale_y="1.000000" scale_z="1.000000" index="6" parent_point="collision_shape_auto_002"/>
+        <collision_shape_point name="collision_shape_auto_002.7" position_x="-14.356689" position_y="-241.034454" position_z="0.000000" rotation_x="0.000000" rotation_y="0.000000" rotation_z="0.000000" scale_x="1.000000" scale_y="1.000000" scale_z="1.000000" index="7" parent_point="collision_shape_auto_002"/>
+        <collision_shape_point name="collision_shape_auto_002.8" position_x="-108.643524" position_y="-239.315308" position_z="0.000000" rotation_x="0.000000" rotation_y="0.000000" rotation_z="0.000000" scale_x="1.000000" scale_y="1.000000" scale_z="1.000000" index="8" parent_point="collision_shape_auto_002"/>
+        <collision_shape_point name="collision_shape_auto_002.9" position_x="-206.322296" position_y="-255.111420" position_z="0.000000" rotation_x="0.000000" rotation_y="0.000000" rotation_z="0.000000" scale_x="1.000000" scale_y="1.000000" scale_z="1.000000" index="9" parent_point="collision_shape_auto_002"/>
+        <collision_shape_point name="collision_shape_auto_002.10" position_x="-299.944733" position_y="-227.431091" position_z="0.000000" rotation_x="0.000000" rotation_y="0.000000" rotation_z="0.000000" scale_x="1.000000" scale_y="1.000000" scale_z="1.000000" index="10" parent_point="collision_shape_auto_002"/>
+        <collision_shape_point name="collision_shape_auto_002.11" position_x="-423.449219" position_y="-254.162506" position_z="0.000000" rotation_x="0.000000" rotation_y="0.000000" rotation_z="0.000000" scale_x="1.000000" scale_y="1.000000" scale_z="1.000000" index="11" parent_point="collision_shape_auto_002"/>
+        <collision_shape_point name="collision_shape_auto_002.12" position_x="-502.850555" position_y="-223.859741" position_z="0.000000" rotation_x="0.000000" rotation_y="0.000000" rotation_z="0.000000" scale_x="1.000000" scale_y="1.000000" scale_z="1.000000" index="12" parent_point="collision_shape_auto_002"/>
+        <collision_shape_point name="collision_shape_auto_002.13" position_x="-777.433960" position_y="-248.085541" position_z="0.000000" rotation_x="0.000000" rotation_y="0.000000" rotation_z="0.000000" scale_x="1.000000" scale_y="1.000000" scale_z="1.000000" index="13" parent_point="collision_shape_auto_002"/>
+        <collision_shape_point name="collision_shape_auto_002.14" position_x="-808.954834" position_y="-276.473633" position_z="0.000000" rotation_x="0.000000" rotation_y="0.000000" rotation_z="0.000000" scale_x="1.000000" scale_y="1.000000" scale_z="1.000000" index="14" parent_point="collision_shape_auto_002"/>
+        <collision_shape_point name="collision_shape_auto_002.15" position_x="-802.124634" position_y="-410.207367" position_z="0.000000" rotation_x="0.000000" rotation_y="0.000000" rotation_z="0.000000" scale_x="1.000000" scale_y="1.000000" scale_z="1.000000" index="15" parent_point="collision_shape_auto_002"/>
+        <collision_shape_point name="collision_shape_auto_002.16" position_x="-796.697266" position_y="-558.251587" position_z="0.000000" rotation_x="0.000000" rotation_y="0.000000" rotation_z="0.000000" scale_x="1.000000" scale_y="1.000000" scale_z="1.000000" index="16" parent_point="collision_shape_auto_002"/>
+        <entity name="sprite_tps_background_2" position_x="0.000000" position_y="0.000000" position_z="0.000000" rotation_x="0.000000" rotation_y="0.000000" rotation_z="0.000000" scale_x="1.000000" scale_y="1.000000" scale_z="1.000000" layer="layer_default" show="true" color_r="1.000000" color_g="1.000000" color_b="1.000000" color_a="1.000000" cast_shadow="true" ghost="false" outline="false" render_if_occluded="false" render_if_occluded_not_an_occluder="false" render_if_occluded_mul_color_red="1.000000" render_if_occluded_mul_color_green="1.000000" render_if_occluded_mul_color_blue="1.000000" render_if_occluded_add_color_red="0.000000" render_if_occluded_add_color_green="0.000000" render_if_occluded_add_color_blue="0.000000" mesh="w01_ext01_floor04"/>
+        <entity name="sprite_tps_background_1" position_x="-800.000000" position_y="0.000000" position_z="0.000000" rotation_x="0.000000" rotation_y="0.000000" rotation_z="0.000000" scale_x="1.000000" scale_y="1.000000" scale_z="1.000000" layer="layer_default" show="true" color_r="1.000000" color_g="1.000000" color_b="1.000000" color_a="1.000000" cast_shadow="true" ghost="false" outline="false" render_if_occluded="false" render_if_occluded_not_an_occluder="false" render_if_occluded_mul_color_red="1.000000" render_if_occluded_mul_color_green="1.000000" render_if_occluded_mul_color_blue="1.000000" render_if_occluded_add_color_red="0.000000" render_if_occluded_add_color_green="0.000000" render_if_occluded_add_color_blue="0.000000" mesh="w01_ext01_floor04"/>
+        <entity name="sprite_tps_background_4" position_x="0.000000" position_y="-800.000000" position_z="0.000000" rotation_x="0.000000" rotation_y="0.000000" rotation_z="0.000000" scale_x="1.000000" scale_y="1.000000" scale_z="1.000000" layer="layer_default" show="true" color_r="1.000000" color_g="1.000000" color_b="1.000000" color_a="1.000000" cast_shadow="true" ghost="false" outline="false" render_if_occluded="false" render_if_occluded_not_an_occluder="false" render_if_occluded_mul_color_red="1.000000" render_if_occluded_mul_color_green="1.000000" render_if_occluded_mul_color_blue="1.000000" render_if_occluded_add_color_red="0.000000" render_if_occluded_add_color_green="0.000000" render_if_occluded_add_color_blue="0.000000" mesh="w01_ext01_floor04"/>
+        <entity name="sprite_tps_background_3" position_x="-800.000000" position_y="-800.000000" position_z="0.000000" rotation_x="0.000000" rotation_y="0.000000" rotation_z="0.000000" scale_x="1.000000" scale_y="1.000000" scale_z="1.000000" layer="layer_default" show="true" color_r="1.000000" color_g="1.000000" color_b="1.000000" color_a="1.000000" cast_shadow="true" ghost="false" outline="false" render_if_occluded="false" render_if_occluded_not_an_occluder="false" render_if_occluded_mul_color_red="1.000000" render_if_occluded_mul_color_green="1.000000" render_if_occluded_mul_color_blue="1.000000" render_if_occluded_add_color_red="0.000000" render_if_occluded_add_color_green="0.000000" render_if_occluded_add_color_blue="0.000000" mesh="w01_ext01_floor04"/>
+        <entity name="sprite_tps_player" position_x="-464.193390" position_y="-899.054321" position_z="0.000000" rotation_x="-3.141593" rotation_y="3.141593" rotation_z="0.005576" scale_x="1.000000" scale_y="1.000000" scale_z="1.000000" layer="layer_default" show="true" color_r="1.000000" color_g="1.000000" color_b="1.000000" color_a="1.000000" cast_shadow="true" ghost="false" outline="false" render_if_occluded="false" render_if_occluded_not_an_occluder="false" render_if_occluded_mul_color_red="1.000000" render_if_occluded_mul_color_green="1.000000" render_if_occluded_mul_color_blue="1.000000" render_if_occluded_add_color_red="0.000000" render_if_occluded_add_color_green="0.000000" render_if_occluded_add_color_blue="0.000000" mesh="pc_wizard"/>
+        <entity name="entityw01_ext01_swall_corner_001" position_x="-1811.417480" position_y="-1799.981201" position_z="0.000000" rotation_x="0.000000" rotation_y="0.000000" rotation_z="0.000000" scale_x="1.000000" scale_y="1.000000" scale_z="1.000000" layer="layer_default" show="true" color_r="1.000000" color_g="1.000000" color_b="1.000000" color_a="1.000000" cast_shadow="true" ghost="false" outline="false" render_if_occluded="false" render_if_occluded_not_an_occluder="false" render_if_occluded_mul_color_red="1.000000" render_if_occluded_mul_color_green="1.000000" render_if_occluded_mul_color_blue="1.000000" render_if_occluded_add_color_red="0.000000" render_if_occluded_add_color_green="0.000000" render_if_occluded_add_color_blue="0.000000" mesh="w01_ext01_swall_corner"/>
+        <entity name="entityw01_ext01_swall_001" position_x="-1054.092163" position_y="-1788.161011" position_z="0.000000" rotation_x="0.000000" rotation_y="0.000000" rotation_z="0.000000" scale_x="1.565670" scale_y="1.000000" scale_z="1.000000" layer="layer_default" show="true" color_r="1.000000" color_g="1.000000" color_b="1.000000" color_a="1.000000" cast_shadow="true" ghost="false" outline="false" render_if_occluded="false" render_if_occluded_not_an_occluder="false" render_if_occluded_mul_color_red="1.000000" render_if_occluded_mul_color_green="1.000000" render_if_occluded_mul_color_blue="1.000000" render_if_occluded_add_color_red="0.000000" render_if_occluded_add_color_green="0.000000" render_if_occluded_add_color_blue="0.000000" mesh="w01_ext01_swall"/>
+        <entity name="entityw01_ext01_swall_corner_002" position_x="930.925842" position_y="-1828.188599" position_z="0.000000" rotation_x="-0.000000" rotation_y="-0.000000" rotation_z="1.537017" scale_x="1.000000" scale_y="1.000000" scale_z="1.000000" layer="layer_default" show="true" color_r="1.000000" color_g="1.000000" color_b="1.000000" color_a="1.000000" cast_shadow="true" ghost="false" outline="false" render_if_occluded="false" render_if_occluded_not_an_occluder="false" render_if_occluded_mul_color_red="1.000000" render_if_occluded_mul_color_green="1.000000" render_if_occluded_mul_color_blue="1.000000" render_if_occluded_add_color_red="0.000000" render_if_occluded_add_color_green="0.000000" render_if_occluded_add_color_blue="0.000000" mesh="w01_ext01_swall_corner"/>
+        <entity name="entityw01_ext01_swall_corner_003" position_x="1123.275391" position_y="856.791504" position_z="0.001465" rotation_x="-3.141593" rotation_y="-3.141593" rotation_z="0.175420" scale_x="1.000000" scale_y="1.000000" scale_z="1.000000" layer="layer_default" show="true" color_r="1.000000" color_g="1.000000" color_b="1.000000" color_a="1.000000" cast_shadow="true" ghost="false" outline="false" render_if_occluded="false" render_if_occluded_not_an_occluder="false" render_if_occluded_mul_color_red="1.000000" render_if_occluded_mul_color_green="1.000000" render_if_occluded_mul_color_blue="1.000000" render_if_occluded_add_color_red="0.000000" render_if_occluded_add_color_green="0.000000" render_if_occluded_add_color_blue="0.000000" mesh="w01_ext01_swall_corner"/>
+        <entity name="entityw01_ext01_swall_corner_004" position_x="-1955.349976" position_y="834.364990" position_z="-0.004150" rotation_x="0.000000" rotation_y="0.000000" rotation_z="-1.361292" scale_x="1.000000" scale_y="1.000000" scale_z="1.000000" layer="layer_default" show="true" color_r="1.000000" color_g="1.000000" color_b="1.000000" color_a="1.000000" cast_shadow="true" ghost="false" outline="false" render_if_occluded="false" render_if_occluded_not_an_occluder="false" render_if_occluded_mul_color_red="1.000000" render_if_occluded_mul_color_green="1.000000" render_if_occluded_mul_color_blue="1.000000" render_if_occluded_add_color_red="0.000000" render_if_occluded_add_color_green="0.000000" render_if_occluded_add_color_blue="0.000000" mesh="w01_ext01_swall_corner"/>
+        <entity name="entityw01_ext01_swall_002" position_x="-1100.343140" position_y="193.575317" position_z="0.000000" rotation_x="0.000000" rotation_y="0.000000" rotation_z="0.000000" scale_x="1.723287" scale_y="1.000000" scale_z="1.000000" layer="layer_default" show="true" color_r="1.000000" color_g="1.000000" color_b="1.000000" color_a="1.000000" cast_shadow="true" ghost="false" outline="false" render_if_occluded="false" render_if_occluded_not_an_occluder="false" render_if_occluded_mul_color_red="1.000000" render_if_occluded_mul_color_green="1.000000" render_if_occluded_mul_color_blue="1.000000" render_if_occluded_add_color_red="0.000000" render_if_occluded_add_color_green="0.000000" render_if_occluded_add_color_blue="0.000000" mesh="w01_ext01_swall"/>
+        <entity name="entityw01_ext01_swall_003" position_x="-1772.512329" position_y="198.834351" position_z="0.000000" rotation_x="-3.141592" rotation_y="3.141592" rotation_z="-1.547896" scale_x="1.588975" scale_y="1.000000" scale_z="1.000000" layer="layer_default" show="true" color_r="1.000000" color_g="1.000000" color_b="1.000000" color_a="1.000000" cast_shadow="true" ghost="false" outline="false" render_if_occluded="false" render_if_occluded_not_an_occluder="false" render_if_occluded_mul_color_red="1.000000" render_if_occluded_mul_color_green="1.000000" render_if_occluded_mul_color_blue="1.000000" render_if_occluded_add_color_red="0.000000" render_if_occluded_add_color_green="0.000000" render_if_occluded_add_color_blue="0.000000" mesh="w01_ext01_swall"/>
+        <entity name="entityw01_ext01_swall_004" position_x="947.204468" position_y="-1042.479614" position_z="0.002441" rotation_x="-0.000000" rotation_y="-0.000000" rotation_z="1.539557" scale_x="1.505436" scale_y="1.000000" scale_z="1.000000" layer="layer_default" show="true" color_r="1.000000" color_g="1.000000" color_b="1.000000" color_a="1.000000" cast_shadow="true" ghost="false" outline="false" render_if_occluded="false" render_if_occluded_not_an_occluder="false" render_if_occluded_mul_color_red="1.000000" render_if_occluded_mul_color_green="1.000000" render_if_occluded_mul_color_blue="1.000000" render_if_occluded_add_color_red="0.000000" render_if_occluded_add_color_green="0.000000" render_if_occluded_add_color_blue="0.000000" mesh="w01_ext01_swall"/>
+        <entity name="entityw01_ext01_swall02_001" position_x="-772.073120" position_y="-730.438110" position_z="0.000000" rotation_x="0.000000" rotation_y="0.000000" rotation_z="0.000000" scale_x="0.924696" scale_y="0.770366" scale_z="1.000000" layer="layer_default" show="true" color_r="1.000000" color_g="1.000000" color_b="1.000000" color_a="1.000000" cast_shadow="true" ghost="false" outline="false" render_if_occluded="false" render_if_occluded_not_an_occluder="false" render_if_occluded_mul_color_red="1.000000" render_if_occluded_mul_color_green="1.000000" render_if_occluded_mul_color_blue="1.000000" render_if_occluded_add_color_red="0.000000" render_if_occluded_add_color_green="0.000000" render_if_occluded_add_color_blue="0.000000" mesh="w01_ext01_swall02"/>
+        <entity name="sprite_tps_enemy_1" position_x="-424.602417" position_y="18.929260" position_z="0.000000" rotation_x="0.000000" rotation_y="0.000000" rotation_z="0.000000" scale_x="1.000000" scale_y="1.000000" scale_z="1.000000" layer="layer_default" show="true" color_r="1.000000" color_g="1.000000" color_b="1.000000" color_a="1.000000" cast_shadow="true" ghost="false" outline="false" render_if_occluded="false" render_if_occluded_not_an_occluder="false" render_if_occluded_mul_color_red="1.000000" render_if_occluded_mul_color_green="1.000000" render_if_occluded_mul_color_blue="1.000000" render_if_occluded_add_color_red="0.000000" render_if_occluded_add_color_green="0.000000" render_if_occluded_add_color_blue="0.000000" mesh="enemy_skeleton_archer"/>
+        <light name="light_auto_001" position_x="-303.214905" position_y="-672.146057" position_z="754.510559" rotation_x="0.000000" rotation_y="0.000000" rotation_z="0.000000" scale_x="1.000000" scale_y="1.000000" scale_z="1.000000" layer="layer_default" show="true" color_r="1.000000" color_g="1.000000" color_b="1.000000" color_a="1.000000" active="1" near="1.000000" far="167999984.000000" multiplier="1.000000"/>
+        <collision_shape name="collision_shape_auto_001" type="none" prohibited="0" closed="1">
+            <point name="collision_shape_auto_001.0" index="0"/>
+            <point name="collision_shape_auto_001.1" index="1"/>
+            <point name="collision_shape_auto_001.2" index="2"/>
+            <point name="collision_shape_auto_001.3" index="3"/>
+            <point name="collision_shape_auto_001.4" index="4"/>
+            <point name="collision_shape_auto_001.5" index="5"/>
+            <point name="collision_shape_auto_001.6" index="6"/>
+            <point name="collision_shape_auto_001.7" index="7"/>
+        </collision_shape>
+        <collision_shape name="collision_shape_auto_002" type="none" prohibited="0" closed="1">
+            <point name="collision_shape_auto_002.0" index="0"/>
+            <point name="collision_shape_auto_002.1" index="1"/>
+            <point name="collision_shape_auto_002.2" index="2"/>
+            <point name="collision_shape_auto_002.3" index="3"/>
+            <point name="collision_shape_auto_002.4" index="4"/>
+            <point name="collision_shape_auto_002.5" index="5"/>
+            <point name="collision_shape_auto_002.6" index="6"/>
+            <point name="collision_shape_auto_002.7" index="7"/>
+            <point name="collision_shape_auto_002.8" index="8"/>
+            <point name="collision_shape_auto_002.9" index="9"/>
+            <point name="collision_shape_auto_002.10" index="10"/>
+            <point name="collision_shape_auto_002.11" index="11"/>
+            <point name="collision_shape_auto_002.12" index="12"/>
+            <point name="collision_shape_auto_002.13" index="13"/>
+            <point name="collision_shape_auto_002.14" index="14"/>
+            <point name="collision_shape_auto_002.15" index="15"/>
+            <point name="collision_shape_auto_002.16" index="16"/>
+        </collision_shape>
+    </object_list>
+    <plugins>
+        <plugin name="tps"/>
+    </plugins>
+    <editor_settings>
+        <snap_x enabled="false" value="800.000000"/>
+        <snap_y enabled="false" value="800.000000"/>
+        <snap_z enabled="true" value="0.000000"/>
+        <snap_rulers enabled="false" threshold="10.000000"/>
+        <translate_x enabled="true"/>
+        <translate_y enabled="true"/>
+        <translate_z enabled="true"/>
+        <grid enabled="false" position_x="0.000000" position_y="0.000000" position_z="0.000000" size_x="100.000000" size_y="100.000000" subdivision_x="10" subdivision_y="10"/>
+        <show_markers enabled="false"/>
+        <camera position_x="-414.335419" position_y="-883.685913" position_z="2080.477295" target_x="-406.234009" target_y="-419.555695" target_z="0.000000" znear="1.000000" zfar="40000.000000" zoom="2.131635" camera_angle_x="-99.179695" camera_angle_z="0.017453" type="1" arcball_x="0.000000" arcball_y="-2131.635254" arcball_z="0.000000" camera_up_x="0.000000" camera_up_y="0.000000" camera_up_z="1.000000"/>
+        <scene_explorer scene_explorer_add_folder="Root">
+            <scene_explorer_item scene_explorer_item_name="Root" scene_explorer_item_text="Root" scene_explorer_item_type="0" scene_explorer_item_expanded="true" scene_explorer_item_parent="NULL"/>
+            <scene_explorer_item scene_explorer_item_name="sprite_tps_background_2" scene_explorer_item_text="sprite_tps_background_2" scene_explorer_item_type="232" scene_explorer_item_expanded="false" scene_explorer_item_parent="Root"/>
+            <scene_explorer_item scene_explorer_item_name="sprite_tps_background_1" scene_explorer_item_text="sprite_tps_background_1" scene_explorer_item_type="232" scene_explorer_item_expanded="false" scene_explorer_item_parent="Root"/>
+            <scene_explorer_item scene_explorer_item_name="sprite_tps_background_4" scene_explorer_item_text="sprite_tps_background_4" scene_explorer_item_type="232" scene_explorer_item_expanded="false" scene_explorer_item_parent="Root"/>
+            <scene_explorer_item scene_explorer_item_name="sprite_tps_background_3" scene_explorer_item_text="sprite_tps_background_3" scene_explorer_item_type="232" scene_explorer_item_expanded="false" scene_explorer_item_parent="Root"/>
+            <scene_explorer_item scene_explorer_item_name="sprite_tps_player" scene_explorer_item_text="sprite_tps_player" scene_explorer_item_type="232" scene_explorer_item_expanded="false" scene_explorer_item_parent="Root"/>
+            <scene_explorer_item scene_explorer_item_name="light_auto_001" scene_explorer_item_text="light_auto_001" scene_explorer_item_type="232" scene_explorer_item_expanded="false" scene_explorer_item_parent="Root"/>
+            <scene_explorer_item scene_explorer_item_name="entityw01_ext01_swall_corner_001" scene_explorer_item_text="entityw01_ext01_swall_corner_001" scene_explorer_item_type="232" scene_explorer_item_expanded="false" scene_explorer_item_parent="Root"/>
+            <scene_explorer_item scene_explorer_item_name="entityw01_ext01_swall_001" scene_explorer_item_text="entityw01_ext01_swall_001" scene_explorer_item_type="232" scene_explorer_item_expanded="false" scene_explorer_item_parent="Root"/>
+            <scene_explorer_item scene_explorer_item_name="entityw01_ext01_swall_corner_002" scene_explorer_item_text="entityw01_ext01_swall_corner_002" scene_explorer_item_type="232" scene_explorer_item_expanded="false" scene_explorer_item_parent="Root"/>
+            <scene_explorer_item scene_explorer_item_name="entityw01_ext01_swall_corner_003" scene_explorer_item_text="entityw01_ext01_swall_corner_003" scene_explorer_item_type="232" scene_explorer_item_expanded="false" scene_explorer_item_parent="Root"/>
+            <scene_explorer_item scene_explorer_item_name="entityw01_ext01_swall_corner_004" scene_explorer_item_text="entityw01_ext01_swall_corner_004" scene_explorer_item_type="232" scene_explorer_item_expanded="false" scene_explorer_item_parent="Root"/>
+            <scene_explorer_item scene_explorer_item_name="entityw01_ext01_swall_002" scene_explorer_item_text="entityw01_ext01_swall_002" scene_explorer_item_type="232" scene_explorer_item_expanded="false" scene_explorer_item_parent="Root"/>
+            <scene_explorer_item scene_explorer_item_name="entityw01_ext01_swall_003" scene_explorer_item_text="entityw01_ext01_swall_003" scene_explorer_item_type="232" scene_explorer_item_expanded="false" scene_explorer_item_parent="Root"/>
+            <scene_explorer_item scene_explorer_item_name="entityw01_ext01_swall_004" scene_explorer_item_text="entityw01_ext01_swall_004" scene_explorer_item_type="232" scene_explorer_item_expanded="false" scene_explorer_item_parent="Root"/>
+            <scene_explorer_item scene_explorer_item_name="entityw01_ext01_swall02_001" scene_explorer_item_text="entityw01_ext01_swall02_001" scene_explorer_item_type="232" scene_explorer_item_expanded="false" scene_explorer_item_parent="Root"/>
+            <scene_explorer_item scene_explorer_item_name="collision_shape_auto_001" scene_explorer_item_text="collision_shape_auto_001" scene_explorer_item_type="234" scene_explorer_item_expanded="true" scene_explorer_item_parent="Root"/>
+            <scene_explorer_item scene_explorer_item_name="collision_shape_auto_001.0" scene_explorer_item_text="collision_shape_auto_001.0" scene_explorer_item_type="195" scene_explorer_item_expanded="false" scene_explorer_item_parent="collision_shape_auto_001"/>
+            <scene_explorer_item scene_explorer_item_name="collision_shape_auto_001.1" scene_explorer_item_text="collision_shape_auto_001.1" scene_explorer_item_type="195" scene_explorer_item_expanded="false" scene_explorer_item_parent="collision_shape_auto_001"/>
+            <scene_explorer_item scene_explorer_item_name="collision_shape_auto_001.2" scene_explorer_item_text="collision_shape_auto_001.2" scene_explorer_item_type="195" scene_explorer_item_expanded="false" scene_explorer_item_parent="collision_shape_auto_001"/>
+            <scene_explorer_item scene_explorer_item_name="collision_shape_auto_001.3" scene_explorer_item_text="collision_shape_auto_001.3" scene_explorer_item_type="195" scene_explorer_item_expanded="false" scene_explorer_item_parent="collision_shape_auto_001"/>
+            <scene_explorer_item scene_explorer_item_name="collision_shape_auto_001.4" scene_explorer_item_text="collision_shape_auto_001.4" scene_explorer_item_type="195" scene_explorer_item_expanded="false" scene_explorer_item_parent="collision_shape_auto_001"/>
+            <scene_explorer_item scene_explorer_item_name="collision_shape_auto_001.5" scene_explorer_item_text="collision_shape_auto_001.5" scene_explorer_item_type="195" scene_explorer_item_expanded="false" scene_explorer_item_parent="collision_shape_auto_001"/>
+            <scene_explorer_item scene_explorer_item_name="collision_shape_auto_001.6" scene_explorer_item_text="collision_shape_auto_001.6" scene_explorer_item_type="195" scene_explorer_item_expanded="false" scene_explorer_item_parent="collision_shape_auto_001"/>
+            <scene_explorer_item scene_explorer_item_name="collision_shape_auto_001.7" scene_explorer_item_text="collision_shape_auto_001.7" scene_explorer_item_type="195" scene_explorer_item_expanded="false" scene_explorer_item_parent="collision_shape_auto_001"/>
+            <scene_explorer_item scene_explorer_item_name="collision_shape_auto_002" scene_explorer_item_text="collision_shape_auto_002" scene_explorer_item_type="234" scene_explorer_item_expanded="true" scene_explorer_item_parent="Root"/>
+            <scene_explorer_item scene_explorer_item_name="collision_shape_auto_002.0" scene_explorer_item_text="collision_shape_auto_002.0" scene_explorer_item_type="195" scene_explorer_item_expanded="false" scene_explorer_item_parent="collision_shape_auto_002"/>
+            <scene_explorer_item scene_explorer_item_name="collision_shape_auto_002.1" scene_explorer_item_text="collision_shape_auto_002.1" scene_explorer_item_type="195" scene_explorer_item_expanded="false" scene_explorer_item_parent="collision_shape_auto_002"/>
+            <scene_explorer_item scene_explorer_item_name="collision_shape_auto_002.2" scene_explorer_item_text="collision_shape_auto_002.2" scene_explorer_item_type="195" scene_explorer_item_expanded="false" scene_explorer_item_parent="collision_shape_auto_002"/>
+            <scene_explorer_item scene_explorer_item_name="collision_shape_auto_002.3" scene_explorer_item_text="collision_shape_auto_002.3" scene_explorer_item_type="195" scene_explorer_item_expanded="false" scene_explorer_item_parent="collision_shape_auto_002"/>
+            <scene_explorer_item scene_explorer_item_name="collision_shape_auto_002.4" scene_explorer_item_text="collision_shape_auto_002.4" scene_explorer_item_type="195" scene_explorer_item_expanded="false" scene_explorer_item_parent="collision_shape_auto_002"/>
+            <scene_explorer_item scene_explorer_item_name="collision_shape_auto_002.5" scene_explorer_item_text="collision_shape_auto_002.5" scene_explorer_item_type="195" scene_explorer_item_expanded="false" scene_explorer_item_parent="collision_shape_auto_002"/>
+            <scene_explorer_item scene_explorer_item_name="collision_shape_auto_002.6" scene_explorer_item_text="collision_shape_auto_002.6" scene_explorer_item_type="195" scene_explorer_item_expanded="false" scene_explorer_item_parent="collision_shape_auto_002"/>
+            <scene_explorer_item scene_explorer_item_name="collision_shape_auto_002.7" scene_explorer_item_text="collision_shape_auto_002.7" scene_explorer_item_type="195" scene_explorer_item_expanded="false" scene_explorer_item_parent="collision_shape_auto_002"/>
+            <scene_explorer_item scene_explorer_item_name="collision_shape_auto_002.8" scene_explorer_item_text="collision_shape_auto_002.8" scene_explorer_item_type="195" scene_explorer_item_expanded="false" scene_explorer_item_parent="collision_shape_auto_002"/>
+            <scene_explorer_item scene_explorer_item_name="collision_shape_auto_002.9" scene_explorer_item_text="collision_shape_auto_002.9" scene_explorer_item_type="195" scene_explorer_item_expanded="false" scene_explorer_item_parent="collision_shape_auto_002"/>
+            <scene_explorer_item scene_explorer_item_name="collision_shape_auto_002.10" scene_explorer_item_text="collision_shape_auto_002.10" scene_explorer_item_type="195" scene_explorer_item_expanded="false" scene_explorer_item_parent="collision_shape_auto_002"/>
+            <scene_explorer_item scene_explorer_item_name="collision_shape_auto_002.11" scene_explorer_item_text="collision_shape_auto_002.11" scene_explorer_item_type="195" scene_explorer_item_expanded="false" scene_explorer_item_parent="collision_shape_auto_002"/>
+            <scene_explorer_item scene_explorer_item_name="collision_shape_auto_002.12" scene_explorer_item_text="collision_shape_auto_002.12" scene_explorer_item_type="195" scene_explorer_item_expanded="false" scene_explorer_item_parent="collision_shape_auto_002"/>
+            <scene_explorer_item scene_explorer_item_name="collision_shape_auto_002.13" scene_explorer_item_text="collision_shape_auto_002.13" scene_explorer_item_type="195" scene_explorer_item_expanded="false" scene_explorer_item_parent="collision_shape_auto_002"/>
+            <scene_explorer_item scene_explorer_item_name="collision_shape_auto_002.14" scene_explorer_item_text="collision_shape_auto_002.14" scene_explorer_item_type="195" scene_explorer_item_expanded="false" scene_explorer_item_parent="collision_shape_auto_002"/>
+            <scene_explorer_item scene_explorer_item_name="collision_shape_auto_002.15" scene_explorer_item_text="collision_shape_auto_002.15" scene_explorer_item_type="195" scene_explorer_item_expanded="false" scene_explorer_item_parent="collision_shape_auto_002"/>
+            <scene_explorer_item scene_explorer_item_name="collision_shape_auto_002.16" scene_explorer_item_text="collision_shape_auto_002.16" scene_explorer_item_type="195" scene_explorer_item_expanded="false" scene_explorer_item_parent="collision_shape_auto_002"/>
+            <scene_explorer_item scene_explorer_item_name="sprite_tps_enemy_1" scene_explorer_item_text="sprite_tps_enemy_1" scene_explorer_item_type="232" scene_explorer_item_expanded="false" scene_explorer_item_parent="Root"/>
+        </scene_explorer>
+    </editor_settings>
+</level>

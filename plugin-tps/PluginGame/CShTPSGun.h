@@ -10,16 +10,16 @@ class CShTPSGun
 {
 public:
 		// Constructor / Destructor
-								CShTPSGun					(float power, CShString name);
+								CShTPSGun					(float power, CShString name, float firerate);
 	virtual						~CShTPSGun					(void);
 
-	void						Initialize					(const CShIdentifier & levelIdentifier);
+	void						Initialize					(const CShIdentifier & levelIdentifier, CShTPSCharacter * origin);
 	void						Update						(void);
 	void						Render						(void);
 	CShTPSAmmo			*		Shoot						(CShVector2 position, CShVector2 direction, CShEulerAngles rotation);
 	bool						ClipIsEmpty					(void);
 	void						Reload						(CShTPSAmmo * ammo);
-
+	void						AddToCoolDown				(float value);
 
 		// Setters & Getters
 	void						SetPower					(float power);
@@ -31,10 +31,18 @@ public:
 	void						SetClip						(CShArray<CShTPSAmmo *>	clip);
 	CShArray<CShTPSAmmo *>		GetClip						(void);
 
+	void						SetCoolDown					(float cooldown);
+	float						GetCoolDown					(void);
+
+	void						SetFireRate					(float firerate);
+	float						GetFireRate					(void);
+
 private:
 	float						m_Power;	//Value given by the gun as speed to its ammo
 	CShString					m_Name;
 	CShArray<CShTPSAmmo *>		m_aClip;
+	float						m_FireRate;
+	float						m_ShootCooldown;
 };
 
 #endif // __CSHTPSGUN_H

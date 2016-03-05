@@ -1,4 +1,36 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <string_table name="italian">
-	<entry name="default" value="Default"/>
+
+	<entry name="string_caractere" value="|STRING|"/>
+	
+	<!-- ECRAN CALENDAR -->
+	<!-- ... -->
+
+	<!-- ECRAN EVENT -->
+	<!-- ... -->
+
+	<!-- ECRAN EVENT LIST -->
+	<!-- ... -->
+
+	<!-- ECRAN EXHIBITOR -->
+	<!-- ... -->
+
+	<!-- ECRAN EXHIBITOR LIST -->
+	<!-- ... -->
+
+	<!-- ECRAN GAME EVENT VOTE -->
+	<!-- ... -->
+
+	<!-- ECRAN GAME RALLY -->
+	<!-- ... -->
+
+	<!-- ECRAN HOME -->
+	<!-- ... -->
+
+	<!-- ECRAN MAP -->
+	<!-- ... -->
+
+	<!-- ECRAN ZONE LIST -->
+	<!-- ... -->
+
 </string_table>

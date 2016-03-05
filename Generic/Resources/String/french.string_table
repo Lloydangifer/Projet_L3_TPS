@@ -1,4 +1,120 @@
-﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <string_table name="french">
-	<entry name="default" value="Default"/>
+    <entry name="mentions_legales" value="truc truc"/>
+    <entry name="mentions_legales_jeu" value="mentions légales du jeu"/>
+    <entry name="string_resources" value="|STRING|"/>
+    <entry name="reessayer" value="rééssayer"/>
+    <entry name="continuer_sans_connexion" value="continuer"/>
+    <entry name="continuer_sans_connexion" value="continuer"/>
+    <entry name="string_telechargement_images" value="Téléchargement des nouvelles images..."/>
+    <entry name="string_generation_donnees" value="Génération des données par le serveur"/>
+    <entry name="string_telechargement_donnees" value="Téléchargement des nouvelles données"/>
+    <entry name="string_recherche_maj" value="Recherche de mises à jour..."/>
+    <entry name="string_pas_de_connexion" value="Pas de connexion internet"/>
+    <entry name="menu_accueil" value="accueil"/>
+    <entry name="menu_quartier" value="les quartiers"/>
+    <entry name="menu_programme" value="le programme"/>
+    <entry name="menu_exposants" value="les exposants"/>
+    <entry name="menu_jeux" value="les jeux"/>
+    <entry name="menu_plan" value="plan du salon"/>
+    <entry name="menu_avis" value="votre avis"/>
+    <entry name="menu_covoiture" value="je covoiture"/>
+    <entry name="festicomtois" value="FESTICOMTOIS"/>
+    <entry name="avis" value="Je donne mon avis"/>
+    <entry name="avis_desc" value="Bonjour, Nous souhaitons recueillir votre avis sur le moment que vous venez de vivre au sein du Festicomtois.   Merci de choisir une note comprise entre 1 (pas du tout satisfait) et 10 (extrêmement satisfait). Merci de votre participation."/>
+    <entry name="liste_evenements" value="LISTE DES EVENEMENTS"/>
+    <entry name="par_quartier" value="PAR QUARTIER"/>
+    <entry name="en_liste" value="EN LISTE"/>
+    <entry name="evenements_desc" value="Le programme des événements et animations permanentes"/>
+    <entry name="evenements_title" value="PROGRAMME DES EVENEMENTS et ANIMATIONS PERMANENTES"/>
+    <entry name="liste_evenements_button" value="LISTE DES EVENEMENTS"/>
+    <entry name="liste_evenements_desc" value="LISTE DES EVENEMENTS"/>
+    <entry name="par_quartier_button" value="EVENEMENTS PAR QUARTIER"/>
+    <entry name="par_quartier_button_desc" value="PROGRAMME DES EVENEMENTS PAR QUARTIER"/>
+    <entry name="permanente_button" value="ANIMATIONS PERMANENTES"/>
+    <entry name="permanente_desc" value="ANIMATIONS PERMANENTES"/>
+    <entry name="six_heures" value="6h00"/>
+    <entry name="sept_heures" value="7h00"/>
+    <entry name="huit_heures" value="8h00"/>
+    <entry name="neuf_heures" value="9h00"/>
+    <entry name="dix_heures" value="10h00"/>
+    <entry name="onze_heures" value="11h00"/>
+    <entry name="douze_heures" value="12h00"/>
+    <entry name="treize_heures" value="13h00"/>
+    <entry name="quatorze_heures" value="14h00"/>
+    <entry name="quinze_heures" value="15h00"/>
+    <entry name="seize_heures" value="16h00"/>
+    <entry name="dix_sept_heures" value="17h00"/>
+    <entry name="dix_huit_heures" value="18h00"/>
+    <entry name="dix_neuf_heures" value="19h00"/>
+    <entry name="vingt_heures" value="20h00"/>
+    <entry name="vingt_et_une_heure" value="21h00"/>
+    <entry name="vingt_deux_heures" value="22h00"/>
+    <entry name="vingt_trois_heures" value="23h00"/>
+    <entry name="vingt_quatre_heures" value="24h00"/>
+    <entry name="rechercher_exposant" value="rechercher un exposant"/>
+    <entry name="string_exposants_quartier" value="|STRING|"/>
+    <entry name="string_edit_box" value="|STRING|"/>
+    <entry name="vote_groupe_prefere" value="Je vote pour mon groupe préféré !"/>
+    <entry name="vote_groupe_prefere_desc" value="Trois groupes finalistes se produiront lors du Festicomtois, de 14h à 15h30. Ils réaliseront des prestations de 20 min.§A l'issue des prestations, l'artiste ayant récolté le plus grand nombre de votes effectuera la première partie du concert privé de Lilian Renaud le 28/11/15 à 17h.§Les votes seront ouverts de 14h à 15h30."/>
+    <entry name="jeux_festicomtois" value="Les jeux festicomtois"/>
+    <entry name="id_comtoises_title" value="Faites votre tiercé d'idées !!!"/>
+    <entry name="id_comtoises_desc" value="Parmi les dix idées proposées, hiérarchisez les trois qui sont pour vous les plus utiles à notre territoire : la Franche-Comté.§Les auteurs des trois idées qui auront le plus de succès seront récompensés ainsi que les trois personnes qui auront trouvé le tiercé gagnant.§Chaque lauréat se verra attribuer deux places pour le concert de Lilian Renaud, gagnant de la dernière édition de THE VOICE."/>
+    <entry name="string_nom" value="|STRING|"/>
+    <entry name="string_prenom" value="|STRING|"/>
+    <entry name="string_mail" value="|STRING|"/>
+    <entry name="string_telephone" value="|STRING|"/>
+    <entry name="informations_obligatoires" value="Les informations sont obligatoires et doivent être exacte afin de vous envoyer un sms en cas de gain"/>
+    <entry name="societaire" value="Client sociétaire"/>
+    <entry name="client" value="Client"/>
+    <entry name="administrateur" value="Administrateur"/>
+    <entry name="salarie" value="Salarié"/>
+    <entry name="Autres" value="Autres"/>
+    <entry name="rally_title" value="Embarquez pour une course en 7 étapes!"/>
+    <entry name="rally_desc" value="Jeu accessible le 28 novembre entre 10h00 et 14 h00.§A gagner : 200 places (100 x 2 places) pour assister au concert privé de Lilian Renaud qui aura lieu à Micropolis le samedi 28 novembre 2015 à 17h.§Les gagnants seront prévenus par sms le samedi 28 novembre à partir de 15h30 pour venir retirer leurs places."/>
+    <entry name="rally_identification" value="Identification"/>
+    <entry name="accepte_ca" value="J'accepte de revecoir des informations du Crédit Agricole"/>
+    <entry name="commencer_rally" value="JE COMMENCE LE JEU DU RALLY"/>
+    <entry name="rally_questions" value="Les questions"/>
+    <entry name="bienvenue" value="Bienvenue à festicomtois !"/>
+    <entry name="bienvenue_desc" value="Vous allez découvrir au sein d'un village reconstitué autour de 15 quartiers, les savoirs-faire d'entreprises et associations régionales. Des animations pour petits et grands vous attendent.§§Bonne visite à tous !"/>
+    <entry name="string_festicomtois_description" value="|STRING|"/>
+    <entry name="quartiers" value="Les différents quartiers"/>
+    <entry name="evenements" value="Programme des événements"/>
+    <entry name="exposants" value="Liste des exposants et associations"/>
+    <entry name="animations" value="Animations permanentes"/>
+    <entry name="prochains_evenements" value="Les 3 prochains événements"/>
+    <entry name="featured_event_1" value="Featured event 1"/>
+    <entry name="featured_event_2" value="Featured event 2"/>
+    <entry name="featured_event_3" value="Featured event 3"/>
+    <entry name="string_featured_event_1" value="|STRING|"/>
+    <entry name="string_featured_event_2" value="|STRING|"/>
+    <entry name="string_featured_event_3" value="|STRING|"/>
+    <entry name="string_featured_event_1_name" value="|STRING|"/>
+    <entry name="string_featured_event_2_name" value="|STRING|"/>
+    <entry name="string_featured_event_3_name" value="|STRING|"/>
+    <entry name="string_featured_event_1_time" value="|STRING|"/>
+    <entry name="string_featured_event_2_time" value="|STRING|"/>
+    <entry name="string_featured_event_3_time" value="|STRING|"/>
+    <entry name="string_featured_event_1_zone" value="|STRING|"/>
+    <entry name="string_featured_event_2_zone" value="|STRING|"/>
+    <entry name="string_featured_event_3_zone" value="|STRING|"/>
+    <entry name="covoiture" value="Je covoiture !"/>
+    <entry name="avis_festicomtois" value="Votre avis sur Festicomtois"/>
+    <entry name="selection_quartier" value="Sélectionner un quartier pour voir la liste des exposants"/>
+    <entry name="liste_quartiers" value="LISTE DES QUARTIERS"/>
+    <entry name="string_quartier_1" value="|STRING|"/>
+    <entry name="string_quartier_2" value="|STRING|"/>
+    <entry name="string_quartier_3" value="|STRING|"/>
+    <entry name="string_quartier_4" value="|STRING|"/>
+    <entry name="string_quartier_5" value="|STRING|"/>
+    <entry name="string_quartier_6" value="|STRING|"/>
+    <entry name="string_quartier_7" value="|STRING|"/>
+    <entry name="string_quartier_8" value="|STRING|"/>
+    <entry name="string_quartier_9" value="|STRING|"/>
+    <entry name="string_quartier_10" value="|STRING|"/>
+    <entry name="string_quartier_11" value="|STRING|"/>
+    <entry name="string_quartier_12" value="|STRING|"/>
+    <entry name="string_quartier_13" value="|STRING|"/>
+    <entry name="string_quartier_14" value="|STRING|"/>
+    <entry name="string_quartier_15" value="|STRING|"/>
 </string_table>

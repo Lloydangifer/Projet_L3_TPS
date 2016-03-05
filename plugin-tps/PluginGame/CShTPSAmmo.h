@@ -3,6 +3,7 @@
 
 #include <ShSDK/ShSDK.h>
 
+class CShTPSCharacter;
 
 class CShTPSAmmo
 {
@@ -12,7 +13,7 @@ public:
 	virtual						~CShTPSAmmo					(void);
 
 
-	void						Initialize					(const CShIdentifier & levelIdentifier);
+	void						Initialize					(const CShIdentifier & levelIdentifier, CShTPSCharacter * origin);
 	void						Update						(float dt);
 	void						Render						(void);
 
@@ -27,17 +28,24 @@ public:
 	float						GetSpeed					(void);
 
 	void						SetMoving					(bool moving);
-	bool						GetMoving					(void);
+	bool						isMoving					(void);
 
 	void						SetSprite					(ShEntity2 * sprite);
-	ShEntity2 *					GetSprite					(void);
+	ShObject *					GetSprite					(void);
+
+	void						SetOrigin					(CShTPSCharacter * origin);
+	CShTPSCharacter *			GetOrigin					(void);
+
+	bool						Is3D						(void);
 
 private:
 	CShVector2					m_Position;
 	CShVector2					m_Direction;	
 	float						m_Speed;
 	bool						m_Moving;
-	ShEntity2 *					m_pSprite;
+	ShObject *					m_pSprite;
+	CShTPSCharacter *			m_Origin;
+	bool						m_3d;
 };
 
 #endif // __CSHTPSAMMO_H
