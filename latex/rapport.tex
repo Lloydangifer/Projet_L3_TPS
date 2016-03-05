@@ -10,6 +10,30 @@
 
 \usepackage{titling} % image on title page
 
+\usepackage{xcolor} % DES JOLIES COULEURS
+
+\usepackage{listings} % pour écrire du code avec de la coloration syntaxique
+%%configuration de listings
+\lstset{
+language=python,
+basicstyle=\ttfamily\small, %
+identifierstyle=\color{black}, %
+keywordstyle=\color{blue}, %
+stringstyle=\color{purple}, %
+commentstyle=\it\color{green}, %
+columns=flexible, %
+tabsize=2, %
+extendedchars=true, %
+showspaces=false, %
+showstringspaces=false, %
+numbers=left, %
+numberstyle=\tiny, %
+breaklines=true, %
+breakautoindent=true, %
+captionpos=b
+}
+
+
 \usepackage{hyperref} % Créer des liens et des signets, utile pour la table des matières
 \hypersetup{	
 	colorlinks=true, %colorise les liens 
@@ -63,7 +87,7 @@
 
 \section*{\centering Remerciements}
 \phantomsection
-\addscontentsline
+%\addcontentsline
 \vspace{1cm}
 
 Ce projet tuteuré n'aurait pu être réalisé sans l'aide de plusieurs personnes que nous tenons à remercier.
@@ -106,21 +130,91 @@ Un TPS (Third-Person Shooter ou jeu de tir à la troisième personne en français) 
 \label{re4} %l'étiquette pour faire référence à cette image
 \end{figure} %on ferme l'environnement figure
 
-\section{}
+\section{Les moteurs de jeu}
+
+``Un moteur de jeu est un ensemble de composants logiciels qui effectuent des calculs de géométrie et de physique utilisés dans les jeux vidéo. L'ensemble forme un simulateur en temps réel souple qui reproduit les caractéristiques des mondes imaginaires dans lesquels se déroulent les jeux. Le but visé par un moteur de jeu est de permettre à une équipe de développement de se concentrer sur le contenu et le déroulement du jeu plutôt que la résolution de problèmes informatiques.''
+\begin{flushright}
+-- \href{https://fr.wikipedia.org/wiki/Moteur_de_jeu}{\textsl{Définition Wikipédia}}
+\end{flushright}
+
+\textcolor{red!100!black}{\lipsum[4] }
 
 
-% Alé mdr
-\chapter{La vie} 
-\lipsum[4] 
-\section{Oh, une section !} 
-\lipsum[4] 
-\subsection{sous-section} 
-\lipsum[4] 
-\section{une autre ! } 
-\lipsum[4] 
-\subsection{sous-section a} 
-\lipsum[4] 
+\section{Le \textsc{Shine Engine}}
 
+\textcolor{red!100!black}{\lipsum[4] }
+
+
+\chapter{Préparation}
+
+\section{Installation des outils}
+\hypertarget{installation}{}
+
+\label{labelInstal}Avant de commencer à coder, il a d'abord fallu installer plusieurs outils logiciels.
+
+\begin{flushright}
+\textit{Tous les outils mentionnés ont été utilisés, dans notre cas, sur Windows uniquement.}
+\end{flushright}
+
+\subsection{Les indispensables}
+Les trois logiciels indispensables sont le \texttt{Shine SDK}\footnote{SDK = Software Development Kit (trousse de développement logiciel en Français)}, le \texttt{Shine Editor}\footnote{Editeur graphique de Shine permettant d'ajouter facilement des éléments visuels dans un jeu} et \texttt{Microsoft Visual Studio 2010}.
+
+Le \texttt{Shine Editor} et le \texttt{SDK} ne requérant pas d'installation, n'ont pas posé de problèmes dans un premier temps. En revanche, il n'a pas été facile de retrouver la version 2010 de \texttt{Visual Studio}, car aujourd'hui, Microsoft ne propose que la version \textsl{Community} de leur logiciel.
+\texttt{Visual Studio} est un \texttt{IDE}\footnote{IDE = Integrated Development Environment (Environnement de Développement en Français)}. Il en existe d'autres, mais le \texttt{Shine Engine} a été développé et prévu pour être intégré à \texttt{Visual Studio}.
+
+Même après avoir installé les outils \texttt{Shine}, il ne peuvent pas encore être exécutés indépendamment. En effet, ils requièrent le \texttt{DirectX SDK} mais aussi \texttt{Microsoft .NET Framework} (version 4.0 ou supérieur).
+
+\subsection{Pour plus de confort}
+
+\textit{Bien qu'ils ne soient pas réellement indispensables, les outils suivants nous été extrêmement utiles.}
+
+Nous avons utilisé \texttt{Git}, plus précisément \texttt{Github}, l'application graphique de Git pour Windows. \href{https://fr.wikipedia.org/wiki/GitHub}{\texttt{GitHub}} est un service web d'hébergement et de gestion de développement de logiciels utilisant Git, le logiciel de gestion de versions décentralisé.
+
+Nous avons également utilisé \texttt{Trello}, un outil de gestion de projet en ligne permettant d'assigner facilement des tâches à des utilisateurs. 
+
+\textsc{gimp}\footnote{GNU Image Manipulation Program} est un outil d'édition et de retouche d'image. \textsc{gimp} a été utile pour créer des \texttt{sprites}\footnote{Elément graphique qui peut se déplacer sur l'écran. Dans notre cas, cet élément était une simple image en deux dimensions} simples.
+
+En complément de \textsc{gimp} nous avons utilisé \texttt{XnView}, qui nous a permis de vérifier le formats de certains fichiers, et de convertir au bon format si besoin.
+
+Enfin, nous avons utilisé \LaTeX\ pour la rédaction de ce rapport.
+
+\section{Formation au \textsc{Shine Engine}}
+
+\textcolor{red!100!black}{\lipsum[4] }
+
+\chapter{Réalisation}
+
+\section{hi mom}
+\textcolor{red!100!black}{\lipsum[4] }
+
+\section{Problèmes rencontrés}
+
+\subsection{Problèmes logiciels}
+
+Nous l'avons mentionné dans la partie \hyperlink{installation}{Installation} (page~\pageref{labelInstal}), trouver la version complète de \texttt{Microsoft Visual Studio 2010} n'a pas été tâche facile.
+
+Cependant, cela n'a pas été le plus important des problèmes logiciel que nous avons eu. En effet, il nous est arrivé par exemple de ne plus pouvoir lancer l'éditeur de \texttt{Shine} alors qu'il marchait auparavant, sans savoir pourquoi. Réinstaller l'éditeur, ou installer une version plus récente résolvait en général les problèmes rencontrés. Il nous est également arrivé de simplement ne pas du tout pouvoir faire fonctionner le \texttt{Shine Editor} sur un PC (la seule option était ici d'utiliser un autre PC).
+
+\subsection{Problèmes de code}
+
+Le problème majeur qui nous a couté le plus de temps est celui-ci : 
+
+\begin{lstlisting}
+	///	@todo comment
+\end{lstlisting}
+
+Cette ligne, combinée à l'inexistence de documentation, nous a souvent laissé dans le flou quand à la manière de procéder pour effectuer des tâches parfois assez simples.
+La seule chose dont on pouvait s'aider était les fichiers d'entête dans les dossier du \texttt{Shine SDK} : en lisant les définitions des méthodes et les noms des paramètres, on pouvait au mieux \textsl{deviner} la façon d'utiliser ces méthodes.
+
+Bien sûr, quand on ne pouvait plus avancer, nous avons pris contact avec l'équipe de \texttt{Shine}. Cependant, la réponse n'étant évidemment pas immédiate, il nous est arrivé de rester bloquer des après-midis entiers à essayer de faire marcher un bout de code.
+
+\textcolor{red!100!black}{\lipsum[4] }
+
+
+
+\chapter{Bilan}
+
+\textcolor{red!100!black}{\lipsum[4] }
 
 \printglossaries
 
