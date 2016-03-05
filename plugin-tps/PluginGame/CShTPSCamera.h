@@ -2,6 +2,8 @@
 #define __CSHTPSCAMERA_H
 
 #include <ShSDK/ShSDK.h>
+#define MAX_CAMERAS 3
+
 
 class CShTPSCamera
 {
@@ -16,8 +18,10 @@ class CShTPSCamera
 		void						DoStuff1					(void);
 		void						DoStuff2					(void);
 
+		void						SwitchCameraStyle			(void);
 
 	private:
 		ShCamera *						m_pCamera;
+		int							m_pCameraStyle;
 };
 #endif // __CSHTPSCAMERA_H

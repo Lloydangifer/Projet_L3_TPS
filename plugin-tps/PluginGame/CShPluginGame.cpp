@@ -15,8 +15,11 @@ ShInput *					g_pInputShoot			= shNULL;
 ShInput *					g_pInputA				= shNULL;
 ShInput *					g_pInputZ				= shNULL;
 ShInput *					g_pInputE				= shNULL;
+
+//Camera
 ShInput *					g_pInputPlus 			= shNULL;
 ShInput *					g_pInputMinus			= shNULL;
+ShInput *					g_pInputC				= shNULL;
 
 
 
@@ -113,6 +116,8 @@ void CShPluginGame::OnPlayStart(const CShIdentifier & levelIdentifier)
 	g_pInputZ = ShInput::CreateInputJustPressed(ShInput::e_input_device_keyboard, ShInput::e_input_device_control_pc_key_z, 0.5f);
 	g_pInputE = ShInput::CreateInputJustPressed(ShInput::e_input_device_keyboard, ShInput::e_input_device_control_pc_key_e, 0.5f);
 
+	g_pInputC = ShInput::CreateInputJustPressed(ShInput::e_input_device_keyboard, ShInput::e_input_device_control_pc_key_c, 0.5f);
+
 	//create and initialize the ennemies
 	bool searchEnemies = true;
 	int nbEnemies = 0;
@@ -203,6 +208,11 @@ void CShPluginGame::OnPostUpdate(float dt)
 	if (ShInput::GetValue(g_pInputE) > 0.2f)
 	{
 		
+	}
+
+	if (ShInput::GetValue(g_pInputC) > 0.2f)
+	{
+		m_pTpsCamera->SwitchCameraStyle();
 	}
 
 	// Change the walk speed/direction
