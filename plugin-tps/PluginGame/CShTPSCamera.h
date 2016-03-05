@@ -11,7 +11,12 @@ class CShTPSCamera
 		virtual						~CShTPSCamera				(void);
 
 		void						Initialize					(void);
-		void						Update						(CShVector2 playerPos);
+		void						Update						(CShVector2 playerPos, CShVector2 playerDir);
+
+		void						DoStuff1					(void);
+		void						DoStuff2					(void);
+
+
 	private:
 		ShCamera *						m_pCamera;
 };

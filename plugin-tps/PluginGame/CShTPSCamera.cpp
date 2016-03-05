@@ -16,14 +16,29 @@ void CShTPSCamera::Initialize(void)
 	SH_ASSERT(NULL != m_pCamera);
 	ShCamera::SetPosition(m_pCamera, CShVector3(-300.0f,-1500.0f, 1000.0f));
 	ShCamera::SetTarget(m_pCamera, CShVector3(0.0f, 0.0f, 100.0f));
-	ShCamera::SetFarPlaneDistance(m_pCamera, 3000.0f);
-	ShCamera::SetCurrent2D(m_pCamera);
+	ShCamera::SetFovY(m_pCamera, ShCamera::GetFovY(m_pCamera) + .3f);
 	ShCamera::SetCurrent3D(m_pCamera);
-	ShCamera::SetProjectionOrtho(m_pCamera);
+
 }
 
-void CShTPSCamera::Update(CShVector2 playerPos)
+void CShTPSCamera::Update(CShVector2 playerPos, CShVector2 playerDir)
 {
-	ShCamera::SetPosition(m_pCamera, CShVector3(playerPos, 3000.0f));
-	ShCamera::SetTarget(m_pCamera, CShVector3(playerPos, 0.0f));
+	ShCamera::SetPosition(m_pCamera, CShVector3(playerPos.m_x - playerDir.m_x * 700.0f, playerPos.m_y - playerDir.m_y * 700.0f, 400.0f));
+	//ShCamera::SetPosition(m_pCamera, CShVector3(playerPos, 3000.0f));
+	ShCamera::SetTarget(m_pCamera, CShVector3(playerPos, 150.0f));
+}
+
+
+
+
+void CShTPSCamera::DoStuff1()
+{
+	if (ShCamera::GetFovY(m_pCamera) < 1.99f)
+		ShCamera::SetFovY(m_pCamera, ShCamera::GetFovY(m_pCamera) + .01f);
+}
+
+void CShTPSCamera::DoStuff2()
+{
+	if (ShCamera::GetFovY(m_pCamera) > .01f)
+		ShCamera::SetFovY(m_pCamera, ShCamera::GetFovY(m_pCamera) - .01f);
 }

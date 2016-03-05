@@ -11,6 +11,12 @@ ShInput *					g_pInputLeft			= shNULL;
 ShInput *					g_pInputRight			= shNULL;
 ShInput *					g_pInputShoot			= shNULL;
 
+// Inputs for tests purposes
+ShInput *					g_pInputA				= shNULL;
+ShInput *					g_pInputZ				= shNULL;
+ShInput *					g_pInputE				= shNULL;
+ShInput *					g_pInputPlus 			= shNULL;
+ShInput *					g_pInputMinus			= shNULL;
 
 
 
@@ -100,6 +106,13 @@ void CShPluginGame::OnPlayStart(const CShIdentifier & levelIdentifier)
 	g_pInputLeft = ShInput::CreateInputPressed(ShInput::e_input_device_keyboard, ShInput::e_input_device_control_pc_key_left, 0.5f);
 	g_pInputShoot = ShInput::CreateInputPressed(ShInput::e_input_device_keyboard, ShInput::e_input_device_control_pc_key_space, 0.5f);
 
+	g_pInputPlus = ShInput::CreateInputPressed(ShInput::e_input_device_keyboard, ShInput::e_input_device_control_pc_key_num_plus, 0.5f);
+	g_pInputMinus = ShInput::CreateInputPressed(ShInput::e_input_device_keyboard, ShInput::e_input_device_control_pc_key_num_minus, 0.5f);
+
+	g_pInputA = ShInput::CreateInputJustPressed(ShInput::e_input_device_keyboard, ShInput::e_input_device_control_pc_key_a, 0.5f);
+	g_pInputZ = ShInput::CreateInputJustPressed(ShInput::e_input_device_keyboard, ShInput::e_input_device_control_pc_key_z, 0.5f);
+	g_pInputE = ShInput::CreateInputJustPressed(ShInput::e_input_device_keyboard, ShInput::e_input_device_control_pc_key_e, 0.5f);
+
 	//create and initialize the ennemies
 	bool searchEnemies = true;
 	int nbEnemies = 0;
@@ -167,6 +180,31 @@ void CShPluginGame::OnPreUpdate(void)
  */
 void CShPluginGame::OnPostUpdate(float dt)
 {
+	if (ShInput::GetValue(g_pInputPlus) > 0.2f)
+	{
+		m_pTpsCamera->DoStuff1();
+	}
+
+	if (ShInput::GetValue(g_pInputMinus) > 0.2f)
+	{
+		m_pTpsCamera->DoStuff2();
+	}
+
+	if (ShInput::GetValue(g_pInputA) > 0.2f)
+	{
+		
+	}
+	
+	if (ShInput::GetValue(g_pInputZ) > 0.2f)
+	{
+		
+	}
+
+	if (ShInput::GetValue(g_pInputE) > 0.2f)
+	{
+		
+	}
+
 	// Change the walk speed/direction
 	if (ShInput::GetValue(g_pInputUp) > 0.2f)
 	{
@@ -237,5 +275,5 @@ void CShPluginGame::OnPostUpdate(float dt)
 	m_pTpsPlayer->Update(dt);
 	m_aBullets.ElementsUpdate(dt);
 	m_aEnemies.ElementsUpdate(dt);
-	m_pTpsCamera->Update(m_pTpsPlayer->GetPosition());
+	m_pTpsCamera->Update(m_pTpsPlayer->GetPosition(), m_pTpsPlayer->GetDirection());
 }
