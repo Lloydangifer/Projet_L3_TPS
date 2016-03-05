@@ -178,11 +178,13 @@ void CShPluginGame::OnPostUpdate(float dt)
 	// Change the walk speed/direction
 	if (ShInput::GetValue(g_pInputUp) > 0.2f)
 	{
-		m_pTpsPlayer->SetSpeed(100.0f);
+		m_pTpsPlayer->SetSpeed(200.0f);
+		m_pTpsPlayer->SwitchToAnimationRun();
 	}
 	else
 	{
 		m_pTpsPlayer->SetSpeed(0.0f);
+		m_pTpsPlayer->SwitchToAnimationIdle();
 	}
 
 	if (ShInput::GetValue(g_pInputLeft) > 0.2f)

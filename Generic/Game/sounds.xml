@@ -5,4 +5,13 @@
   <sound name="snd_fst_run_03" max_playback="10" priority="2"/>
   <sound name="snd_fst_run_04" max_playback="10" priority="2"/>
   <sound name="snd_fst_run_05" max_playback="10" priority="2"/>
+  <sound name="Player_Wizard_Attack" max_playback="10" priority="2"/>
+  <sound name="player_wizard_attack_01" max_playback="10" priority="2"/>
+  <sound name="player_wizard_attack_02" max_playback="10" priority="2"/>
+  <sound name="player_wizard_attack_03" max_playback="10" priority="2"/>
+  <sound name="player_wizard_attack_04" max_playback="10" priority="2"/>
+  <sound name="player_wizard_attack_05" max_playback="10" priority="2"/>
+  <sound name="player_wizard_attack_06" max_playback="10" priority="2"/>
+  <sound name="player_wizard_attack_A" max_playback="10" priority="2"/>
+  <sound name="player_wizard_attack_B" max_playback="10" priority="2"/>
 </sounds>

@@ -12,6 +12,9 @@ class CShTPSPlayer: public CShTPSCharacter
 {
 public:
 	void						Initialize					(const CShIdentifier & levelIdentifier, CShTPSGun * defaultGun);
+	void						SwitchToAnimationRun		(void);
+	void						SwitchToAnimationIdle		(void);
+	void						SwitchToAnimationAttack		(void);
 };
 
 #endif // __CSHTPSPLAYER_H
