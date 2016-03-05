@@ -77,6 +77,7 @@ void CShTPSEnemy::Update(float dt)
 			if(m_3d)
 			{
 				ShEntity3::AnimationPlay((ShEntity3 *)m_pSprite, m_pAnimRun,true); //TODO changer animation en attaque si ça marche un jour
+				ShEntity3::SetRotation(m_pSprite, CShEulerAngles(0.0f, 0.0f, std::atan2(m_Direction.m_y,m_Direction.m_x ) + 1.5f )); // 1.5f : valeur piffée pour que les enemis regardent bien le joueur
 			}
 			//ShEntity2::SetRotation(m_pSprite, CShEulerAngles(0.0f, 0.0f, shAcosf(m_Direction.m_x/m_Direction.m_y)));
 			break;
