@@ -8,6 +8,7 @@
 #include "CShTPSPlayer.h"
 #include "CShTPSEnemy.h"
 #include "CShTPSCollisionsManager.h"
+#include "CShTPSCamera.h"
 
 class CShPluginGame : public CShPlugin
 {
@@ -40,7 +41,7 @@ private:
 	CShArray<CShTPSAmmo *>			m_aBullets;
 	CShArray<CShTPSEnemy *>			m_aEnemies;
 	CShTPSCollisionsManager	*		m_pCollisionsManager;
-	ShCamera *						m_pCamera;
+	CShTPSCamera *					m_pTpsCamera;
 };
 
 #endif // __CSHPLUGINGAME_H

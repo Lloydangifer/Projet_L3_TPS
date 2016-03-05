@@ -23,7 +23,7 @@ CShPluginGame::CShPluginGame(void)
 , m_aBackground()
 , m_pTpsPlayer(new CShTPSPlayer())
 , m_pCollisionsManager(new CShTPSCollisionsManager())
-, m_pCamera(shNULL)
+, m_pTpsCamera(new CShTPSCamera())
 {
 }
 
@@ -59,15 +59,6 @@ bool CShPluginGame::Release(void)
  */
 void CShPluginGame::OnPlayStart(const CShIdentifier & levelIdentifier)
 {
-	// Create camera
-	/*m_pCamera = ShCamera::Create(GID(global), GID(camera_free), false);
-	SH_ASSERT(NULL != m_pCamera);
-	ShCamera::SetPosition(m_pCamera, CShVector3(-300.0f,-1500.0f, 1000.0f));
-	ShCamera::SetTarget(m_pCamera, CShVector3(0.0f, 0.0f, 100.0f));
-	ShCamera::SetFarPlaneDistance(m_pCamera, 3000.0f);
-
-	ShCamera::SetCurrent2D(m_pCamera);
-	ShCamera::SetCurrent3D(m_pCamera);*/
 
 	bool floorLeft = true;
 	int nbFloor = 0;
@@ -98,6 +89,8 @@ void CShPluginGame::OnPlayStart(const CShIdentifier & levelIdentifier)
 	CShTPSGun * pDefaultGun = new CShTPSGun(DESERT_EAGLE_POWER, CShString(DESERT_EAGLE_NAME), DESERT_EAGLE_FIRERATE);
 
 	m_pTpsPlayer->Initialize(m_levelIdentifier, pDefaultGun);
+
+	m_pTpsCamera->Initialize();
 
 	m_pCollisionsManager->Initialize(m_levelIdentifier);
 
@@ -135,7 +128,6 @@ void CShPluginGame::OnPlayStart(const CShIdentifier & levelIdentifier)
 			m_aEnemies.Add(enemy);
 		}
 	}
-	//ShCamera::SetPosition(m_pCamera, CShVector3(m_pTpsPlayer->GetPosition(), 100.0f));
 }
 
 /**
@@ -178,7 +170,7 @@ void CShPluginGame::OnPostUpdate(float dt)
 	// Change the walk speed/direction
 	if (ShInput::GetValue(g_pInputUp) > 0.2f)
 	{
-		m_pTpsPlayer->SetSpeed(200.0f);
+		m_pTpsPlayer->SetSpeed(PLAYER_DEFAULT_SPEED);
 		m_pTpsPlayer->SwitchToAnimationRun();
 	}
 	else
@@ -245,4 +237,5 @@ void CShPluginGame::OnPostUpdate(float dt)
 	m_pTpsPlayer->Update(dt);
 	m_aBullets.ElementsUpdate(dt);
 	m_aEnemies.ElementsUpdate(dt);
+	m_pTpsCamera->Update(m_pTpsPlayer->GetPosition());
 }
