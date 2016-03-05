@@ -15,12 +15,13 @@ public:
 	virtual						~CShTPSCharacter			(void);
 
 	void						Initialize					(const CShIdentifier & levelIdentifier, CShTPSGun * defaultGun);
-	void						Update						(void);
+	void						Update						(float dt);
 	CShTPSAmmo		*			Shoot						(void);
 	bool						GunIsEmpty					(void);
 	void						Reload						(CShTPSAmmo * ammo);
 	bool						isAlive						(void);
 	void						death						(void);
+	bool						ReadyToShoot				(void);
 
 		// Setters & Getters
 	void						SetPosition					(CShVector2 position);
@@ -32,8 +33,8 @@ public:
 	void						SetSpeed					(float speed);
 	float						GetSpeed					(void);
 
-	void						SetSprite					(ShEntity2 * sprite);
-	ShEntity2 *					GetSprite					(void);
+	void						SetSprite					(ShObject * sprite);
+	ShObject *					GetSprite					(void);
 
 	void						SetCharacterController		(ShCharacterController * charactercontroller);
 	ShCharacterController *		GetCharacterController		(void);
@@ -45,7 +46,10 @@ protected:
 	CShVector2					m_Position;
 	CShVector2					m_Direction;	
 	float						m_Speed;
-	ShEntity2 *					m_pSprite;
+	ShObject *					m_pSprite;
+	ShAnimation *				m_pAnimIdle;
+	ShAnimation *				m_pAnimRun;
+	ShAnimation *				m_pAnimAttack;
 	ShCharacterController *		m_pCharacterController;
 	CShTPSGun *					m_pGun;
 	bool						m_Alive;

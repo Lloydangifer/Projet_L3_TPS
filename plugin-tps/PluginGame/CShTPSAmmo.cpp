@@ -6,17 +6,19 @@ CShTPSAmmo::CShTPSAmmo(float speed)
 , m_Speed(speed)
 , m_Moving(false)
 , m_pSprite(shNULL)
+, m_Origin(shNULL)
 {
 }
 CShTPSAmmo::~CShTPSAmmo(void)
 {
 }
 
-void CShTPSAmmo::Initialize(const CShIdentifier & levelIdentifier)
+void CShTPSAmmo::Initialize(const CShIdentifier & levelIdentifier, CShTPSCharacter * origin)
 {
 	m_pSprite = ShEntity2::Create(levelIdentifier, CShIdentifier(), GID(layer_default), CShIdentifier("tps"), CShIdentifier("bullet"), CShVector3(0.0f,0.0f,1.0f), CShEulerAngles(0.0f, 0.0f, 0.0f), CShVector3(1.0f, 1.0f, 1.0f));
 	SH_ASSERT(shNULL != m_pSprite);
 	ShObject::SetShow(m_pSprite,false);
+	m_Origin = origin;
 }
 
 void CShTPSAmmo::Update(float dt)
@@ -59,7 +61,7 @@ void CShTPSAmmo::SetMoving(bool moving)
 	m_Moving=moving;
 }
 
-bool CShTPSAmmo::GetMoving(void)
+bool CShTPSAmmo::isMoving(void)
 {
 	return m_Moving;
 }
@@ -69,7 +71,17 @@ void CShTPSAmmo::SetSprite(ShEntity2 * sprite)
 	m_pSprite = sprite;
 }
 
-ShEntity2 * CShTPSAmmo::GetSprite (void)
+ShEntity2 * CShTPSAmmo::GetSprite(void)
 {
 	return m_pSprite;
+}
+
+void CShTPSAmmo::SetOrigin(CShTPSCharacter * origin)
+{
+	m_Origin = origin;
+}
+
+CShTPSCharacter * CShTPSAmmo::GetOrigin(void)
+{
+	return m_Origin;
 }

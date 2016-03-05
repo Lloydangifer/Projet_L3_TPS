@@ -20,9 +20,10 @@ ShInput *					g_pInputShoot			= shNULL;
 CShPluginGame::CShPluginGame(void)
 : CShPlugin(CShIdentifier("TPS"))
 , m_levelIdentifier(GID(NULL))
-, m_pBackground(shNULL)
+, m_aBackground()
 , m_pTpsPlayer(new CShTPSPlayer())
 , m_pCollisionsManager(new CShTPSCollisionsManager())
+, m_pCamera(shNULL)
 {
 }
 
@@ -58,10 +59,43 @@ bool CShPluginGame::Release(void)
  */
 void CShPluginGame::OnPlayStart(const CShIdentifier & levelIdentifier)
 {
-	m_pBackground = ShEntity2::Find(m_levelIdentifier, CShIdentifier("sprite_tps_background"));
-	SH_ASSERT(shNULL != m_pBackground);
+	// Create camera
+	/*m_pCamera = ShCamera::Create(GID(global), GID(camera_free), false);
+	SH_ASSERT(NULL != m_pCamera);
+	ShCamera::SetPosition(m_pCamera, CShVector3(-300.0f,-1500.0f, 1000.0f));
+	ShCamera::SetTarget(m_pCamera, CShVector3(0.0f, 0.0f, 100.0f));
+	ShCamera::SetFarPlaneDistance(m_pCamera, 3000.0f);
 
-	CShTPSGun * pDefaultGun = new CShTPSGun(5.0f, CShString("Desert Eagle"));
+	ShCamera::SetCurrent2D(m_pCamera);
+	ShCamera::SetCurrent3D(m_pCamera);*/
+
+	bool floorLeft = true;
+	int nbFloor = 0;
+	while(floorLeft)
+	{
+		nbFloor++;
+		CShString floorIdentifier(FLOOR_NAME);
+		floorIdentifier += CShString::FromInt(nbFloor);
+		ShObject * floor;
+		floor = ShEntity2::Find(m_levelIdentifier, CShIdentifier(floorIdentifier));
+		if(shNULL == floor)
+		{
+			floor = ShEntity3::Find(m_levelIdentifier, CShIdentifier(floorIdentifier));
+		}
+		if(shNULL == floor)
+		{
+			floorLeft = false;
+			SH_TRACE("[PLUGIN TPS][ON PLAY START] No floor left\n");
+		}
+		else
+		{
+			m_aBackground.Add(floor);
+			SH_TRACE("[PLUGIN TPS][ON PLAY START] Floor Added !\n");
+		}
+	}
+	SH_ASSERT(!m_aBackground.IsEmpty());
+
+	CShTPSGun * pDefaultGun = new CShTPSGun(DESERT_EAGLE_POWER, CShString(DESERT_EAGLE_NAME), DESERT_EAGLE_FIRERATE);
 
 	m_pTpsPlayer->Initialize(m_levelIdentifier, pDefaultGun);
 
@@ -71,7 +105,7 @@ void CShPluginGame::OnPlayStart(const CShIdentifier & levelIdentifier)
 	g_pInputUp = ShInput::CreateInputPressed(ShInput::e_input_device_keyboard, ShInput::e_input_device_control_pc_key_up, 0.5f);
 	g_pInputRight = ShInput::CreateInputPressed(ShInput::e_input_device_keyboard, ShInput::e_input_device_control_pc_key_right, 0.5f);
 	g_pInputLeft = ShInput::CreateInputPressed(ShInput::e_input_device_keyboard, ShInput::e_input_device_control_pc_key_left, 0.5f);
-	g_pInputShoot = ShInput::CreateInputJustPressed(ShInput::e_input_device_keyboard, ShInput::e_input_device_control_pc_key_space, 0.5f);
+	g_pInputShoot = ShInput::CreateInputPressed(ShInput::e_input_device_keyboard, ShInput::e_input_device_control_pc_key_space, 0.5f);
 
 	//create and initialize the ennemies
 	bool searchEnemies = true;
@@ -79,23 +113,29 @@ void CShPluginGame::OnPlayStart(const CShIdentifier & levelIdentifier)
 	while(searchEnemies)
 	{
 		nbEnemies++;
-		CShString enemyIdentifier("sprite_tps_enemy_");
-		CShString enemyCharacterControlleridentifier("character_controller_enemy_");
+		CShString enemyIdentifier(ENEMY_SPRITE_NAME);
+		CShString enemyCharacterControlleridentifier(ENEMY_CHARACTERCONTROLLER_NAME);
 		enemyIdentifier += CShString::FromInt(nbEnemies);
 		enemyCharacterControlleridentifier += CShString::FromInt(nbEnemies);
-		ShEntity2 * pEnemySprite = ShEntity2::Find(levelIdentifier, CShIdentifier(enemyIdentifier));
+		ShObject * pEnemySprite;
+		pEnemySprite = ShEntity2::Find(levelIdentifier, CShIdentifier(enemyIdentifier));
+		if(shNULL == pEnemySprite) // if there is no 2D sprite, the game search for a 3D model
+		{
+			pEnemySprite = ShEntity3::Find(levelIdentifier, CShIdentifier(enemyIdentifier));
+		}
 		if(shNULL == pEnemySprite) // if there is no more enemies in the level we stop the research
 		{
 			searchEnemies = false;
 		}
 		else
 		{
-			CShTPSGun * pEnemyGun = new CShTPSGun(5.0f, CShString("Desert Eagle"));
+			CShTPSGun * pEnemyGun = new CShTPSGun(DESERT_EAGLE_POWER, CShString(DESERT_EAGLE_NAME), DESERT_EAGLE_FIRERATE);
 			CShTPSEnemy * enemy = new CShTPSEnemy();
 			enemy->Initialize(m_levelIdentifier, pEnemyGun, pEnemySprite, enemyCharacterControlleridentifier);
 			m_aEnemies.Add(enemy);
 		}
 	}
+	//ShCamera::SetPosition(m_pCamera, CShVector3(m_pTpsPlayer->GetPosition(), 100.0f));
 }
 
 /**
@@ -163,16 +203,26 @@ void CShPluginGame::OnPostUpdate(float dt)
 
 	if (ShInput::GetValue(g_pInputShoot) > 0.2f)
 	{
-		if(!m_pTpsPlayer->GunIsEmpty())
+		if(!m_pTpsPlayer->GunIsEmpty() && m_pTpsPlayer->ReadyToShoot())
 		{
 			m_aBullets.Add(m_pTpsPlayer->Shoot());
+		}
+	}
+
+	int enemiesNumber = m_aEnemies.GetCount();
+	for(int enemiesCount = 0; enemiesCount < enemiesNumber; enemiesCount++)
+	{
+		m_pCollisionsManager->CheckPlayerEnemyViewField(m_pTpsPlayer, m_aEnemies.At(enemiesCount));
+		if(m_aEnemies.At(enemiesCount)->GetCurrentState() == e_state_attack && (!m_aEnemies.At(enemiesCount)->GunIsEmpty()) && m_aEnemies.At(enemiesCount)->ReadyToShoot())
+		{
+			m_aBullets.Add(m_aEnemies.At(enemiesCount)->Shoot());
 		}
 	}
 
 	for(int bulletCount = 0; bulletCount < m_aBullets.GetCount(); bulletCount++) // for each bullet
 	{
 		m_pCollisionsManager->CheckBulletCollisionShapeCollision(m_aBullets.At(bulletCount));
-		//m_pCollisionsManager->CheckBulletCharacterCollision(m_aBullets.At(bulletCount), m_pTpsPlayer);
+		m_pCollisionsManager->CheckBulletCharacterCollision(m_aBullets.At(bulletCount), m_pTpsPlayer);
 		for(int enemiesCount = 0; enemiesCount < m_aEnemies.GetCount(); enemiesCount++)
 		{
 			m_pCollisionsManager->CheckBulletCharacterCollision(m_aBullets.At(bulletCount), m_aEnemies.At(enemiesCount));
@@ -180,22 +230,17 @@ void CShPluginGame::OnPostUpdate(float dt)
 			{
 				CShTPSEnemy * enemy = m_aEnemies.At(enemiesCount);
 				m_aEnemies.Remove(enemiesCount);
-				delete enemy;
+				//delete enemy;
 			}
 		}
-		if(!m_aBullets.At(bulletCount)->GetMoving())
+		if(!m_aBullets.At(bulletCount)->isMoving())
 		{
-			m_pTpsPlayer->Reload(m_aBullets.At(bulletCount));
+			m_aBullets.At(bulletCount)->GetOrigin()->Reload(m_aBullets.At(bulletCount));
 			m_aBullets.Remove(bulletCount);
 		}
 	}
 
-	for(int enemiesCount = 0; enemiesCount < m_aEnemies.GetCount(); enemiesCount++)
-	{
-		m_pCollisionsManager->CheckPlayerEnemyViewField(m_pTpsPlayer, m_aEnemies.At(enemiesCount));
-	}
-
-	m_pTpsPlayer->Update();
+	m_pTpsPlayer->Update(dt);
 	m_aBullets.ElementsUpdate(dt);
 	m_aEnemies.ElementsUpdate(dt);
 }

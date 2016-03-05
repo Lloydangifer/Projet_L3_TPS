@@ -49,10 +49,16 @@ void CShTPSCollisionsManager::CheckBulletCollisionShapeCollision(CShTPSAmmo* bul
 
 void CShTPSCollisionsManager::CheckBulletCharacterCollision(CShTPSAmmo* bullet, CShTPSCharacter* character)
 {
-	if(ShEntity2::Intersect(bullet->GetSprite(),character->GetSprite()))
+	if(bullet->GetOrigin() != character)
 	{
-		bullet->SetMoving(false);
-		character->death();
+		if(ShObject::e_type_entity2 == ShObject::GetType(character->GetSprite()))
+		{
+			if(ShEntity2::Intersect(bullet->GetSprite(),(ShEntity2 *)character->GetSprite()))
+			{
+				bullet->SetMoving(false);
+				character->death();
+			}
+		}
 	}
 }
 

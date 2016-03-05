@@ -1,0 +1,8 @@
+<sounds>
+  <sound name="snd_fst_run" max_playback="10" priority="2"/>
+  <sound name="snd_fst_run_01" max_playback="10" priority="2"/>
+  <sound name="snd_fst_run_02" max_playback="10" priority="2"/>
+  <sound name="snd_fst_run_03" max_playback="10" priority="2"/>
+  <sound name="snd_fst_run_04" max_playback="10" priority="2"/>
+  <sound name="snd_fst_run_05" max_playback="10" priority="2"/>
+</sounds>

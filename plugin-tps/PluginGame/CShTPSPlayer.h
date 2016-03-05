@@ -5,13 +5,13 @@
 #include <ShEngineExt/ShEngineExt.h>
 
 #include "CShTPSCharacter.h"
+#include "CShTPSGlobal.h"
 
 
 class CShTPSPlayer: public CShTPSCharacter
 {
 public:
 	void						Initialize					(const CShIdentifier & levelIdentifier, CShTPSGun * defaultGun);
-
 };
 
 #endif // __CSHTPSPLAYER_H

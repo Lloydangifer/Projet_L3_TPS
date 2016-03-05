@@ -5,6 +5,7 @@
 #include <ShEngineExt/ShEngineExt.h>
 
 #include "CShTPSCharacter.h"
+#include "CShTPSGlobal.h"
 
 enum EState
 {
@@ -16,12 +17,14 @@ class CShTPSEnemy: public CShTPSCharacter
 {
 public:
 					CShTPSEnemy			(void);
-	void			Initialize			(const CShIdentifier & levelIdentifier, CShTPSGun * defaultGun, ShEntity2 *	sprite, CShString enemyCharacterControlleridentifier);
+	void			Initialize			(const CShIdentifier & levelIdentifier, CShTPSGun * defaultGun, ShObject *	sprite, CShString enemyCharacterControlleridentifier);
 	void			Update				(float dt);
 
 	// Setters & Getters
 	void			SetTarget			(CShVector2 target);
 	CShVector2		GetTarget			(void);
+
+	EState			GetCurrentState		(void);
 
 private:
 	EState			m_CurrentState;
