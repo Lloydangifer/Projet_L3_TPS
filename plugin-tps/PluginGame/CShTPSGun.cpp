@@ -40,7 +40,18 @@ CShTPSAmmo * CShTPSGun::Shoot(CShVector2 position, CShVector2 direction, CShEule
 		ammo->SetDirection(direction);
 		ammo->SetMoving(true);
 		ShEntity2::SetRotation(ammo->GetSprite(), rotation);
-		ShObject::SetShow(ammo->GetSprite(),true);
+		
+		if (ammo->Is3D())
+		{
+			ShEntity3::SetRotation(ammo->GetModel(), rotation);
+			ShObject::SetShow(ammo->GetModel(),true);
+			ShObject::SetShow(ammo->GetSprite(),false);
+		}
+		else
+		{
+			ShObject::SetShow(ammo->GetSprite(),true);
+		}
+		
 		return ammo;
 }
 
@@ -52,6 +63,10 @@ bool CShTPSGun::ClipIsEmpty(void)
 void CShTPSGun::Reload(CShTPSAmmo * ammo)
 {
 	ShObject::SetShow(ammo->GetSprite(),false);
+	if (ammo->Is3D())
+	{
+		ShObject::SetShow(ammo->GetModel(),false);
+	}
 	ammo->SetPosition(CShVector2(0.0f,0.0f));
 	ammo->SetDirection(CShVector2(0.0f,0.0f));
 	m_aClip.Add(ammo);

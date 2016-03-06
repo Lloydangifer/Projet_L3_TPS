@@ -31,7 +31,10 @@ public:
 	bool						isMoving					(void);
 
 	void						SetSprite					(ShEntity2 * sprite);
-	ShObject *					GetSprite					(void);
+	ShEntity2 *					GetSprite					(void);
+
+	void						SetModel					(ShEntity3 * model);
+	ShEntity3 *					GetModel					(void);
 
 	void						SetOrigin					(CShTPSCharacter * origin);
 	CShTPSCharacter *			GetOrigin					(void);
@@ -43,7 +46,8 @@ private:
 	CShVector2					m_Direction;	
 	float						m_Speed;
 	bool						m_Moving;
-	ShObject *					m_pSprite;
+	ShEntity2 *					m_pSprite;
+	ShEntity3 *					m_pModel;
 	CShTPSCharacter *			m_Origin;
 	bool						m_3d;
 };
