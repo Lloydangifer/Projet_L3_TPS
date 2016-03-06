@@ -15,13 +15,13 @@ class CShTPSCamera
 		void						Initialize					(void);
 		void						Update						(CShVector2 playerPos, CShVector2 playerDir);
 
-		void						DoStuff1					(void);
-		void						DoStuff2					(void);
+		void						FovInc						(void);
+		void						FovDec						(void);
 
 		void						SwitchCameraStyle			(void);
 
 	private:
-		ShCamera *						m_pCamera;
+		ShCamera *					m_pCamera;
 		int							m_pCameraStyle;
 };
 #endif // __CSHTPSCAMERA_H

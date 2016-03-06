@@ -11,10 +11,11 @@ ShInput *					g_pInputLeft			= shNULL;
 ShInput *					g_pInputRight			= shNULL;
 ShInput *					g_pInputShoot			= shNULL;
 
-// Inputs for tests purposes
-ShInput *					g_pInputA				= shNULL;
+
 ShInput *					g_pInputZ				= shNULL;
-ShInput *					g_pInputE				= shNULL;
+ShInput *					g_pInputQ				= shNULL;
+ShInput *					g_pInputS				= shNULL;
+ShInput *					g_pInputD				= shNULL;
 
 //Camera
 ShInput *					g_pInputPlus 			= shNULL;
@@ -108,14 +109,14 @@ void CShPluginGame::OnPlayStart(const CShIdentifier & levelIdentifier)
 	g_pInputRight = ShInput::CreateInputPressed(ShInput::e_input_device_keyboard, ShInput::e_input_device_control_pc_key_right, 0.5f);
 	g_pInputLeft = ShInput::CreateInputPressed(ShInput::e_input_device_keyboard, ShInput::e_input_device_control_pc_key_left, 0.5f);
 	g_pInputShoot = ShInput::CreateInputPressed(ShInput::e_input_device_keyboard, ShInput::e_input_device_control_pc_key_space, 0.5f);
+	
+	g_pInputZ = ShInput::CreateInputPressed(ShInput::e_input_device_keyboard, ShInput::e_input_device_control_pc_key_z, 0.5f);
+	g_pInputQ = ShInput::CreateInputPressed(ShInput::e_input_device_keyboard, ShInput::e_input_device_control_pc_key_q, 0.5f);
+	g_pInputS = ShInput::CreateInputPressed(ShInput::e_input_device_keyboard, ShInput::e_input_device_control_pc_key_s, 0.5f);
+	g_pInputD = ShInput::CreateInputPressed(ShInput::e_input_device_keyboard, ShInput::e_input_device_control_pc_key_d, 0.5f);
 
 	g_pInputPlus = ShInput::CreateInputPressed(ShInput::e_input_device_keyboard, ShInput::e_input_device_control_pc_key_num_plus, 0.5f);
 	g_pInputMinus = ShInput::CreateInputPressed(ShInput::e_input_device_keyboard, ShInput::e_input_device_control_pc_key_num_minus, 0.5f);
-
-	g_pInputA = ShInput::CreateInputJustPressed(ShInput::e_input_device_keyboard, ShInput::e_input_device_control_pc_key_a, 0.5f);
-	g_pInputZ = ShInput::CreateInputJustPressed(ShInput::e_input_device_keyboard, ShInput::e_input_device_control_pc_key_z, 0.5f);
-	g_pInputE = ShInput::CreateInputJustPressed(ShInput::e_input_device_keyboard, ShInput::e_input_device_control_pc_key_e, 0.5f);
-
 	g_pInputC = ShInput::CreateInputJustPressed(ShInput::e_input_device_keyboard, ShInput::e_input_device_control_pc_key_c, 0.5f);
 
 	//create and initialize the ennemies
@@ -187,38 +188,31 @@ void CShPluginGame::OnPostUpdate(float dt)
 {
 	if (ShInput::GetValue(g_pInputPlus) > 0.2f)
 	{
-		m_pTpsCamera->DoStuff1();
+		m_pTpsCamera->FovInc();
 	}
 
 	if (ShInput::GetValue(g_pInputMinus) > 0.2f)
 	{
-		m_pTpsCamera->DoStuff2();
+		m_pTpsCamera->FovDec();
 	}
 
-	if (ShInput::GetValue(g_pInputA) > 0.2f)
-	{
-		
-	}
-	
-	if (ShInput::GetValue(g_pInputZ) > 0.2f)
-	{
-		
-	}
-
-	if (ShInput::GetValue(g_pInputE) > 0.2f)
-	{
-		
-	}
 
 	if (ShInput::GetValue(g_pInputC) > 0.2f)
 	{
 		m_pTpsCamera->SwitchCameraStyle();
 	}
 
+
+
 	// Change the walk speed/direction
-	if (ShInput::GetValue(g_pInputUp) > 0.2f)
+	if (ShInput::GetValue(g_pInputUp) > 0.2f || ShInput::GetValue(g_pInputZ) > 0.2f)
 	{
 		m_pTpsPlayer->SetSpeed(PLAYER_DEFAULT_SPEED);
+		m_pTpsPlayer->SwitchToAnimationRun();
+	}
+	else if (ShInput::GetValue(g_pInputS) > 0.2f)
+	{
+		m_pTpsPlayer->SetSpeed(-(PLAYER_DEFAULT_SPEED/2.0f));
 		m_pTpsPlayer->SwitchToAnimationRun();
 	}
 	else
@@ -227,7 +221,7 @@ void CShPluginGame::OnPostUpdate(float dt)
 		m_pTpsPlayer->SwitchToAnimationIdle();
 	}
 
-	if (ShInput::GetValue(g_pInputLeft) > 0.2f)
+	if (ShInput::GetValue(g_pInputLeft) > 0.2f || ShInput::GetValue(g_pInputQ) > 0.2f)
 	{
 		CShVector2 direction = m_pTpsPlayer->GetDirection();
 		direction.Rotate(ROTATION_SPEED);
@@ -235,7 +229,7 @@ void CShPluginGame::OnPostUpdate(float dt)
 		ShEntity2::Rotate(m_pTpsPlayer->GetSprite(),CShEulerAngles(0, 0, ROTATION_SPEED));
 	}
 	
-	if (ShInput::GetValue(g_pInputRight) > 0.2f)
+	if (ShInput::GetValue(g_pInputRight) > 0.2f || ShInput::GetValue(g_pInputD) > 0.2f)
 	{
 		CShVector2 direction = m_pTpsPlayer->GetDirection();
 		direction.Rotate(-ROTATION_SPEED);

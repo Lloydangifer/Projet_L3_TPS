@@ -60,7 +60,7 @@ void CShTPSCamera::Update(CShVector2 playerPos, CShVector2 playerDir)
 
 
 
-void CShTPSCamera::DoStuff1()
+void CShTPSCamera::FovInc()
 {
 	if (m_pCameraStyle == 0)
 	{
@@ -69,7 +69,7 @@ void CShTPSCamera::DoStuff1()
 	}
 }
 
-void CShTPSCamera::DoStuff2()
+void CShTPSCamera::FovDec()
 {
 	if (m_pCameraStyle == 0)
 	{
