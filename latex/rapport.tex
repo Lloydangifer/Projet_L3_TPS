@@ -113,11 +113,11 @@ Nous tenons enfin à remercier toutes les personnes qui nous ont aidés de près ou
 \chapter{Cadre du projet}
 Dans le cadre de notre 3\up{ème} année de licence informatique à l'université de Franche-Comté, il nous a été demandé de réaliser un projet dans le cadre du module projet tuteuré. La durée du projet s'étendait d'Octobre à Mars.
 
-Parmis les sujets proposés, l'un d'entre eux a particulièrement retenu notre attention. Il s'agissait du développement d'un Third-Person Shooter en utilisant un moteur jeu : le \textsc{Shine Engine} développé par M. Sylvain \textsc{Grosdemouge}.
+Parmis les sujets proposés, l'un d'entre eux a particulièrement retenu notre attention. Il s'agissait du développement d'un Third-Person Shooter en utilisant un moteur de jeu : le \texttt{Shine Engine} développé par M. Sylvain \textsc{Grosdemouge}.
 
 Nous avons pu nous voir attribuer ce sujet l'ayant placé en première position dans notre liste de choix.
 
-Pour comprendre l'intérêt que nous portions à ce sujet, il faut nous pencher sur les différents éléments qui le constituent, à savoir les Third-Person Shooter, les moteurs de jeu, et le \textsc{Shine Engine}.
+Pour comprendre l'intérêt que nous portions à ce sujet, il faut nous pencher sur les différents éléments qui le constituent, à savoir les Third-Person Shooter, les moteurs de jeu, et le \texttt{Shine Engine}.
 
 \section{Les Third-Person Shooter}
 
@@ -137,13 +137,13 @@ Un TPS (Third-Person Shooter ou jeu de tir à la troisième personne en français) 
 -- \href{https://fr.wikipedia.org/wiki/Moteur_de_jeu}{\textsl{Définition Wikipédia}}
 \end{flushright}
 
-\section{Le \textsc{Shine Engine}}
+\section{Le \texttt{Shine Engine}}
 
-Le \textsc{Shine Engine} est un moteur de jeu créé par notre encadrant, Monsieur Sylvain \textsc{Grosdemouge}. Monsieur \textsc{Grosdemouge} a commencé le développement du \textsc{Shine Engine} en 2005 et en 2012 est sorti \textsc{R.A.W.}(Realm Of Ancient War), premier jeu développé en utilisant le \textsc{Shine Engine}. Ce moteur de jeu est développé en C++ et permet de faire du développement multi-plateforme. Il permet aussi de gérer facilement la 3D ce qui permet de s'affranchir de beaucoup de limites pour le développement d'un jeu.
+Le \texttt{Shine Engine} est un moteur de jeu créé par notre encadrant, Monsieur Sylvain \textsc{Grosdemouge}. Monsieur \textsc{Grosdemouge} a commencé le développement du \texttt{Shine Engine} en 2005 et en 2012 est sorti \textsc{R.A.W.}(Realm Of Ancient War), premier jeu développé en utilisant le \texttt{Shine Engine}. Ce moteur de jeu est développé en C++ et permet de faire du développement multi-plateforme. Il permet aussi de gérer facilement la 3D ce qui permet de s'affranchir de beaucoup de limites pour le développement d'un jeu.
 
 \section{Le Projet}
 
-Les trois éléments cités précédemment rendaient pour nous le projet attrayant: les TPS sont un genre de jeu au concept simple mais distrayant; utiliser un moteur de jeu permet de se concentrer sur les mécaniques de jeu, qui sont pour nous la partie la plus intéressante du développement d'un jeu; et enfin, le \textsc{Shine Engine}, un moteur qui a fait ses preuves, qui est efficace et qui nous permet de développer en C++, le langage que nous préférons.
+Les trois éléments cités précédemment rendaient pour nous le projet attrayant: les TPS sont un genre de jeu au concept simple mais distrayant; utiliser un moteur de jeu permet de se concentrer sur les mécaniques de jeu, qui sont pour nous la partie la plus intéressante du développement d'un jeu; et enfin, le \texttt{Shine Engine}, un moteur qui a fait ses preuves, qui est efficace et qui nous permet de développer en C++, le langage que nous préférons.
 
 \begin{figure}[!h] %on ouvre l'environnement figure
 \centering
@@ -179,7 +179,7 @@ Nous avons utilisé \texttt{Git}, plus précisément \texttt{Github}, l'application
 
 Nous avons également utilisé \texttt{Trello}, un outil de gestion de projet en ligne permettant d'assigner facilement des tâches à des utilisateurs. 
 
-\textsc{gimp}\footnote{GNU Image Manipulation Program} est un outil d'édition et de retouche d'image. \textsc{gimp} a été utile pour créer des \texttt{sprites}\footnote{Elément graphique qui peut se déplacer sur l'écran. Dans notre cas, cet élément était une simple image en deux dimensions} simples.
+\textsc{gimp}\footnote{GNU Image Manipulation Program} est un outil d'édition et de retouche d'image. \textsc{gimp} a été utile pour créer des \texttt{sprite}\footnote{Elément graphique qui peut se déplacer sur l'écran. Dans notre cas, cet élément était une simple image en deux dimensions} simples.
 
 En complément de \textsc{gimp} nous avons utilisé \texttt{XnView}, qui nous a permis de vérifier le formats de certains fichiers, et de convertir au bon format si besoin.
 
@@ -187,7 +187,7 @@ Enfin, nous avons utilisé \LaTeX\ pour la rédaction de ce rapport.
 
 \section{Formation au \textsc{Shine Engine}}
 
-Pour apprendre à utiliser le moteur, nous avons assisté aux formations au Shine Engine dispensées par Shine Research au Cub' à Essais, à l'incubateur d'entreprises innovantes de Franche-Comté, tous les jeudis à 17h pendant 10 semaines. Ces formations nous ont été utiles pour apprendre les bases du fonctionnement du Shine Engine et ainsi pouvoir maitriser par nous-même des fonctionnalités plus avancées.
+Pour apprendre à utiliser le moteur, nous avons assisté aux formations au \texttt{Shine Engine} dispensées par \texttt{Shine Research} au Cub' à Essais, à l'incubateur d'entreprises innovantes de Franche-Comté, tous les jeudis à 17h pendant 10 semaines. Ces formations nous ont été utiles pour apprendre les bases du fonctionnement du \texttt{Shine Engine} et ainsi pouvoir maitriser par nous-même des fonctionnalités plus avancées.
 
 \chapter{Réalisation}
 
@@ -195,35 +195,43 @@ Dans ce chapitre nous allons expliquer chaque élément constituant le jeu, que ce
 
 \section{Jeu ou Plugin ?}
 
-Pour réaliser ce projet, notre encadrant nous a demandé de développer le jeu non pas de manière classique mais en utilisant la fonctionnalité de plugin du Shine Engine. Nous avons donc développé les mécaniques de jeu en gardant en tête que la fonction de plugin permettait d'utiliser le plugin simplement en l'activant lors de la création d'un niveau, par exemple en utilisant l'éditeur de Shine, ce qui nous a poussé à développer de manière générique et non pas en fonction du niveau. Monsieur Grosdemouge nous a donné des sprites simples pour faire un niveau de test mais nous avons par la suite réalisé d'autres sprites pour faire d'autres niveaux afin de vérifier le bon fonctionnement du plugin.
+Pour réaliser ce projet, notre encadrant nous a demandé de développer le jeu non pas de manière classique mais en utilisant la fonctionnalité de \texttt{plugin} du \texttt{Shine Engine}. Nous avons donc développé les mécaniques de jeu en gardant en tête que la fonction de \texttt{plugin} permettait d'utiliser le plugin simplement en l'activant lors de la création d'un niveau, par exemple en utilisant l'éditeur de Shine, ce qui nous a poussé à développer de manière générique et non pas en fonction du niveau.
+
+Monsieur \textsc{Grosdemouge} nous a donné des \texttt{sprite} simples pour faire un niveau de test mais nous avons par la suite réalisé d'autres \texttt{sprite} pour faire d'autres niveaux afin de vérifier le bon fonctionnement du \texttt{plugin}.
 
 \section{Mécaniques de jeu}
 \subsection{Les personnages}
 
-Le plugin doit pouvoir gérer deux types de personnages: le personnage du joueur, contrôlé par ce dernier et le ou les personnages ennemis, qui disposent de leur propre IA.
-Pour cela nous avons crée une classe générique Character de laquelle hérite les classes Player et Enemy. Cette classe a pour grande utilité de permettre un traitement générique ainsi que la possibilité d'une modification générique. Ainsi lorsque nous avons voulu implémenter la gestion de la 3D, il nous a suffit d'ajouter un attribut à cette classe pour stocker le modèle 3D et le joueur ainsi que les ennemis ont été dotés de cet attribut.
-Un personnage peut posséder une arme et tirer avec celle-ci, nous détaillerons cela plus en détail dans la partie consacrée à la classe associée aux armes, à savoir la classe Gun.
+Le \texttt{plugin} doit pouvoir gérer deux types de personnages: le personnage du joueur, contrôlé par ce dernier et le ou les personnages ennemis, qui disposent de leur propre IA\footnote{\textbf{I}ntelligence \textbf{A}rtificielle}.
+Pour cela nous avons crée une classe générique \texttt{Character} de laquelle héritent les classes \texttt{Player} et \texttt{Enemy}. Cette classe a pour grande utilité de permettre un traitement générique ainsi que la possibilité d'une modification générique. Ainsi, lorsque nous avons voulu implémenter la gestion de la 3D, il nous a suffit d'ajouter un attribut à cette classe pour stocker le modèle 3D. Le joueur et les ennemis ont donc été dotés de cet attribut.
+
+Un personnage peut posséder une arme et tirer avec celle-ci, nous détaillerons cela plus en détail dans la partie consacrée à la classe associée aux \hyperlink{armes}{\textbf{armes}}, à savoir la classe \texttt{Gun}.
 Un personnage peut aussi mourir s'il entre en contact avec un projectile, exception faite des projectiles qu'il a tiré lui-même.
 
 \subsection{Le Joueur}
 
-Pour bien différencier le joueur des ennemis, et puisque les deux n'ont pas le même fonctionnement, nous avons crée une classe Player qui hérite de la classe Character, la rendant similaire donc à la classe Enemy mais dénué d'IA et contrôlé à l'aide des touches du clavier. Le joueur peut ainsi faire avancer son avatar avec la flèche haut ou la touche Z. Les touches flèche gauche (ou la touche Q) et flèche droite (ou la touche D) permettent d'effectuer une rotation respectivement vers la gauche ou la droite. Le joueur peut aussi reculer en utilisant la touche flèche bas (ou la touche S) mais se déplace dans ce cas à la moitié de sa vitesse. Initialement notre encadrant ne nous avait pas demandé de permettre au joueur de reculer mais nous avons rajouté cette fonctionnalité pour un meilleur confort de jeu après avoir fait quelques test lors de l'implémentation des projectiles et de la possibilité pour l'avatar de mourir.
+Pour bien différencier le joueur des ennemis, et puisque les deux n'ont pas le même fonctionnement, nous avons crée une classe \texttt{Player} qui hérite de la classe \texttt{Character}, la rendant donc similaire à la classe \texttt{Enemy} mais dénué d'IA et contrôlé à l'aide des touches du clavier.
+
+Le joueur peut ainsi faire avancer son avatar avec la flèche haut ou la touche Z. Les touches flèche gauche (ou la touche Q) et flèche droite (ou la touche D) permettent d'effectuer une rotation respectivement vers la gauche ou la droite. Le joueur peut aussi reculer en utilisant la touche flèche bas (ou la touche S) mais se déplace dans ce cas à la moitié de sa vitesse.
+
+Initialement, notre encadrant ne nous avait pas demandé de permettre au joueur de reculer mais nous avons rajouté cette fonctionnalité pour un meilleur confort de jeu après avoir fait quelques test lors de l'implémentation des projectiles et de la possibilité pour l'avatar de mourir\footnote{\textsl{Il est difficile d'esquiver les projectile si on ne peut pas revenir rapidement sur ses pas}}.
 
 \subsection{Les Ennemis}
 
-La classe Enemy permet de représenter un ennemi auquel le joueur peut-être confronté. Le plugin gère une liste d'ennemis pour représenter tous les ennemis d'un niveau. La classe Enemy héritant de la classe Character, un Enemy est sensiblement identique au joueur mais à un fonctionnement différent: en effet il est contrôlé par une IA.
+La classe \texttt{Enemy} permet de représenter un ennemi auquel le joueur peut-être confronté. Le \texttt{plugin} gère une liste d'ennemis pour représenter tous les ennemis d'un niveau. La classe \texttt{Enemy} héritant de la classe \texttt{Character}, un \texttt{Enemy} est sensiblement identique au joueur mais à un fonctionnement différent : il est contrôlé par une IA.
  
-L'IA ne fut pas simple à mettre au point bien qu'elle ait elle-même un fonctionnement simple: si l'ennemi ne voit pas le joueur, il reste sur place, si il le voit, il se déplace vers lui tout en tirant. L'IA est basée sur un automate à deux états, l'état attaque et l'état repos. L'état repos est son état par défaut et il passe en état d'attaque lorsqu'il voit le joueur.
+L'IA ne fut pas simple à mettre au point bien qu'elle ait elle-même un fonctionnement simple : si l'ennemi ne voit pas le joueur, il reste sur place, si il le voit, il se déplace vers lui tout en tirant. L'IA est basée sur un automate à deux états, l'état \texttt{attaque} et l'état \texttt{repos}. L'état \texttt{repos} est son état par défaut et il passe en état \texttt{attaque} lorsqu'il voit le joueur.
 
-L'ennemi possède un attribut Target qui représente la dernière position connue du joueur. A chaque update du jeu, le gestionaire de collisions va vérifier si l'ennemi a une ligne de vue directe sur le joueur. Si c'est le cas, il met à jour l'attribut Target de l'ennemi. Ce faisant, l'ennemi va passer en état d'attaque s'il ne l'est pas déjà et va se rendre jusqu'à la position cible tout en tirant en direction de celle-ci. Si en cours de chemin il perd sa ligne de vue directe avec le joueur, il se rendra tout de même à sa dernière position connue, ce qui peut lui permettre de voir à nous le joueur. Nous avons doté les ennemis d'une vision à 360° pour pouvoir repérer le joueur.
+L'ennemi possède un attribut \texttt{Target} qui représente la dernière position connue du joueur. A chaque \texttt{update} du jeu\footnote{Pour chaque image rendu du jeu, on effectue une \texttt{update}, c'est-à-dire qu'on met à jour tous les éléments qui composent le jeu (leur position, leur direction, leur état...)}, le gestionaire de collisions va vérifier si l'ennemi a une ligne de vue directe sur le joueur. Si c'est le cas, il met à jour l'attribut \texttt{Target} de l'ennemi. Ce faisant, l'ennemi va passer en état \texttt{attaque} s'il ne l'est pas déjà et va se rendre jusqu'à la position cible tout en tirant en direction de celle-ci. Si, en cours de chemin, il perd sa ligne de vue directe avec le joueur, il se rendra tout de même à sa dernière position connue, ce qui peut lui permettre de voir à nouveau le joueur. Nous avons doté les ennemis d'une vision à 360 degrés pour pouvoir repérer le joueur.
 
 \subsection{Les Armes}
+\hypertarget{armes}{}
 
 \section{Problèmes rencontrés}
 
 \subsection{Problèmes logiciels}
 
-Nous l'avons mentionné dans la partie \hyperlink{installation}{Installation} (page~\pageref{labelInstal}), trouver la version complète de \texttt{Microsoft Visual Studio 2010} n'a pas été tâche facile.
+Nous l'avons mentionné dans la partie \hyperlink{installation}{\textbf{Installation}} (page~\pageref{labelInstal}), trouver la version complète de \texttt{Microsoft Visual Studio 2010} n'a pas été tâche facile.
 
 Cependant, cela n'a pas été le plus important des problèmes logiciel que nous avons eu. En effet, il nous est arrivé par exemple de ne plus pouvoir lancer l'éditeur de \texttt{Shine} alors qu'il marchait auparavant, sans savoir pourquoi. Réinstaller l'éditeur, ou installer une version plus récente résolvait en général les problèmes rencontrés. Il nous est également arrivé de simplement ne pas du tout pouvoir faire fonctionner le \texttt{Shine Editor} sur un PC (la seule option était ici d'utiliser un autre PC).
 
