@@ -187,12 +187,37 @@ Enfin, nous avons utilisé \LaTeX\ pour la rédaction de ce rapport.
 
 \section{Formation au \textsc{Shine Engine}}
 
-\textcolor{red!100!black}{\lipsum[4] }
+Pour apprendre à utiliser le moteur, nous avons assisté aux formations au Shine Engine dispensées par Shine Research au Cub' à Essais, à l'incubateur d'entreprises innovantes de Franche-Comté, tous les jeudis à 17h pendant 10 semaines. Ces formations nous ont été utiles pour apprendre les bases du fonctionnement du Shine Engine et ainsi pouvoir maitriser par nous-même des fonctionnalités plus avancées.
 
 \chapter{Réalisation}
 
-\section{hi mom}
-\textcolor{red!100!black}{\lipsum[4] }
+Dans ce chapitre nous allons expliquer chaque élément constituant le jeu, que ce soit le joueur ou les ennemis, les armes et leurs munitions ou bien la gestion des collisions.
+
+\section{Jeu ou Plugin ?}
+
+Pour réaliser ce projet, notre encadrant nous a demandé de développer le jeu non pas de manière classique mais en utilisant la fonctionnalité de plugin du Shine Engine. Nous avons donc développé les mécaniques de jeu en gardant en tête que la fonction de plugin permettait d'utiliser le plugin simplement en l'activant lors de la création d'un niveau, par exemple en utilisant l'éditeur de Shine, ce qui nous a poussé à développer de manière générique et non pas en fonction du niveau. Monsieur Grosdemouge nous a donné des sprites simples pour faire un niveau de test mais nous avons par la suite réalisé d'autres sprites pour faire d'autres niveaux afin de vérifier le bon fonctionnement du plugin.
+
+\section{Mécaniques de jeu}
+\subsection{Les personnages}
+
+Le plugin doit pouvoir gérer deux types de personnages: le personnage du joueur, contrôlé par ce dernier et le ou les personnages ennemis, qui disposent de leur propre IA.
+Pour cela nous avons crée une classe générique Character de laquelle hérite les classes Player et Enemy. Cette classe a pour grande utilité de permettre un traitement générique ainsi que la possibilité d'une modification générique. Ainsi lorsque nous avons voulu implémenter la gestion de la 3D, il nous a suffit d'ajouter un attribut à cette classe pour stocker le modèle 3D et le joueur ainsi que les ennemis ont été dotés de cet attribut.
+Un personnage peut posséder une arme et tirer avec celle-ci, nous détaillerons cela plus en détail dans la partie consacrée à la classe associée aux armes, à savoir la classe Gun.
+Un personnage peut aussi mourir s'il entre en contact avec un projectile, exception faite des projectiles qu'il a tiré lui-même.
+
+\subsection{Le Joueur}
+
+Pour bien différencier le joueur des ennemis, et puisque les deux n'ont pas le même fonctionnement, nous avons crée une classe Player qui hérite de la classe Character, la rendant similaire donc à la classe Enemy mais dénué d'IA et contrôlé à l'aide des touches du clavier. Le joueur peut ainsi faire avancer son avatar avec la flèche haut ou la touche Z. Les touches flèche gauche (ou la touche Q) et flèche droite (ou la touche D) permettent d'effectuer une rotation respectivement vers la gauche ou la droite. Le joueur peut aussi reculer en utilisant la touche flèche bas (ou la touche S) mais se déplace dans ce cas à la moitié de sa vitesse. Initialement notre encadrant ne nous avait pas demandé de permettre au joueur de reculer mais nous avons rajouté cette fonctionnalité pour un meilleur confort de jeu après avoir fait quelques test lors de l'implémentation des projectiles et de la possibilité pour l'avatar de mourir.
+
+\subsection{Les Ennemis}
+
+La classe Enemy permet de représenter un ennemi auquel le joueur peut-être confronté. Le plugin gère une liste d'ennemis pour représenter tous les ennemis d'un niveau. La classe Enemy héritant de la classe Character, un Enemy est sensiblement identique au joueur mais à un fonctionnement différent: en effet il est contrôlé par une IA.
+ 
+L'IA ne fut pas simple à mettre au point bien qu'elle ait elle-même un fonctionnement simple: si l'ennemi ne voit pas le joueur, il reste sur place, si il le voit, il se déplace vers lui tout en tirant. L'IA est basée sur un automate à deux états, l'état attaque et l'état repos. L'état repos est son état par défaut et il passe en état d'attaque lorsqu'il voit le joueur.
+
+L'ennemi possède un attribut Target qui représente la dernière position connue du joueur. A chaque update du jeu, le gestionaire de collisions va vérifier si l'ennemi a une ligne de vue directe sur le joueur. Si c'est le cas, il met à jour l'attribut Target de l'ennemi. Ce faisant, l'ennemi va passer en état d'attaque s'il ne l'est pas déjà et va se rendre jusqu'à la position cible tout en tirant en direction de celle-ci. Si en cours de chemin il perd sa ligne de vue directe avec le joueur, il se rendra tout de même à sa dernière position connue, ce qui peut lui permettre de voir à nous le joueur. Nous avons doté les ennemis d'une vision à 360° pour pouvoir repérer le joueur.
+
+\subsection{Les Armes}
 
 \section{Problèmes rencontrés}
 
@@ -215,13 +240,13 @@ La seule chose dont on pouvait s'aider était les fichiers d'entête dans les doss
 
 Bien sûr, quand on ne pouvait plus avancer, nous avons pris contact avec l'équipe de \texttt{Shine}. Cependant, la réponse n'étant évidemment pas immédiate, il nous est arrivé de rester bloquer des après-midis entiers à essayer de faire marcher un bout de code.
 
-\textcolor{red!100!black}{\lipsum[4] }
-
 
 
 \chapter{Bilan}
 
-\textcolor{red!100!black}{\lipsum[4] }
+\subsection{Optimisations Possibles}
+
+Ennemis avec cône de vision
 
 \printglossaries
 
