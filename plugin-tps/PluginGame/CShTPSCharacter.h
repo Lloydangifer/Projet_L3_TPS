@@ -33,8 +33,11 @@ public:
 	void						SetSpeed					(float speed);
 	float						GetSpeed					(void);
 
-	void						SetSprite					(ShObject * sprite);
-	ShObject *					GetSprite					(void);
+	void						SetSprite					(ShEntity2 * sprite);
+	ShEntity2 *					GetSprite					(void);
+
+	void						SetModel					(ShEntity3 * model);
+	ShEntity3 *					GetModel					(void);
 
 	void						SetCharacterController		(ShCharacterController * charactercontroller);
 	ShCharacterController *		GetCharacterController		(void);
@@ -48,7 +51,8 @@ protected:
 	CShVector2					m_Position;
 	CShVector2					m_Direction;	
 	float						m_Speed;
-	ShObject *					m_pSprite;
+	ShEntity2 *					m_pSprite;
+	ShEntity3 *					m_pModel;
 	ShAnimation *				m_pAnimIdle;
 	ShAnimation *				m_pAnimRun;
 	ShAnimation *				m_pAnimAttack;

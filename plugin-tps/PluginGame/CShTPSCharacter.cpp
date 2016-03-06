@@ -5,6 +5,7 @@ CShTPSCharacter::CShTPSCharacter(void)
 , m_Direction(0.0f,1.0f)
 , m_Speed(0.0f)
 , m_pSprite(shNULL)
+, m_pModel(shNULL)
 , m_pAnimIdle(shNULL)
 , m_pAnimRun(shNULL)
 , m_pCharacterController(shNULL)
@@ -20,8 +21,17 @@ CShTPSCharacter::~CShTPSCharacter(void)
 
 void CShTPSCharacter::Initialize(const CShIdentifier & levelIdentifier, CShTPSGun * defaultGun)
 {
-	//set the position of the Character to the position of the sprite
-	m_Position = ShObject::GetPosition2(m_pSprite);
+	//set the position of the Character to the position of the sprite or the model if 3d
+	if (m_3d)
+	{
+		m_Position = ShObject::GetPosition2(m_pModel);
+	}
+	else
+	{
+		m_Position = ShObject::GetPosition2(m_pSprite);
+	}
+
+	
 	m_Direction = CShVector2(0.0f,1.0f);
 	m_pGun = defaultGun;
 	m_pGun->Initialize(levelIdentifier, this);
@@ -29,6 +39,12 @@ void CShTPSCharacter::Initialize(const CShIdentifier & levelIdentifier, CShTPSGu
 
 void CShTPSCharacter::Update(float dt)
 {
+	if (m_Alive) // test
+	{
+		ShObject::SetShow(m_pSprite, true);
+	}
+
+
 	if(m_pGun->GetCoolDown() < m_pGun->GetFireRate())
 	{
 		m_pGun->AddToCoolDown(dt);
@@ -42,17 +58,29 @@ void CShTPSCharacter::Update(float dt)
 	m_Position = ShCharacterController::GetPosition(m_pCharacterController);
 	ShObject::SetPositionX(m_pSprite,m_Position.m_x);
 	ShObject::SetPositionY(m_pSprite,m_Position.m_y);
+
+	if (m_3d)
+	{
+		ShObject::SetPositionX(m_pModel,m_Position.m_x);
+		ShObject::SetPositionY(m_pModel,m_Position.m_y);
+	}
 }
 
 CShTPSAmmo * CShTPSCharacter::Shoot(void)
 {
 	m_pGun->SetCoolDown(0.0f);
-	CShEulerAngles rotation = ShObject::GetRotation(m_pSprite);
-	CShVector2 position = m_Position;
-	if(ShObject::e_type_entity2 == ShObject::GetType(m_pSprite))
+	CShEulerAngles rotation;
+	if(m_3d)
 	{
-		CShVector2 position(m_Position.m_x + (m_Direction.m_x * (ShEntity2::GetHeight((ShEntity2 *)m_pSprite)/2)), m_Position.m_y + (m_Direction.m_y * (ShEntity2::GetHeight((ShEntity2 *)m_pSprite)/2)));
+		rotation = ShObject::GetRotation(m_pModel);
 	}
+	else
+	{
+		rotation = ShObject::GetRotation(m_pSprite);
+	}
+	
+	CShVector2 position(m_Position.m_x + (m_Direction.m_x * (ShEntity2::GetHeight(m_pSprite)/2)), m_Position.m_y + (m_Direction.m_y * (ShEntity2::GetHeight(m_pSprite)/2)));
+ 
 	return m_pGun->Shoot(position, m_Direction, rotation);
 }
 
@@ -75,6 +103,10 @@ void CShTPSCharacter::death(void)
 {
 	m_Alive = false;
 	ShObject::SetShow(m_pSprite, false);
+	if (m_3d)
+	{
+		ShObject::SetShow(m_pModel, false);
+	}
 	ShCharacterController::Disable(m_pCharacterController);
 }
 
@@ -113,14 +145,24 @@ float CShTPSCharacter::GetSpeed(void)
 	return m_Speed;
 }
 
-void CShTPSCharacter::SetSprite(ShObject * sprite)
+void CShTPSCharacter::SetSprite(ShEntity2 * sprite)
 {
 	m_pSprite = sprite;
 }
 
-ShObject * CShTPSCharacter::GetSprite (void)
+ShEntity2 * CShTPSCharacter::GetSprite (void)
 {
 	return m_pSprite;
+}
+
+void CShTPSCharacter::SetModel(ShEntity3 * model)
+{
+	m_pModel = model;
+}
+
+ShEntity3 * CShTPSCharacter::GetModel (void)
+{
+	return m_pModel;
 }
 
 void CShTPSCharacter::SetCharacterController(ShCharacterController * charactercontroller)

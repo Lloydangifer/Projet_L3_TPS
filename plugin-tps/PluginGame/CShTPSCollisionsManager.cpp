@@ -51,14 +51,13 @@ void CShTPSCollisionsManager::CheckBulletCharacterCollision(CShTPSAmmo* bullet, 
 {
 	if(bullet->GetOrigin() != character)
 	{
-		if(!character->Is3D() && !bullet->Is3D())
+		
+		if(ShEntity2::Intersect(bullet->GetSprite(),character->GetSprite()))
 		{
-			if(ShEntity2::Intersect((ShEntity2 *)bullet->GetSprite(),(ShEntity2 *)character->GetSprite()))
-			{
-				bullet->SetMoving(false);
-				character->death();
-			}
+			bullet->SetMoving(false);
+			character->death();
 		}
+		
 	}
 }
 

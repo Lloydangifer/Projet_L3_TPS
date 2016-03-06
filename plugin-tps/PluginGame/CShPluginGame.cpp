@@ -129,11 +129,18 @@ void CShPluginGame::OnPlayStart(const CShIdentifier & levelIdentifier)
 		CShString enemyCharacterControlleridentifier(ENEMY_CHARACTERCONTROLLER_NAME);
 		enemyIdentifier += CShString::FromInt(nbEnemies);
 		enemyCharacterControlleridentifier += CShString::FromInt(nbEnemies);
-		ShObject * pEnemySprite;
+		
+		ShEntity2 * pEnemySprite;
 		pEnemySprite = ShEntity2::Find(levelIdentifier, CShIdentifier(enemyIdentifier));
-		if(shNULL == pEnemySprite) // if there is no 2D sprite, the game search for a 3D model
+		ShEntity3 * pEnemyModel = shNULL;
+		if(shNULL == pEnemySprite) // if there is no 2D sprite, the game searches for a 3D model, and creates its 2D equivalent to manage collision between 2D stuff
 		{
-			pEnemySprite = ShEntity3::Find(levelIdentifier, CShIdentifier(enemyIdentifier));
+			pEnemyModel = ShEntity3::Find(levelIdentifier, CShIdentifier(enemyIdentifier));
+			if(shNULL != pEnemyModel)
+			{
+				//CShString enemyIdentifierForced2D = enemyIdentifier + "forced_2D_" + CShString::FromInt(nbEnemies);
+				pEnemySprite = ShEntity2::Create(levelIdentifier, CShIdentifier(), GID(layer_default), CShIdentifier("tps"), CShIdentifier("enemy"), CShVector3(0.0f,0.0f,1.0f), CShEulerAngles(0.0f, 0.0f, 0.0f), CShVector3(1.0f, 1.0f, 1.0f));
+			}
 		}
 		if(shNULL == pEnemySprite) // if there is no more enemies in the level we stop the research
 		{
@@ -143,7 +150,7 @@ void CShPluginGame::OnPlayStart(const CShIdentifier & levelIdentifier)
 		{
 			CShTPSGun * pEnemyGun = new CShTPSGun(DESERT_EAGLE_POWER, CShString(DESERT_EAGLE_NAME), DESERT_EAGLE_FIRERATE);
 			CShTPSEnemy * enemy = new CShTPSEnemy();
-			enemy->Initialize(m_levelIdentifier, pEnemyGun, pEnemySprite, enemyCharacterControlleridentifier);
+			enemy->Initialize(m_levelIdentifier, pEnemyGun, pEnemySprite, enemyCharacterControlleridentifier, pEnemyModel);
 			m_aEnemies.Add(enemy);
 		}
 	}
@@ -227,6 +234,7 @@ void CShPluginGame::OnPostUpdate(float dt)
 		direction.Rotate(ROTATION_SPEED);
 		m_pTpsPlayer->SetDirection(direction);
 		ShEntity2::Rotate(m_pTpsPlayer->GetSprite(),CShEulerAngles(0, 0, ROTATION_SPEED));
+		ShEntity3::Rotate(m_pTpsPlayer->GetModel(),CShEulerAngles(0, 0, ROTATION_SPEED));
 	}
 	
 	if (ShInput::GetValue(g_pInputRight) > 0.2f || ShInput::GetValue(g_pInputD) > 0.2f)
@@ -235,6 +243,7 @@ void CShPluginGame::OnPostUpdate(float dt)
 		direction.Rotate(-ROTATION_SPEED);
 		m_pTpsPlayer->SetDirection(direction);
 		ShEntity2::Rotate(m_pTpsPlayer->GetSprite(),CShEulerAngles(0, 0, -ROTATION_SPEED));
+		ShEntity3::Rotate(m_pTpsPlayer->GetModel(),CShEulerAngles(0, 0, -ROTATION_SPEED));
 	}
 
 	if (ShInput::GetValue(g_pInputShoot) > 0.2f)
