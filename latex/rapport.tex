@@ -229,35 +229,35 @@ L'ennemi possède un attribut \texttt{Target} qui représente la dernière position
 \subsection{Les Armes}
 \hypertarget{armes}{}
 
-Déjà évoquée plus haut, la classe Gun est la classe représentant les armes dans le plugin. Une arme est détenue par un personnage et possède plusieurs attributs notables.
+Déjà évoquée plus haut, la classe \texttt{Gun} est la classe représentant les armes dans le \texttt{plugin}. Une arme est détenue par un personnage et possède plusieurs attributs notables.
 
- Elle dispose d'un nom; d'un chargeur contenant des munitions (6 par défaut); une puissance, qui correspond à la vitesse de déplacement donnée aux balles tirées par l'arme; ainsi qu'une cadence de tir et son temps de rechargement associé. Le nom n'est actuellement pas utilisé mais pourrait servir pour d'éventuellement améliorations futures. Sa cadence de tir permet de s'assurer que le joueur ou les ennemis peuvent tirer plus ou moins vite en fonction de l'arme qu'ils possèdent. Lors du lancement du plugin, l'arme va créer ses munitions de départ et les stocker dans son chargeur, prêtes à être utilisées.
+Elle dispose d'un \textsl{nom}; d'un \textsl{chargeur} contenant des munitions (6 par défaut); une \textsl{puissance}, qui correspond à la vitesse de déplacement donnée aux balles tirées par l'arme; ainsi qu'une \textsl{cadence de tir} et son \textsl{temps de rechargement} associé. Le nom n'est actuellement pas utilisé mais pourrait servir pour d'éventuelles améliorations futures. Sa cadence de tir permet de s'assurer que le joueur ou les ennemis peuvent tirer plus ou moins vite en fonction de l'arme qu'ils possèdent. Lors du lancement du \texttt{plugin}, l'arme va créer ses munitions de départ et les stocker dans son chargeur, prêtes à être utilisées.
 
-Une arme dispose d'une fonction Shoot, utilisée lors de l'appel à la fonction du même nom du personnage qui possède l'arme, et qui renvoie une munition, prête à se déplacer dans le niveau. Lors de l'appel à cet fonction, la munition ainsi préparée sera alors placée dans la liste de munitions actuellement en mouvement dans le niveau et retirée du chargeur de l'arme, empêchant sa réutilisation avant qu'elle n'ait rencontré un obstacle.
+Une arme dispose d'une fonction \texttt{Shoot}, utilisée lors de l'appel à la fonction du même nom du personnage qui possède l'arme, et qui renvoie une munition, prête à se déplacer dans le niveau. Lors de l'appel à cet fonction, la munition ainsi préparée sera alors placée dans la liste de munitions actuellement en mouvement dans le niveau et retirée du chargeur de l'arme, empêchant sa réutilisation avant qu'elle n'ait rencontré un obstacle.
 
 \subsection{Les Munitions}
 
-La classe Ammo permet de représenter les munitions. Ces munitions possèdent divers attributs: une position, correspondant à leur position dans le niveau; une direction, correspondant au sens dans lequel elle se déplacent; une vitesse, qui correspond à leur vitesse de déplacement; un sprite, si le niveau est en 2D; un modèle, si le niveau est en 3D; un booléen Moving qui permet de savoir si elle sont en cours de déplacement ou pas; une origine, qui désigne quel personnage a tiré la munition; et un booléen qui indique si la munition est en 3D ou pas.
+La classe \texttt{Ammo} permet de représenter les munitions. Ces munitions possèdent divers attributs: une \textsl{position}, correspondant à leur position dans le niveau; une \textsl{direction}, correspondant au sens dans lequel elles se déplacent; une \textsl{vitesse}, qui correspond à leur vitesse de déplacement; un \textsl{sprite}, si le niveau est en 2D; un \textsl{modèle}, si le niveau est en 3D; un booléen \textsl{Moving} qui permet de savoir si elle sont en cours de déplacement ou pas; une \textsl{origine}, qui désigne quel personnage a tiré la munition; et un booléen qui indique si la munition est en \textsl{3D} ou pas.
 
-La position et la direction de la munition sont données à celle-ci lorsqu'elle est tirée par le joueur, ladite munition apparait au bout du sprite du joueur et se dirige dans la direction où il regarde au moment où il a tiré, puis se déplace normalement, indépendamment du joueur. La vitesse est donnée par l'arme au moment du tir. Le booléen Moving permet de savoir si la munition a rencontré un obstacle et donc si elle peut être remise dans le chargeur. L'origine de la munition est le personnage qui a tiré celle-ci, cela permet au personnage de ne pas se faire tuer par son propre projectile.
+La position et la direction de la munition sont données à celle-ci lorsqu'elle est tirée par le joueur, ladite munition apparait au bout du \texttt{sprite} du joueur et se dirige dans la direction où il regarde au moment où il a tiré, puis se déplace normalement, indépendamment du joueur. La vitesse est donnée par l'arme au moment du tir. Le booléen \texttt{Moving} permet de savoir si la munition a rencontré un obstacle et donc si elle peut être remise dans le chargeur. L'origine de la munition est le personnage qui a tiré celle-ci, cela permet au personnage de ne pas se faire tuer par son propre projectile.
 
 \subsection{La Caméra}
 
-La classe Camera est la classe permettant de gérer la caméra du jeu et donc la vue que peut avoir le joueur sur le niveau.
+La classe \texttt{Camera} est la classe permettant de gérer la caméra du jeu et donc la vue que peut avoir le joueur sur le niveau.
 
-Cette classe fut plutôt simple à faire grâce au Shine Engine qui dispose déjà d'une classe permettant de gérer une caméra. Notre caméra se contente d'encapsuler celle du Shine Engine en créant toutefois quelques fonctions qui permettent un positionnement simple de ladite caméra pour correspondre à l'utilité dont peut en faire un TPS.
+Cette classe fut plutôt simple à faire grâce au \texttt{Shine Engine} qui dispose déjà d'une classe permettant de gérer une caméra. Notre caméra se contente d'encapsuler celle du \texttt{Shine Engine} en créant toutefois quelques fonctions qui permettent un positionnement simple de ladite caméra pour correspondre à l'utilité dont peut en faire un TPS.
 
-La caméra à 3 modes: un mode vue de dessus, qui suit le joueur quand il se déplace tout en permettant d'avoir une bonne vision de ce qui se trouve autour de lui, pratique pour les niveaux en 2D; un mode de vue TPS, qui se place derrière le joueur; et un mode de vue haute, qui est proche de la vue du dessus mais dans lequel le joueur reste immobile et c'est le monde qui défile par rapport à lui. On peut passer d'un mode à l'autre grâce à la touche C. Il y a aussi possibilité d'augmenter ou de diminuer le Fov lorsqu'on est en mode caméra TPS avec les touches + et - .
+La caméra a 3 modes: un mode \textsl{vue de dessus}, qui suit le joueur quand il se déplace tout en permettant d'avoir une bonne vision de ce qui se trouve autour de lui, pratique pour les niveaux en 2D; un \textsl{mode de vue TPS}, qui se place derrière le joueur; et un \textsl{mode de vue haute}, qui est proche de la vue du dessus mais dans lequel le joueur reste immobile et c'est le monde qui défile par rapport à lui. On peut passer d'un mode à l'autre grâce à la touche C. Il y a aussi possibilité d'augmenter ou de diminuer le champs de vision\footnote{En anglais : \textbf{FOV} : \textbf{F}ield \textbf{O}f \textbf{V}iew} lorsqu'on est en mode caméra TPS avec les touches + et - .
 
 \subsection{Le Gestionnaire de collisions}
 
-Le gestionnaire de collisions est représenté grâce à la classe CollisionManager. C'est cette classe qui va gérer toutes les collisions du plugin, que ce soit les personnages et les munitions, les munitions et les murs ou bien le champs de vision de ennemis.
+Le gestionnaire de collisions est représenté grâce à la classe \texttt{CollisionManager}. C'est cette classe qui va gérer toutes les collisions du \texttt{plugin}, que ce soit les personnages et les munitions, les munitions et les murs ou bien le champs de vision de ennemis.
 
-La classe possède deux attributs: une liste de CollisionShape et le nombre de CollisionShape contenus dans cette liste. Une explication des CollisionsShape et de la gestion des collisions dans le plugin est donnée dans la prochaine partie, consacrée à la gestion des collisions.
+La classe possède deux attributs: une liste de \texttt{CollisionShape} et le nombre de \texttt{CollisionShape} contenus dans cette liste. Une explication des \texttt{CollisionsShape} et de la gestion des collisions dans le \texttt{plugin} est donnée dans la \hyperlink{gest_coll}{\textbf{prochaine partie}}, consacrée à la gestion des collisions.
 
 \section{Mécaniques de jeu}
 \subsection{Gestion des collisions}
-
+\hypertarget{gest_coll}{}
 \section{Problèmes rencontrés}
 
 \subsection{Problèmes logiciels}
