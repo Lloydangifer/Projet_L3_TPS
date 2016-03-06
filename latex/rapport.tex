@@ -121,15 +121,9 @@ Pour comprendre l'intérêt que nous portions à ce sujet, il faut nous pencher sur
 
 \section{Les Third-Person Shooter}
 
-Un TPS (Third-Person Shooter ou jeu de tir à la troisième personne en français) est un sous-genre des jeux de tir et donc des jeux d'action. Les jeux de tir mettent souvent la rapidité et la réactivité du joueur à l'épreuve. L'objectif de ce genre de jeu est de vaincre ses ennemis en utilisant une arme de tir. La particularité des \texttt{TPS}\footnote{\textbf{T}hird-\textbf{P}erson \textbf{S}hooter} est que le joueur voit son personnage de manière externe contrairement aux \texttt{FPS}\footnote{\textbf{F}irst-\textbf{P}erson \textbf{S}hooter : Jeu de tir à la 1\up{ère} personne} où le joueur voit à travers les yeux de son personnage.
+Un TPS (Third-Person Shooter ou jeu de tir à la troisième personne en français) est un sous-genre des jeux de tir et donc des jeux d'action. Les jeux de tir mettent souvent la rapidité et la réactivité du joueur à l'épreuve. L'objectif de ce genre de jeu est de vaincre ses ennemis en utilisant une arme de tir. La particularité des \texttt{TPS}\footnote{\textbf{T}hird-\textbf{P}erson \textbf{S}hooter} est que le joueur voit son personnage de manière externe contrairement aux \texttt{FPS}\footnote{\textbf{F}irst-\textbf{P}erson \textbf{S}hooter : Jeu de tir à la 1\up{ère} personne} où le joueur voit à travers les yeux de son personnage. (Voir Figure~\ref{fig:re4} page~\pageref{fig:re4})
 
-\begin{figure}[!h] %on ouvre l'environnement figure
-\centering
-\includegraphics[width=7cm]{re4_1.jpg} %ou image.png, .jpeg etc.
-\caption{Un exemple de \texttt{TPS} : Resident Evil 4} %la légende
-\label{re4} %l'étiquette pour faire référence à cette image
-\end{figure} %on ferme l'environnement figure
-
+\pagebreak
 \section{Les moteurs de jeu}
 
 ``Un moteur de jeu est un ensemble de composants logiciels qui effectuent des calculs de géométrie et de physique utilisés dans les jeux vidéo. L'ensemble forme un simulateur en temps réel souple qui reproduit les caractéristiques des mondes imaginaires dans lesquels se déroulent les jeux. Le but visé par un moteur de jeu est de permettre à une équipe de développement de se concentrer sur le contenu et le déroulement du jeu plutôt que la résolution de problèmes informatiques.''
@@ -137,9 +131,9 @@ Un TPS (Third-Person Shooter ou jeu de tir à la troisième personne en français) 
 -- \href{https://fr.wikipedia.org/wiki/Moteur_de_jeu}{\textsl{Définition Wikipédia}}
 \end{flushright}
 
-\section{Le \texttt{Shine Engine}}
+\section{Le \textbc{Shine Engine}}
 
-Le \texttt{Shine Engine} est un moteur de jeu créé par notre encadrant, Monsieur Sylvain \textsc{Grosdemouge}. Monsieur \textsc{Grosdemouge} a commencé le développement du \texttt{Shine Engine} en 2005 et en 2012 est sorti \textsc{R.A.W.}(Realm Of Ancient War), premier jeu développé en utilisant le \texttt{Shine Engine}. Ce moteur de jeu est développé en C++ et permet de faire du développement multi-plateforme. Il permet aussi de gérer facilement la 3D ce qui permet de s'affranchir de beaucoup de limites pour le développement d'un jeu. De plus le moteur fonctionne avec un éditeur de niveau, le Shine Game Editor, qui facilement grandement la création de niveaux.
+Le \texttt{Shine Engine} est un moteur de jeu créé par notre encadrant, Monsieur Sylvain \textsc{Grosdemouge}. Monsieur \textsc{Grosdemouge} a commencé le développement du \texttt{Shine Engine} en 2005 et en 2012 est sorti \textsc{R.A.W.}(Realm Of Ancient War), premier jeu développé en utilisant le \texttt{Shine Engine}. Ce moteur de jeu est développé en C++ et permet de faire du développement multi-plateforme. Il permet aussi de gérer facilement la 3D ce qui permet de s'affranchir de beaucoup de limites pour le développement d'un jeu. De plus le moteur fonctionne avec un éditeur de niveau, le Shine Game Editor, qui facilement grandement la création de niveaux. (Voir Figure~\ref{fig:raw} page~\pageref{fig:raw})
 
 \section{Le Projet}
 
@@ -147,9 +141,16 @@ Les trois éléments cités précédemment rendaient pour nous le projet attrayant: l
 
 \begin{figure}[!h] %on ouvre l'environnement figure
 \centering
-\includegraphics[width=6cm]{raw-03.jpg} %ou image.png, .jpeg etc.
-\caption{ \textsc{Realm Of Ancient War}} %la légende
-\label{re4} %l'étiquette pour faire référence à cette image
+\includegraphics[width=16cm]{re4_1.jpg} %ou image.png, .jpeg etc.
+\caption{Un exemple de \texttt{TPS} : Resident Evil 4} %la légende
+\label{fig:re4} %l'étiquette pour faire référence à cette image
+\end{figure} %on ferme l'environnement figure
+
+\begin{figure}[!h] %on ouvre l'environnement figure
+\centering
+\includegraphics[width=16cm]{raw-03.jpg} %ou image.png, .jpeg etc.
+\caption{ \textsc{Realm Of Ancient War}, un jeu réalisé avec le \texttt{Shine Engine}} %la légende
+\label{fig:raw} %l'étiquette pour faire référence à cette image
 \end{figure} %on ferme l'environnement figure
 
 \chapter{Préparation}
@@ -219,6 +220,8 @@ Le joueur peut ainsi faire avancer son avatar avec la flèche haut ou la touche Z
 Initialement, notre encadrant ne nous avait pas demandé de permettre au joueur de reculer mais nous avons rajouté cette fonctionnalité pour un meilleur confort de jeu après avoir fait quelques test lors de l'implémentation des projectiles et de la possibilité pour l'avatar de mourir\footnote{\textsl{Il est difficile d'esquiver les projectile si on ne peut pas revenir rapidement sur ses pas}}.
 
 \subsection{Les Ennemis}
+\hypertarget{enemis}{}
+\label{labelEnemis}
 
 La classe \texttt{Enemy} permet de représenter un ennemi auquel le joueur peut-être confronté. Le \texttt{plugin} gère une liste d'ennemis pour représenter tous les ennemis d'un niveau. La classe \texttt{Enemy} héritant de la classe \texttt{Character}, un \texttt{Enemy} est sensiblement identique au joueur mais à un fonctionnement différent : il est contrôlé par une IA.
  
@@ -250,53 +253,68 @@ Cette classe fut plutôt simple à faire grâce au \texttt{Shine Engine} qui dispos
 La caméra a 3 modes: un mode \textsl{vue de dessus}, qui suit le joueur quand il se déplace tout en permettant d'avoir une bonne vision de ce qui se trouve autour de lui, pratique pour les niveaux en 2D; un \textsl{mode de vue TPS}, qui se place derrière le joueur; et un \textsl{mode de vue haute}, qui est proche de la vue du dessus mais dans lequel le joueur reste immobile et c'est le monde qui défile par rapport à lui. On peut passer d'un mode à l'autre grâce à la touche C. Il y a aussi possibilité d'augmenter ou de diminuer le champs de vision\footnote{En anglais : \textbf{FOV} : \textbf{F}ield \textbf{O}f \textbf{V}iew} lorsqu'on est en mode caméra TPS avec les touches + et - .
 
 \subsection{Le Gestionnaire de collisions}
+\hypertarget{gest_coll}{}
 
 Le gestionnaire de collisions est représenté grâce à la classe \texttt{CollisionsManager}. C'est cette classe qui va gérer toutes les collisions du \texttt{plugin}, que ce soit les personnages et les munitions, les munitions et les murs ou bien le champs de vision de ennemis.
 
 La classe possède deux attributs: une liste de \texttt{CollisionShape} et le nombre de \texttt{CollisionShape} contenus dans cette liste. Une explication des \texttt{CollisionsShape} et de la gestion des collisions dans le \texttt{plugin} est donnée dans la \hyperlink{gest_coll}{\textbf{prochaine partie}}, consacrée à la gestion des collisions.
 
+
+\pagebreak
 \section{Mécaniques de jeu}
 
-Dans cette partie nous allons expliquer le fonctionnement de la gestion des collisions dans le plugin ainsi que le fonctionnement des mécaniques de jeu du plugin.
+Dans cette partie nous allons expliquer le fonctionnement de la gestion des collisions dans le \texttt{plugin} ainsi que le fonctionnement des mécaniques de jeu du \texttt{plugin}.
 
 \subsection{Gestion des collisions}
 
-La partie de gestion des collisions nous fut grandement simplifiée grâce au Shine Engine et notamment grâce à 3 fonctionnalités de celui-ci:
+La partie de gestion des collisions nous fut grandement simplifiée grâce au \texttt{Shine Engine} et notamment grâce à 3 fonctionnalités de celui-ci:
 
--Les CollisionShape: il s'agit de sortes de segments qui servent dans le moteur notamment pour faire office de murs physiques. Ils peuvent également être placés directement depuis l'éditeur, ce qui en fait un outil très pratique pour les collisions avec le décor.
+\begin{itemize}  
 
--Le Character Controller: il s'agit d'une classe qui intègre nativement les collisions entre elle et les CollisionShape ainsi qu'entre les différentes instances de la classe, empêchant ainsi un Character Controller de passer à travers un autre Character Controller ou à travers un CollisionShape.
 
--La fonction Intersect pour les entités 2D: Il s'agit d'une fonction qui permet de savoir si deux entités 2D, basiquement des sprites, se croisent.
+\item Les \texttt{CollisionShape}: il s'agit de sortes de segments qui servent dans le moteur notamment pour faire office de murs physiques. Ils peuvent également être placés directement depuis l'éditeur, ce qui en fait un outil très pratique pour les collisions avec le décor.
 
-Grâce à ces 3 éléments, peu de travail sur les collisions restaient à faire. Nous avons doté la classe Character d'un attribut de type Character Controller et à partir de la, aucun personnage ne pouvait passer à travers un mur, mur représenté par un CollisionShape, ou à travers un autre personnage. Pour gérer la collision entre les munitions se déplaçant dans le monde et un personnage, la fonction Intersect est utilisée pour voir si les deux sprites se touchent ou se croisent.
+\item Le \texttt{Character Controller}: il s'agit d'une classe qui intègre nativement les collisions entre elle et les \texttt{CollisionShape} ainsi qu'entre les différentes instances de la classe, empêchant ainsi un \texttt{Character Controller} de passer à travers un autre \texttt{Character Controller} ou à travers un \texttt{CollisionShape}.
 
-Il nous restait donc à gérer les collisions entre les munitions et les CollisionShape ainsi que les lignes de vue des ennemis.
+\item La fonction \texttt{Intersect} pour les entités 2D: il s'agit d'une fonction qui permet de savoir si deux entités 2D, c'est-à-dire des \texttt{sprite}, se croisent.
+
+\end{itemize}
+
+Grâce à ces 3 éléments, peu de travail sur les collisions restaient à faire. Nous avons doté la classe \texttt{Character} d'un attribut de type \texttt{Character Controller} et à partir de là, aucun personnage ne pouvait passer à travers un mur (représenté par un \texttt{CollisionShape}), ou à travers un autre personnage. Pour gérer la collision entre les munitions se déplaçant dans le monde et un personnage, la fonction \texttt{Intersect} est utilisée pour voir si les deux \texttt{sprite} se touchent ou se croisent.
+
+
+Il nous restait donc à gérer les collisions entre les munitions et les \texttt{CollisionShape} ainsi que les lignes de vue des ennemis.
 
 De ce fait pour gérer ces collisions le gestionnaire de collisions procède ainsi: 
 
--Pour les munitions et les CollisionShape, il vérifie si il y a intersection entre le CollisionShape et la trajectoire de la balle entre sa position actuelle et sa position après déplacement.
+\begin{itemize}
+\item Pour les munitions et les \texttt{CollisionShape}, il vérifie si il y a intersection entre le \texttt{CollisionShape} et la trajectoire de la balle entre sa position actuelle et sa position après déplacement.
 
--Pour les lignes de vue entre les ennemis et le joueur, pour chaque ennemi, le gestionnaire vérifie si il y a un CollisionShape (un mur) entre le joueur et l'ennemi. Si ce n'est pas le cas alors l'ennemi à une ligne de vue directe sur le joueur et peut donc passer en état d'attaque./*TODO mettre une note de bas de page indiquant "pour plus de détails concernant le comportement des ennemis, reportez-vous à la section correspondante" avec lien vers ladite section et numéro de page de ladite section*/
+\item Pour les lignes de vue entre les ennemis et le joueur, pour chaque ennemi, le gestionnaire vérifie si il y a un \texttt{CollisionShape} (un mur) entre le joueur et l'ennemi. Si ce n'est pas le cas alors l'ennemi a une ligne de vue directe sur le joueur et peut donc passer en état \texttt{attaque}.\footnote{Pour plus de détails concernant le comportement des ennemis, reportez-vous à la \hyperlink{enemis}{\textbf{section correspondante}} (page \pageref{labelEnemis})}
 
-Pour les collisions en 3D, et par souci de simplicité pour le développement du projet, le gestionnaire va utiliser les sprites 2D associés à chaque éléments. Pour comprendre comment il peut faire cela, intéressons-nous à la prochaine partie consacrée au fonctionnement du plugin.
+\end{itemize}
 
-\subsection{Fonctionnement du plugin}
+\pagebreak
 
-Maintenant que nous avons vus les divers éléments constituant le plugin ainsi que la gestion des collisions, nous pouvons nous intéresser au fonctionnement du plugin.
+Pour les collisions en 3D, et par souci de simplicité pour le développement du projet, le gestionnaire va utiliser les \texttt{sprite} 2D associés à chaque élément. Pour comprendre comment il peut faire cela, intéressons-nous à la prochaine partie, consacrée au fonctionnement du \texttt{plugin}.
 
-Le plugin fonctionne en deux temps. Tout d'abord lors de l'appel à la fonction OnPlayStart du Shine Engine, puis lors de l'appel à la fonction OnPostUpdate du moteur de jeu. De plus le plugin est conçu pour fonctionner avec des niveaux en 2D ou bien en 3D.
+\subsection{Fonctionnement du \texttt{plugin}}
 
-La fonction OnPlayStart est appelée lorsque un niveau est débuté. Dans l'éditeur cela correspond aussi à l'appui sur le bouton Play, qui sert à tester le niveau crée avec l'aide de l'éditeur.
+Maintenant que nous avons vu les divers éléments constituant le \texttt{plugin} ainsi que la gestion des collisions, nous pouvons nous intéresser au fonctionnement du \texttt{plugin}.
 
-Lors de l'appel à la fonction OnPlayStart, le plugin va initialiser tout ce qu'il peut en fonction du niveau, il va donc initialiser le joueur en fonction de la position du sprite ou du modèle de celui-ci, en sachant qu'il faut respecter une convention de nommage propre du nom donné au joueur dans l'éditeur pour que le plugin puisse le trouver. Puis le plugin va créer et initialiser autant d'ennemis qu'il trouve de sprites ou de modèles respectant la convention de nommage. Il est à noter que 
-si le plugin trouve des modèles 3D, il va charger des sprites 2D depuis la bibliothèque et créer les entités 2D associées afin de pouvoir gérer les collisions. Ce fonctionnement pourrait poser problème pour un vrai jeu 3D mais nous avons conçu le plugin comme cela pour le projet pour un souci de simplicité.
+Le \texttt{plugin} fonctionne en deux temps. Tout d'abord lors de l'appel à la fonction \texttt{OnPlayStart} du \texttt{Shine Engine}, puis lors de l'appel à la fonction \texttt{OnPostUpdate} du moteur de jeu. De plus le \texttt{plugin} est conçu pour fonctionner avec des niveaux en 2D ou bien en 3D.
 
-La fonction OnPostUpdate est appelée par le moteur de jeu après sa propre update. C'est dans cette fonction que le plugin se met à jour.
+La fonction \texttt{OnPlayStart} est appelée lorsque un niveau est débuté. Dans l'éditeur cela correspond aussi à l'appui sur le bouton \texttt{Play}, qui sert à tester le niveau créé avec l'aide de l'éditeur.
 
-A chaque appel à la fonction OnPostUpdate, le plugin se met à jour. Il va d'abord vérifier l'appui sur les différents inputs du joueur pour faire réagir l'avatar de celui-ci ou la caméra en conséquence. Il va ensuite faire appel au gestionnaire de collisions pour s'occuper des lignes de vue de chaque ennemi ainsi que les éventuels tirs de ceux-ci; puis il va, toujours en faisant appel au gestionnaire de collisions, vérifier les collisions des munitions avec les différents éléments de l'environnement, personnages inclus; enfin il appelle succinctement les différentes fonctions update des différents éléments du niveau (joueur, ennemis et munitions).
+Lors de l'appel à la fonction \texttt{OnPlayStart}, le \texttt{plugin} va initialiser tout ce qu'il peut en fonction du niveau, il va donc initialiser le joueur en fonction de la position du \texttt{sprite} ou du modèle de celui-ci, en sachant qu'il faut respecter une convention de nommage propre du nom donné au joueur dans l'éditeur pour que le \texttt{plugin} puisse le trouver. Puis le \texttt{plugin} va créer et initialiser autant d'ennemis qu'il trouve de \texttt{sprite} ou de modèles respectant la convention de nommage.
 
-\hypertarget{gest_coll}{}
+Il est à noter que si le \texttt{plugin} trouve des modèles 3D, il va charger des \texttt{sprite} 2D depuis la bibliothèque et créer les entités 2D associées afin de pouvoir gérer les collisions. Ce fonctionnement pourrait poser problème pour un vrai jeu 3D mais nous avons conçu le \texttt{plugin} comme cela pour le projet pour un souci de simplicité.
+
+La fonction \texttt{OnPostUpdate} est appelée par le moteur de jeu après sa propre \texttt{update}. C'est dans cette fonction que le \texttt{plugin} se met à jour.
+
+A chaque appel à la fonction \texttt{OnPostUpdate}, le \texttt{plugin} se met à jour. Il va d'abord vérifier l'appui sur les différents inputs du joueur pour faire réagir l'avatar de celui-ci ou la caméra en conséquence. Il va ensuite faire appel au gestionnaire de collisions pour s'occuper des lignes de vue de chaque ennemi ainsi que les éventuels tirs de ceux-ci; puis il va, toujours en faisant appel au gestionnaire de collisions, vérifier les collisions des munitions avec les différents éléments de l'environnement, personnages inclus; enfin il appelle succinctement les différentes fonctions \texttt{update} des différents éléments du niveau (\textsl{joueur}, \textsl{ennemis} et \textsl{munitions}).
+
+
 \section{Problèmes rencontrés}
 
 \subsection{Problèmes logiciels}
