@@ -138,8 +138,10 @@ void CShPluginGame::OnPlayStart(const CShIdentifier & levelIdentifier)
 			pEnemyModel = ShEntity3::Find(levelIdentifier, CShIdentifier(enemyIdentifier));
 			if(shNULL != pEnemyModel)
 			{
-				//CShString enemyIdentifierForced2D = enemyIdentifier + "forced_2D_" + CShString::FromInt(nbEnemies);
-				pEnemySprite = ShEntity2::Create(levelIdentifier, CShIdentifier(), GID(layer_default), CShIdentifier("tps"), CShIdentifier("enemy"), CShVector3(0.0f,0.0f,1.0f), CShEulerAngles(0.0f, 0.0f, 0.0f), CShVector3(1.0f, 1.0f, 1.0f));
+				CShString enemyIdentifierForced2D(ENEMY_SPRITE_NAME);
+				enemyIdentifierForced2D += "forced_2D_";
+				enemyIdentifierForced2D += CShString::FromInt(nbEnemies);
+				pEnemySprite = ShEntity2::Create(levelIdentifier, CShIdentifier(enemyIdentifierForced2D), GID(layer_default), CShIdentifier("tps"), CShIdentifier("enemy"), CShVector3(0.0f,0.0f,1.0f), CShEulerAngles(0.0f, 0.0f, 0.0f), CShVector3(1.0f, 1.0f, 1.0f));
 			}
 		}
 		if(shNULL == pEnemySprite) // if there is no more enemies in the level we stop the research

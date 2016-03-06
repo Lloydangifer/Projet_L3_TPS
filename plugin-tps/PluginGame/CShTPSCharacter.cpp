@@ -25,6 +25,7 @@ void CShTPSCharacter::Initialize(const CShIdentifier & levelIdentifier, CShTPSGu
 	if (m_3d)
 	{
 		m_Position = ShObject::GetPosition2(m_pModel);
+		ShObject::SetPosition(m_pSprite, m_Position.m_x, m_Position.m_y, 1.0f);
 	}
 	else
 	{
@@ -39,12 +40,6 @@ void CShTPSCharacter::Initialize(const CShIdentifier & levelIdentifier, CShTPSGu
 
 void CShTPSCharacter::Update(float dt)
 {
-	if (m_Alive) // test
-	{
-		ShObject::SetShow(m_pSprite, true);
-	}
-
-
 	if(m_pGun->GetCoolDown() < m_pGun->GetFireRate())
 	{
 		m_pGun->AddToCoolDown(dt);

@@ -6,7 +6,7 @@ CShTPSEnemy::CShTPSEnemy(void)
 	CShTPSCharacter::CShTPSCharacter();
 	m_CurrentState = e_state_idle;
 	m_Target = m_Position;
-	m_Speed = 75.0f;
+	m_Speed = ENEMY_DEFAULT_SPEED ;
 
 }
 
@@ -95,9 +95,11 @@ void CShTPSEnemy::Update(float dt)
 			if(m_3d)
 			{
 				ShEntity3::AnimationPlay(m_pModel, m_pAnimRun,true); //TODO changer animation en attaque si ça marche un jour
-				ShEntity3::SetRotation(m_pSprite, CShEulerAngles(0.0f, 0.0f, std::atan2(m_Direction.m_y,m_Direction.m_x ) + 1.5f )); // 1.5f : valeur piffée pour que les enemis regardent bien le joueur
 				ShEntity3::SetRotation(m_pModel, CShEulerAngles(0.0f, 0.0f, std::atan2(m_Direction.m_y,m_Direction.m_x ) + 1.5f )); // 1.5f : valeur piffée pour que les enemis regardent bien le joueur
+				ShObject::SetPositionX(m_pModel,m_Position.m_x);
+				ShObject::SetPositionY(m_pModel,m_Position.m_y);
 			}
+			ShEntity2::SetRotation(m_pSprite, CShEulerAngles(0.0f, 0.0f, std::atan2(m_Direction.m_y,m_Direction.m_x ) + 1.5f )); // 1.5f : valeur piffée pour que les enemis regardent bien le joueur
 			//ShEntity2::SetRotation(m_pSprite, CShEulerAngles(0.0f, 0.0f, shAcosf(m_Direction.m_x/m_Direction.m_y)));
 			break;
 	}

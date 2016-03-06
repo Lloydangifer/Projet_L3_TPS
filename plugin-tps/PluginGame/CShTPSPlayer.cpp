@@ -10,7 +10,7 @@ void CShTPSPlayer::Initialize(const CShIdentifier & levelIdentifier, CShTPSGun *
 
 	if (shNULL == m_pSprite) // if no player sprite is on the map, one is created for 3D, to manage collision between invisible 2D stuff
 	{
-		m_pSprite = ShEntity2::Create(levelIdentifier, CShIdentifier(), GID(layer_default), CShIdentifier("tps"), CShIdentifier("player"), CShVector3(0.0f,0.0f,1.0f), CShEulerAngles(0.0f, 0.0f, 0.0f), CShVector3(1.0f, 1.0f, 1.0f));
+		m_pSprite = ShEntity2::Create(levelIdentifier, CShIdentifier("player_sprite_forced_2D"), GID(layer_default), CShIdentifier("tps"), CShIdentifier("player"), CShVector3(0.0f,0.0f,1.0f), CShEulerAngles(0.0f, 0.0f, 0.0f), CShVector3(1.0f, 1.0f, 1.0f));
 	}
 
 	SH_ASSERT(shNULL != m_pSprite);
