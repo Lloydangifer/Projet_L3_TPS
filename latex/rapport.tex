@@ -139,7 +139,7 @@ Un TPS (Third-Person Shooter ou jeu de tir à la troisième personne en français) 
 
 \section{Le \texttt{Shine Engine}}
 
-Le \texttt{Shine Engine} est un moteur de jeu créé par notre encadrant, Monsieur Sylvain \textsc{Grosdemouge}. Monsieur \textsc{Grosdemouge} a commencé le développement du \texttt{Shine Engine} en 2005 et en 2012 est sorti \textsc{R.A.W.}(Realm Of Ancient War), premier jeu développé en utilisant le \texttt{Shine Engine}. Ce moteur de jeu est développé en C++ et permet de faire du développement multi-plateforme. Il permet aussi de gérer facilement la 3D ce qui permet de s'affranchir de beaucoup de limites pour le développement d'un jeu.
+Le \texttt{Shine Engine} est un moteur de jeu créé par notre encadrant, Monsieur Sylvain \textsc{Grosdemouge}. Monsieur \textsc{Grosdemouge} a commencé le développement du \texttt{Shine Engine} en 2005 et en 2012 est sorti \textsc{R.A.W.}(Realm Of Ancient War), premier jeu développé en utilisant le \texttt{Shine Engine}. Ce moteur de jeu est développé en C++ et permet de faire du développement multi-plateforme. Il permet aussi de gérer facilement la 3D ce qui permet de s'affranchir de beaucoup de limites pour le développement d'un jeu. De plus le moteur fonctionne avec un éditeur de niveau, le Shine Game Editor, qui facilement grandement la création de niveaux.
 
 \section{Le Projet}
 
@@ -251,12 +251,51 @@ La caméra a 3 modes: un mode \textsl{vue de dessus}, qui suit le joueur quand il
 
 \subsection{Le Gestionnaire de collisions}
 
-Le gestionnaire de collisions est représenté grâce à la classe \texttt{CollisionManager}. C'est cette classe qui va gérer toutes les collisions du \texttt{plugin}, que ce soit les personnages et les munitions, les munitions et les murs ou bien le champs de vision de ennemis.
+Le gestionnaire de collisions est représenté grâce à la classe \texttt{CollisionsManager}. C'est cette classe qui va gérer toutes les collisions du \texttt{plugin}, que ce soit les personnages et les munitions, les munitions et les murs ou bien le champs de vision de ennemis.
 
 La classe possède deux attributs: une liste de \texttt{CollisionShape} et le nombre de \texttt{CollisionShape} contenus dans cette liste. Une explication des \texttt{CollisionsShape} et de la gestion des collisions dans le \texttt{plugin} est donnée dans la \hyperlink{gest_coll}{\textbf{prochaine partie}}, consacrée à la gestion des collisions.
 
 \section{Mécaniques de jeu}
+
+Dans cette partie nous allons expliquer le fonctionnement de la gestion des collisions dans le plugin ainsi que le fonctionnement des mécaniques de jeu du plugin.
+
 \subsection{Gestion des collisions}
+
+La partie de gestion des collisions nous fut grandement simplifiée grâce au Shine Engine et notamment grâce à 3 fonctionnalités de celui-ci:
+
+-Les CollisionShape: il s'agit de sortes de segments qui servent dans le moteur notamment pour faire office de murs physiques. Ils peuvent également être placés directement depuis l'éditeur, ce qui en fait un outil très pratique pour les collisions avec le décor.
+
+-Le Character Controller: il s'agit d'une classe qui intègre nativement les collisions entre elle et les CollisionShape ainsi qu'entre les différentes instances de la classe, empêchant ainsi un Character Controller de passer à travers un autre Character Controller ou à travers un CollisionShape.
+
+-La fonction Intersect pour les entités 2D: Il s'agit d'une fonction qui permet de savoir si deux entités 2D, basiquement des sprites, se croisent.
+
+Grâce à ces 3 éléments, peu de travail sur les collisions restaient à faire. Nous avons doté la classe Character d'un attribut de type Character Controller et à partir de la, aucun personnage ne pouvait passer à travers un mur, mur représenté par un CollisionShape, ou à travers un autre personnage. Pour gérer la collision entre les munitions se déplaçant dans le monde et un personnage, la fonction Intersect est utilisée pour voir si les deux sprites se touchent ou se croisent.
+
+Il nous restait donc à gérer les collisions entre les munitions et les CollisionShape ainsi que les lignes de vue des ennemis.
+
+De ce fait pour gérer ces collisions le gestionnaire de collisions procède ainsi: 
+
+-Pour les munitions et les CollisionShape, il vérifie si il y a intersection entre le CollisionShape et la trajectoire de la balle entre sa position actuelle et sa position après déplacement.
+
+-Pour les lignes de vue entre les ennemis et le joueur, pour chaque ennemi, le gestionnaire vérifie si il y a un CollisionShape (un mur) entre le joueur et l'ennemi. Si ce n'est pas le cas alors l'ennemi à une ligne de vue directe sur le joueur et peut donc passer en état d'attaque./*TODO mettre une note de bas de page indiquant "pour plus de détails concernant le comportement des ennemis, reportez-vous à la section correspondante" avec lien vers ladite section et numéro de page de ladite section*/
+
+Pour les collisions en 3D, et par souci de simplicité pour le développement du projet, le gestionnaire va utiliser les sprites 2D associés à chaque éléments. Pour comprendre comment il peut faire cela, intéressons-nous à la prochaine partie consacrée au fonctionnement du plugin.
+
+\subsection{Fonctionnement du plugin}
+
+Maintenant que nous avons vus les divers éléments constituant le plugin ainsi que la gestion des collisions, nous pouvons nous intéresser au fonctionnement du plugin.
+
+Le plugin fonctionne en deux temps. Tout d'abord lors de l'appel à la fonction OnPlayStart du Shine Engine, puis lors de l'appel à la fonction OnPostUpdate du moteur de jeu. De plus le plugin est conçu pour fonctionner avec des niveaux en 2D ou bien en 3D.
+
+La fonction OnPlayStart est appelée lorsque un niveau est débuté. Dans l'éditeur cela correspond aussi à l'appui sur le bouton Play, qui sert à tester le niveau crée avec l'aide de l'éditeur.
+
+Lors de l'appel à la fonction OnPlayStart, le plugin va initialiser tout ce qu'il peut en fonction du niveau, il va donc initialiser le joueur en fonction de la position du sprite ou du modèle de celui-ci, en sachant qu'il faut respecter une convention de nommage propre du nom donné au joueur dans l'éditeur pour que le plugin puisse le trouver. Puis le plugin va créer et initialiser autant d'ennemis qu'il trouve de sprites ou de modèles respectant la convention de nommage. Il est à noter que 
+si le plugin trouve des modèles 3D, il va charger des sprites 2D depuis la bibliothèque et créer les entités 2D associées afin de pouvoir gérer les collisions. Ce fonctionnement pourrait poser problème pour un vrai jeu 3D mais nous avons conçu le plugin comme cela pour le projet pour un souci de simplicité.
+
+La fonction OnPostUpdate est appelée par le moteur de jeu après sa propre update. C'est dans cette fonction que le plugin se met à jour.
+
+A chaque appel à la fonction OnPostUpdate, le plugin se met à jour. Il va d'abord vérifier l'appui sur les différents inputs du joueur pour faire réagir l'avatar de celui-ci ou la caméra en conséquence. Il va ensuite faire appel au gestionnaire de collisions pour s'occuper des lignes de vue de chaque ennemi ainsi que les éventuels tirs de ceux-ci; puis il va, toujours en faisant appel au gestionnaire de collisions, vérifier les collisions des munitions avec les différents éléments de l'environnement, personnages inclus; enfin il appelle succinctement les différentes fonctions update des différents éléments du niveau (joueur, ennemis et munitions).
+
 \hypertarget{gest_coll}{}
 \section{Problèmes rencontrés}
 
@@ -287,6 +326,8 @@ Bien sûr, quand on ne pouvait plus avancer, nous avons pris contact avec l'équip
 
 Ennemis avec cône de vision
 Améliorations d'armes liés au nom de l'arme
+Gestion des collisions 3D avec hitbox 3D tout ça.
+Minimap comme demandé par Grosdemouge.
 
 \printglossaries
 
