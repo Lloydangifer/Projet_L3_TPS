@@ -272,12 +272,19 @@ void CShPluginGame::OnPostUpdate(float dt)
 		m_pCollisionsManager->CheckBulletCharacterCollision(m_aBullets.At(bulletCount), m_pTpsPlayer);
 		for(int enemiesCount = 0; enemiesCount < m_aEnemies.GetCount(); enemiesCount++)
 		{
-			m_pCollisionsManager->CheckBulletCharacterCollision(m_aBullets.At(bulletCount), m_aEnemies.At(enemiesCount));
+			if (m_pCollisionsManager->CheckBulletCharacterCollision(m_aBullets.At(bulletCount), m_aEnemies.At(enemiesCount)));
+			{
+				Lose();
+			}
 			if(!m_aEnemies.At(enemiesCount)->isAlive())
 			{
 				CShTPSEnemy * enemy = m_aEnemies.At(enemiesCount);
 				m_aEnemies.Remove(enemiesCount);
 				//delete enemy;
+				if (m_aEnemies.IsEmpty())
+				{
+					Win();
+				}
 			}
 		}
 		if(!m_aBullets.At(bulletCount)->isMoving())
@@ -291,4 +298,16 @@ void CShPluginGame::OnPostUpdate(float dt)
 	m_aBullets.ElementsUpdate(dt);
 	m_aEnemies.ElementsUpdate(dt);
 	m_pTpsCamera->Update(m_pTpsPlayer->GetPosition(), m_pTpsPlayer->GetDirection());
+}
+
+
+void CShPluginGame::Win()
+{
+
+}
+
+
+void CShPluginGame::Lose()
+{
+
 }

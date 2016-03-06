@@ -17,7 +17,7 @@ public:
 	void						Update									(void);
 	void						Initialize								(const CShIdentifier & levelIdentifier);
 	void						CheckBulletCollisionShapeCollision		(CShTPSAmmo* bullet);
-	void						CheckBulletCharacterCollision			(CShTPSAmmo* bullet, CShTPSCharacter* character);
+	bool						CheckBulletCharacterCollision			(CShTPSAmmo* bullet, CShTPSCharacter* character);
 	void						CheckPlayerEnemyViewField				(CShTPSPlayer* player, CShTPSEnemy* Enemy);
 
 private:

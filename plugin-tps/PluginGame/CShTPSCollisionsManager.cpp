@@ -47,7 +47,7 @@ void CShTPSCollisionsManager::CheckBulletCollisionShapeCollision(CShTPSAmmo* bul
 	}
 }
 
-void CShTPSCollisionsManager::CheckBulletCharacterCollision(CShTPSAmmo* bullet, CShTPSCharacter* character)
+bool CShTPSCollisionsManager::CheckBulletCharacterCollision(CShTPSAmmo* bullet, CShTPSCharacter* character)
 {
 	if(bullet->GetOrigin() != character)
 	{
@@ -56,9 +56,11 @@ void CShTPSCollisionsManager::CheckBulletCharacterCollision(CShTPSAmmo* bullet, 
 		{
 			bullet->SetMoving(false);
 			character->death();
+			return true;
 		}
 		
 	}
+	return false;
 }
 
 void CShTPSCollisionsManager::CheckPlayerEnemyViewField(CShTPSPlayer* player, CShTPSEnemy* enemy)

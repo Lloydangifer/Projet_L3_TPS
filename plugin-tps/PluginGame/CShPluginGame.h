@@ -42,6 +42,9 @@ private:
 	CShArray<CShTPSEnemy *>			m_aEnemies;
 	CShTPSCollisionsManager	*		m_pCollisionsManager;
 	CShTPSCamera *					m_pTpsCamera;
+
+	void						Win							(void);
+	void						Lose							(void);
 };
 
 #endif // __CSHPLUGINGAME_H
