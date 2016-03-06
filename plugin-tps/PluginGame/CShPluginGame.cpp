@@ -69,8 +69,8 @@ bool CShPluginGame::Release(void)
  */
 void CShPluginGame::OnPlayStart(const CShIdentifier & levelIdentifier)
 {
-
-	bool floorLeft = true;
+	// NOT USED
+	/*bool floorLeft = true;
 	int nbFloor = 0;
 	while(floorLeft)
 	{
@@ -94,7 +94,7 @@ void CShPluginGame::OnPlayStart(const CShIdentifier & levelIdentifier)
 			SH_TRACE("[PLUGIN TPS][ON PLAY START] Floor Added !\n");
 		}
 	}
-	SH_ASSERT(!m_aBackground.IsEmpty());
+	SH_ASSERT(!m_aBackground.IsEmpty());*/
 
 	CShTPSGun * pDefaultGun = new CShTPSGun(DESERT_EAGLE_POWER, CShString(DESERT_EAGLE_NAME), DESERT_EAGLE_FIRERATE);
 
