@@ -65,7 +65,7 @@ void CShTPSEnemy::Update(float dt)
 		m_pGun->AddToCoolDown(dt);
 	}
 
-	if(HasReachedTarget()) // If the enemy is on its target's location, he will go, else he will stay
+	if(HasReachedTarget()) // If the enemy isn't on its target's location, he will go to it, else he will stay
 	{
 		m_CurrentState = e_state_idle;
 	}
