@@ -26,10 +26,14 @@ void CShTPSCharacter::Initialize(const CShIdentifier & levelIdentifier, CShTPSGu
 	{
 		m_Position = ShObject::GetPosition2(m_pModel);
 		ShObject::SetPosition(m_pSprite, m_Position.m_x, m_Position.m_y, 1.0f);
+		/*float rotation = ShObject::GetRotation(m_pModel).GetZ();
+		m_Direction = CShVector2(std::acos(rotation),std::asin(rotation));*/
 	}
 	else
 	{
 		m_Position = ShObject::GetPosition2(m_pSprite);
+		/*float rotation = ShObject::GetRotation(m_pSprite).GetZ();
+		m_Direction = CShVector2(std::asin(rotation),std::acos(rotation));*/
 	}
 
 	
