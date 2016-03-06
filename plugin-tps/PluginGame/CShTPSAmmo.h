@@ -15,7 +15,6 @@ public:
 
 	void						Initialize					(const CShIdentifier & levelIdentifier, CShTPSCharacter * origin);
 	void						Update						(float dt);
-	void						Render						(void);
 
 		// Setters & Getters
 	void						SetPosition					(CShVector2 position);

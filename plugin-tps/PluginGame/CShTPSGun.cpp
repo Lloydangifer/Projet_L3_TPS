@@ -26,11 +26,6 @@ void CShTPSGun::Initialize(const CShIdentifier & levelIdentifier, CShTPSCharacte
 	SH_ASSERT(true != m_aClip.IsEmpty());
 }
 
-void CShTPSGun::Update(void)
-{
-	// ??
-}
-
 CShTPSAmmo * CShTPSGun::Shoot(CShVector2 position, CShVector2 direction, CShEulerAngles rotation)
 {
 		CShTPSAmmo * ammo = new CShTPSAmmo(m_Power);

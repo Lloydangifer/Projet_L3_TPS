@@ -199,11 +199,13 @@ Pour réaliser ce projet, notre encadrant nous a demandé de développer le jeu non
 
 Monsieur \textsc{Grosdemouge} nous a donné des \texttt{sprite} simples pour faire un niveau de test mais nous avons par la suite réalisé d'autres \texttt{sprite} pour faire d'autres niveaux afin de vérifier le bon fonctionnement du \texttt{plugin}.
 
-\section{Mécaniques de jeu}
+\section{Éléments du plugin}
 \subsection{Les personnages}
 
 Le \texttt{plugin} doit pouvoir gérer deux types de personnages: le personnage du joueur, contrôlé par ce dernier et le ou les personnages ennemis, qui disposent de leur propre IA\footnote{\textbf{I}ntelligence \textbf{A}rtificielle}.
-Pour cela nous avons crée une classe générique \texttt{Character} de laquelle héritent les classes \texttt{Player} et \texttt{Enemy}. Cette classe a pour grande utilité de permettre un traitement générique ainsi que la possibilité d'une modification générique. Ainsi, lorsque nous avons voulu implémenter la gestion de la 3D, il nous a suffit d'ajouter un attribut à cette classe pour stocker le modèle 3D. Le joueur et les ennemis ont donc été dotés de cet attribut.
+Pour cela nous avons crée une classe générique \texttt{Character} de laquelle héritent les classes \texttt{Player} et \texttt{Enemy}.
+
+Cette classe a pour grande utilité de permettre un traitement générique ainsi que la possibilité d'une modification générique. Ainsi, lorsque nous avons voulu implémenter la gestion de la 3D, il nous a suffit d'ajouter un attribut à cette classe pour stocker le modèle 3D. Le joueur et les ennemis ont donc été dotés de cet attribut.
 
 Un personnage peut posséder une arme et tirer avec celle-ci, nous détaillerons cela plus en détail dans la partie consacrée à la classe associée aux \hyperlink{armes}{\textbf{armes}}, à savoir la classe \texttt{Gun}.
 Un personnage peut aussi mourir s'il entre en contact avec un projectile, exception faite des projectiles qu'il a tiré lui-même.
@@ -226,6 +228,35 @@ L'ennemi possède un attribut \texttt{Target} qui représente la dernière position
 
 \subsection{Les Armes}
 \hypertarget{armes}{}
+
+Déjà évoquée plus haut, la classe Gun est la classe représentant les armes dans le plugin. Une arme est détenue par un personnage et possède plusieurs attributs notables.
+
+ Elle dispose d'un nom; d'un chargeur contenant des munitions (6 par défaut); une puissance, qui correspond à la vitesse de déplacement donnée aux balles tirées par l'arme; ainsi qu'une cadence de tir et son temps de rechargement associé. Le nom n'est actuellement pas utilisé mais pourrait servir pour d'éventuellement améliorations futures. Sa cadence de tir permet de s'assurer que le joueur ou les ennemis peuvent tirer plus ou moins vite en fonction de l'arme qu'ils possèdent. Lors du lancement du plugin, l'arme va créer ses munitions de départ et les stocker dans son chargeur, prêtes à être utilisées.
+
+Une arme dispose d'une fonction Shoot, utilisée lors de l'appel à la fonction du même nom du personnage qui possède l'arme, et qui renvoie une munition, prête à se déplacer dans le niveau. Lors de l'appel à cet fonction, la munition ainsi préparée sera alors placée dans la liste de munitions actuellement en mouvement dans le niveau et retirée du chargeur de l'arme, empêchant sa réutilisation avant qu'elle n'ait rencontré un obstacle.
+
+\subsection{Les Munitions}
+
+La classe Ammo permet de représenter les munitions. Ces munitions possèdent divers attributs: une position, correspondant à leur position dans le niveau; une direction, correspondant au sens dans lequel elle se déplacent; une vitesse, qui correspond à leur vitesse de déplacement; un sprite, si le niveau est en 2D; un modèle, si le niveau est en 3D; un booléen Moving qui permet de savoir si elle sont en cours de déplacement ou pas; une origine, qui désigne quel personnage a tiré la munition; et un booléen qui indique si la munition est en 3D ou pas.
+
+La position et la direction de la munition sont données à celle-ci lorsqu'elle est tirée par le joueur, ladite munition apparait au bout du sprite du joueur et se dirige dans la direction où il regarde au moment où il a tiré, puis se déplace normalement, indépendamment du joueur. La vitesse est donnée par l'arme au moment du tir. Le booléen Moving permet de savoir si la munition a rencontré un obstacle et donc si elle peut être remise dans le chargeur. L'origine de la munition est le personnage qui a tiré celle-ci, cela permet au personnage de ne pas se faire tuer par son propre projectile.
+
+\subsection{La Caméra}
+
+La classe Camera est la classe permettant de gérer la caméra du jeu et donc la vue que peut avoir le joueur sur le niveau.
+
+Cette classe fut plutôt simple à faire grâce au Shine Engine qui dispose déjà d'une classe permettant de gérer une caméra. Notre caméra se contente d'encapsuler celle du Shine Engine en créant toutefois quelques fonctions qui permettent un positionnement simple de ladite caméra pour correspondre à l'utilité dont peut en faire un TPS.
+
+La caméra à 3 modes: un mode vue de dessus, qui suit le joueur quand il se déplace tout en permettant d'avoir une bonne vision de ce qui se trouve autour de lui, pratique pour les niveaux en 2D; un mode de vue TPS, qui se place derrière le joueur; et un mode de vue haute, qui est proche de la vue du dessus mais dans lequel le joueur reste immobile et c'est le monde qui défile par rapport à lui. On peut passer d'un mode à l'autre grâce à la touche C. Il y a aussi possibilité d'augmenter ou de diminuer le Fov lorsqu'on est en mode caméra TPS avec les touches + et - .
+
+\subsection{Le Gestionnaire de collisions}
+
+Le gestionnaire de collisions est représenté grâce à la classe CollisionManager. C'est cette classe qui va gérer toutes les collisions du plugin, que ce soit les personnages et les munitions, les munitions et les murs ou bien le champs de vision de ennemis.
+
+La classe possède deux attributs: une liste de CollisionShape et le nombre de CollisionShape contenus dans cette liste. Une explication des CollisionsShape et de la gestion des collisions dans le plugin est donnée dans la prochaine partie, consacrée à la gestion des collisions.
+
+\section{Mécaniques de jeu}
+\subsection{Gestion des collisions}
 
 \section{Problèmes rencontrés}
 
@@ -255,6 +286,7 @@ Bien sûr, quand on ne pouvait plus avancer, nous avons pris contact avec l'équip
 \subsection{Optimisations Possibles}
 
 Ennemis avec cône de vision
+Améliorations d'armes liés au nom de l'arme
 
 \printglossaries
 

@@ -14,8 +14,6 @@ public:
 	virtual						~CShTPSGun					(void);
 
 	void						Initialize					(const CShIdentifier & levelIdentifier, CShTPSCharacter * origin);
-	void						Update						(void);
-	void						Render						(void);
 	CShTPSAmmo			*		Shoot						(CShVector2 position, CShVector2 direction, CShEulerAngles rotation);
 	bool						ClipIsEmpty					(void);
 	void						Reload						(CShTPSAmmo * ammo);
