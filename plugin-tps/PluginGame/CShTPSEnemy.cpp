@@ -7,55 +7,58 @@ CShTPSEnemy::CShTPSEnemy(void)
 	m_CurrentState = e_state_idle;
 	m_Target = m_Position;
 	m_Speed = ENEMY_DEFAULT_SPEED ;
-
 }
 
-void CShTPSEnemy::Initialize(const CShIdentifier & levelIdentifier, CShTPSGun * defaultGun, ShEntity2 * sprite, CShString enemyCharacterControlleridentifier,  ShEntity3 * model)
+void CShTPSEnemy::Initialize(const CShIdentifier & levelIdentifier, const CShIdentifier & characterIdentifier, CShTPSGun * defaultGun, ShEntity2 * sprite, CShString enemyCharacterControlleridentifier,  ShEntity3 * model)
 {
-	if (model != shNULL)
+	if(!m_bInitialized)
 	{
-		m_pModel = model;
-		m_3d = true;
-	}
+		m_bInitialized = false;
+		if (model != shNULL)
+		{
+			m_pModel = model;
+			m_3d = true;
+		}
 
-	m_pSprite = sprite;
-	SH_ASSERT(shNULL != m_pSprite);
+		m_pSprite = sprite;
+		SH_ASSERT(shNULL != m_pSprite);
 
-	if (m_3d)
-	{
-		ShObject::SetShow(m_pSprite, false);
-		ShObject::SetShow(m_pModel, true);
-	}
-	else
-	{
-		ShObject::SetShow(m_pSprite, true);
-	}
+		if (m_3d)
+		{
+			ShObject::SetShow(m_pSprite, false);
+			ShObject::SetShow(m_pModel, true);
+		}
+		else
+		{
+			ShObject::SetShow(m_pSprite, true);
+		}
 	
 
 
-	float radius = CHARACTER_CONTROLLER_RADIUS_2D;
+		float radius = CHARACTER_CONTROLLER_RADIUS_2D;
 
-	if(m_3d)
-	{
-		m_pAnimIdle = ShAnimation::Find(CShIdentifier(ENEMY_ANIM_IDLE));
-		SH_ASSERT(shNULL != m_pAnimIdle);
-		m_pAnimRun = ShAnimation::Find(CShIdentifier(ENEMY_ANIM_RUN));
-		SH_ASSERT(shNULL != m_pAnimRun);
-		/*m_pAnimAttack = ShAnimation::Find(CShIdentifier(ENEMY_ANIM_ATTACK));
-		SH_ASSERT(shNULL != m_pAnimAttack);*/
-		ShEntity3::AnimationPlay(m_pModel, m_pAnimIdle,true);
-		radius= CHARACTER_CONTROLLER_RADIUS_3D;
+		if(m_3d)
+		{
+			m_pAnimIdle = ShAnimation::Find(CShIdentifier(ENEMY_ANIM_IDLE));
+			SH_ASSERT(shNULL != m_pAnimIdle);
+			m_pAnimRun = ShAnimation::Find(CShIdentifier(ENEMY_ANIM_RUN));
+			SH_ASSERT(shNULL != m_pAnimRun);
+			/*m_pAnimAttack = ShAnimation::Find(CShIdentifier(ENEMY_ANIM_ATTACK));
+			SH_ASSERT(shNULL != m_pAnimAttack);*/
+			ShEntity3::AnimationPlay(m_pModel, m_pAnimIdle,true);
+			radius= CHARACTER_CONTROLLER_RADIUS_3D;
+		}
+
+		CShTPSCharacter::Initialize(levelIdentifier,characterIdentifier, defaultGun);
+
+		// Initialize the character controller with the level, the identifier, the position, the radius, the direction, the speed.
+		ShCharacterController *	pCharacterController = shNULL;
+		pCharacterController = ShCharacterController::Create(levelIdentifier, CShIdentifier(enemyCharacterControlleridentifier), m_Position, radius, m_Direction, m_Speed);
+		m_pCharacterController = pCharacterController;
+		SH_ASSERT(shNULL != m_pCharacterController);
+
+		m_Target = m_Position;
 	}
-
-	CShTPSCharacter::Initialize(levelIdentifier,defaultGun);
-
-	// Initialize the character controller with the level, the identifier, the position, the radius, the direction, the speed.
-	ShCharacterController *	pCharacterController = shNULL;
-	pCharacterController = ShCharacterController::Create(levelIdentifier, CShIdentifier(enemyCharacterControlleridentifier), m_Position, radius, m_Direction, m_Speed);
-	m_pCharacterController = pCharacterController;
-	SH_ASSERT(shNULL != m_pCharacterController);
-
-	m_Target = m_Position;
 }
 
 void CShTPSEnemy::Update(float dt)
@@ -99,7 +102,7 @@ void CShTPSEnemy::Update(float dt)
 				ShObject::SetPositionX(m_pModel,m_Position.m_x);
 				ShObject::SetPositionY(m_pModel,m_Position.m_y);
 			}
-			ShEntity2::SetRotation(m_pSprite, CShEulerAngles(0.0f, 0.0f, std::atan2(m_Direction.m_y,m_Direction.m_x ) + 1.5f )); // 1.5f : valeur piffée pour que les enemis regardent bien le joueur
+			ShEntity2::SetRotation(m_pSprite, CShEulerAngles(0.0f, 0.0f, std::atan2(m_Direction.m_y,m_Direction.m_x ) - 1.5f )); // 1.5f : valeur piffée pour que les enemis regardent bien le joueur
 			//ShEntity2::SetRotation(m_pSprite, CShEulerAngles(0.0f, 0.0f, shAcosf(m_Direction.m_x/m_Direction.m_y)));
 			break;
 	}
