@@ -253,3 +253,4 @@ latex/*.toc
 *.snm
 *.gz
 *.nav
+*.vrb
