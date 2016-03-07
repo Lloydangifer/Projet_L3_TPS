@@ -321,27 +321,27 @@ A chaque appel à la fonction \texttt{OnPostUpdate}, le \texttt{plugin} se met à 
 
 Nous l'avons mentionné dans la partie \hyperlink{installation}{\textbf{Installation}} (page~\pageref{labelInstal}), trouver la version complète de \texttt{Microsoft Visual Studio 2010} n'a pas été tâche facile. En effet, le lien n'est plus disponible sur le site de Microsoft et la plupart des téléchargements proposés par d'autres sites renvoyaient sur le lien, désormais inactif, se trouvant sur le site de Microsoft. Nous avons toutefois fini par trouvé un exemple fonctionnel.
 
-De plus, nous n'avions jamais développé sous Windows en utilisant Visual Studio, notre formation à la fac ne nous préparant à développer que sous des systèmes Linux, nous eûmes besoin d'un temps d'adaptation.
+De plus, nous n'avions jamais développé sous Windows en utilisant \texttt{Visual Studio}, notre formation à la fac ne nous préparant à développer que sous des systèmes Linux, nous avons eu besoin d'un temps d'adaptation.
 
 \subsection{Problèmes de documentation}
 
-Le plus gros problème que nous avons rencontré durant le projet vu la documentation inexistante du Shine Engine. En effet, celui-ci étant encore relativement "jeune", il n'existe pas encore de documentation ou de tutoriel ni même d'aide sur internet y correspondant. La seule aide que nous pouvions obtenir venais de Shine Research, mais nous ne pouvions passer notre temps à leur demander de l'aide. Nous avons donc dû observer en détail la plupart des headers du SDK, afin de voir les fonctions disponibles pour les classes que nous utilisions, et de se baser sur le nom de fonctions pour déterminer ce qu'elles faisaient.
+Le plus gros problème que nous avons rencontré durant le projet est la documentation inexistante du \texttt{Shine Engine}. En effet, celui-ci étant encore relativement "jeune", il n'existe pas encore de documentation ou de tutoriel ni même d'aide sur internet y correspondant. La seule aide que nous pouvions obtenir venait de \texttt{Shine Research}, mais nous ne pouvions passer notre temps à leur demander de l'aide. Nous avons donc dû observer en détail la plupart des \texttt{headers}\footnote{Entêtes contenant les définitions d'un fichier C++} du \texttt{SDK}, afin de voir les fonctions disponibles pour les classes que nous utilisions, et de se baser sur le nom des fonctions et des paramètres pour deviner ce qu'elles faisaient.
 
-Heureusement, et cela prouve, si c'était encore nécessaire, que le Shine Engine est bien conçu, les fonctions du moteur font exactement ce à quoi on peut s'attendre en fonction de leur nom. Grâce à cela et de la persévérance, nous pûmes surmonter ce problème et apprendre à utiliser pleinement le Shine Engine. 
+Heureusement, et cela prouve, si c'était encore nécessaire, que le \texttt{Shine Engine} est bien conçu, les fonctions du moteur font exactement ce à quoi on peut s'attendre en fonction de leur nom. Grâce à cela, et avec un peu de persévérance, nous avons pu surmonter ce problème et apprendre à utiliser pleinement le \texttt{Shine Engine}. 
 
 \chapter{Bilan}
 
-Le délai imparti pour le projet arrive à son terme, il est donc d'en de dresser un bilan et de conclure.
+Le délai imparti pour le projet arrive à son terme, il est donc nécessaire d'en dresser un bilan et de conclure.
 
-Le sujet du projet semblait modeste de prime abord, pourtant, au fur et à mesure de son développement, nous avons pu constater que développer un tel projet n'était pas simple, même avec un outil performant, tel que le Shine Engine.
+Le sujet du projet semblait modeste de prime abord, pourtant, au fur et à mesure de son développement, nous avons pu constater que développer un tel projet n'était pas simple, même avec un outil performant, tel que le \texttt{Shine Engine}.
 
-Nous avons eu besoin d'un temps d'adaptation à Visual Studio 10 et au Shine Engine, mais à mesure que le projet avançait et que nous améliorions notre maitrise de ces deux outils, de nouvelles perspectives s'ouvraient à nous, pour perfectionner de plus en plus le plugin.
+Nous avons eu besoin d'un temps d'adaptation à \texttt{Visual Studio 2010} et au \texttt{Shine Engine}, mais à mesure que le projet avançait et que nous améliorions notre maitrise de ces deux outils, de nouvelles perspectives s'ouvraient à nous, pour perfectionner de plus en plus le \texttt{plugin}.
 
-Ainsi, nous pourrions envisager d'apporter des améliorations au plugin, par exemple en dotant les ennemis d'un cône de vision plutôt que d'une vision à 360°. Cela pourrait nous permettre au joueur de s'approcher discrètement des ennemis et donc par la suite pousser à l'instauration d'une mécanique de furtivité. Nous pourrions aussi ajouter divers armes ramassables par le joueur ou même des améliorations spécifiques à une arme. La gestion des collisions 3D avec une hitbox 3D pourrait être possible tout comme l'implémentation d'une minimap qui nous avais été demandée mais que nous n'avons pu faire par manque de temps.
+Ainsi, nous pourrions envisager d'apporter des améliorations au \texttt{plugin}, par exemple en dotant les ennemis d'un cône de vision plutôt que d'une vision à 360°. Cela pourrait nous permettre au joueur de s'approcher discrètement des ennemis et donc par la suite pousser à l'instauration d'une mécanique de furtivité. Nous pourrions aussi ajouter divers armes pouvant être ramassées par le joueur ou même des améliorations spécifiques à une arme. La gestion des collisions 3D avec une hitbox\footnote{Masque de Collision en Français : zone d'un élément graphique sensible d'être touchée par un projectile} 3D pourrait être possible tout comme l'implémentation d'une minimap\footnote{Carte miniature} qui nous avait été demandée mais que nous n'avons pu implémenter par manque de temps.
 
-Le plugin produit lors de se projet est lui-même un outil qui peux se révéler utile pour la création d'un TPS car il peut être réutilisable aisément voire combinable avec d'autres plugins.
+Le \texttt{plugin} produit lors de se projet est lui-même un outil qui peut se révéler utile pour la création d'un TPS car il peut être réutilisable aisément voire combinable avec d'autres \texttt{plugins}.
 
-En ce qui nous concerne, nous avons appris à utiliser un moteur de jeu, nous ouvrant la porte au développement amateur de jeux plus complet que ceux dont nous étions capables auparavant. Nous avons aussi amélioré nos compétences en C++, qui est un des langages les plus utilisé actuellement. Enfin, nous avons pu  en apprendre sur le développement d'un jeux vidéos, encadrés par des professionnels d'expérience que sont Monsieur Grosdemouge et ses employés. C'est une bonne expérience que d'avoir pu développer ce projet et nous sommes heureux d'avoir pu le faire.
+En ce qui nous concerne, nous avons appris à utiliser un moteur de jeu, nous ouvrant la porte au développement amateur de jeux plus complet que ceux dont nous étions capables auparavant. Nous avons aussi amélioré nos compétences en C++, qui est un des langages les plus utilisés actuellement. Enfin, nous avons pu en apprendre sur le développement d'un jeu vidéo, encadrés par des professionnels d'expérience que sont Monsieur \textsc{Grosdemouge} et ses employés. C'est une bonne expérience que d'avoir pu développer ce projet et nous sommes heureux d'avoir pu le faire.
 
 \printglossaries
 
