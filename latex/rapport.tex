@@ -319,33 +319,29 @@ A chaque appel à la fonction \texttt{OnPostUpdate}, le \texttt{plugin} se met à 
 
 \subsection{Problèmes logiciels}
 
-Nous l'avons mentionné dans la partie \hyperlink{installation}{\textbf{Installation}} (page~\pageref{labelInstal}), trouver la version complète de \texttt{Microsoft Visual Studio 2010} n'a pas été tâche facile.
+Nous l'avons mentionné dans la partie \hyperlink{installation}{\textbf{Installation}} (page~\pageref{labelInstal}), trouver la version complète de \texttt{Microsoft Visual Studio 2010} n'a pas été tâche facile. En effet, le lien n'est plus disponible sur le site de Microsoft et la plupart des téléchargements proposés par d'autres sites renvoyaient sur le lien, désormais inactif, se trouvant sur le site de Microsoft. Nous avons toutefois fini par trouvé un exemple fonctionnel.
 
-Cependant, cela n'a pas été le plus important des problèmes logiciel que nous avons eu. En effet, il nous est arrivé par exemple de ne plus pouvoir lancer l'éditeur de \texttt{Shine} alors qu'il marchait auparavant, sans savoir pourquoi. Réinstaller l'éditeur, ou installer une version plus récente résolvait en général les problèmes rencontrés. Il nous est également arrivé de simplement ne pas du tout pouvoir faire fonctionner le \texttt{Shine Editor} sur un PC (la seule option était ici d'utiliser un autre PC).
+De plus, nous n'avions jamais développé sous Windows en utilisant Visual Studio, notre formation à la fac ne nous préparant à développer que sous des systèmes Linux, nous eûmes besoin d'un temps d'adaptation.
 
-\subsection{Problèmes de code}
+\subsection{Problèmes de documentation}
 
-Le problème majeur qui nous a couté le plus de temps est celui-ci : 
+Le plus gros problème que nous avons rencontré durant le projet vu la documentation inexistante du Shine Engine. En effet, celui-ci étant encore relativement "jeune", il n'existe pas encore de documentation ou de tutoriel ni même d'aide sur internet y correspondant. La seule aide que nous pouvions obtenir venais de Shine Research, mais nous ne pouvions passer notre temps à leur demander de l'aide. Nous avons donc dû observer en détail la plupart des headers du SDK, afin de voir les fonctions disponibles pour les classes que nous utilisions, et de se baser sur le nom de fonctions pour déterminer ce qu'elles faisaient.
 
-\begin{lstlisting}
-	///	@todo comment
-\end{lstlisting}
-
-Cette ligne, combinée à l'inexistence de documentation, nous a souvent laissé dans le flou quand à la manière de procéder pour effectuer des tâches parfois assez simples.
-La seule chose dont on pouvait s'aider était les fichiers d'entête dans les dossier du \texttt{Shine SDK} : en lisant les définitions des méthodes et les noms des paramètres, on pouvait au mieux \textsl{deviner} la façon d'utiliser ces méthodes.
-
-Bien sûr, quand on ne pouvait plus avancer, nous avons pris contact avec l'équipe de \texttt{Shine}. Cependant, la réponse n'étant évidemment pas immédiate, il nous est arrivé de rester bloquer des après-midis entiers à essayer de faire marcher un bout de code.
-
-
+Heureusement, et cela prouve, si c'était encore nécessaire, que le Shine Engine est bien conçu, les fonctions du moteur font exactement ce à quoi on peut s'attendre en fonction de leur nom. Grâce à cela et de la persévérance, nous pûmes surmonter ce problème et apprendre à utiliser pleinement le Shine Engine. 
 
 \chapter{Bilan}
 
-\subsection{Optimisations Possibles}
+Le délai imparti pour le projet arrive à son terme, il est donc d'en de dresser un bilan et de conclure.
 
-Ennemis avec cône de vision
-Améliorations d'armes liés au nom de l'arme
-Gestion des collisions 3D avec hitbox 3D tout ça.
-Minimap comme demandé par Grosdemouge.
+Le sujet du projet semblait modeste de prime abord, pourtant, au fur et à mesure de son développement, nous avons pu constater que développer un tel projet n'était pas simple, même avec un outil performant, tel que le Shine Engine.
+
+Nous avons eu besoin d'un temps d'adaptation à Visual Studio 10 et au Shine Engine, mais à mesure que le projet avançait et que nous améliorions notre maitrise de ces deux outils, de nouvelles perspectives s'ouvraient à nous, pour perfectionner de plus en plus le plugin.
+
+Ainsi, nous pourrions envisager d'apporter des améliorations au plugin, par exemple en dotant les ennemis d'un cône de vision plutôt que d'une vision à 360°. Cela pourrait nous permettre au joueur de s'approcher discrètement des ennemis et donc par la suite pousser à l'instauration d'une mécanique de furtivité. Nous pourrions aussi ajouter divers armes ramassables par le joueur ou même des améliorations spécifiques à une arme. La gestion des collisions 3D avec une hitbox 3D pourrait être possible tout comme l'implémentation d'une minimap qui nous avais été demandée mais que nous n'avons pu faire par manque de temps.
+
+Le plugin produit lors de se projet est lui-même un outil qui peux se révéler utile pour la création d'un TPS car il peut être réutilisable aisément voire combinable avec d'autres plugins.
+
+En ce qui nous concerne, nous avons appris à utiliser un moteur de jeu, nous ouvrant la porte au développement amateur de jeux plus complet que ceux dont nous étions capables auparavant. Nous avons aussi amélioré nos compétences en C++, qui est un des langages les plus utilisé actuellement. Enfin, nous avons pu  en apprendre sur le développement d'un jeux vidéos, encadrés par des professionnels d'expérience que sont Monsieur Grosdemouge et ses employés. C'est une bonne expérience que d'avoir pu développer ce projet et nous sommes heureux d'avoir pu le faire.
 
 \printglossaries
 
