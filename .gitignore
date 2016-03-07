@@ -250,3 +250,6 @@ latex/*.synctex
 latex/*.toc
 *.glo
 *.ist
+*.snm
+*.gz
+*.nav
