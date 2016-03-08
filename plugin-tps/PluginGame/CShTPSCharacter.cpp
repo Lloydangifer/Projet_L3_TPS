@@ -1,8 +1,7 @@
 #include "CShTPSCharacter.h"
 
 CShTPSCharacter::CShTPSCharacter(void)
-: m_characterIdentifier()
-, m_Position(0.0f,0.0f)
+: m_Position(0.0f,0.0f)
 , m_Direction(0.0f,1.0f)
 , m_Speed(0.0f)
 , m_pSprite(shNULL)
@@ -13,7 +12,6 @@ CShTPSCharacter::CShTPSCharacter(void)
 , m_pGun(shNULL)
 , m_Alive(true)
 , m_3d(false)
-, m_bInitialized(false)
 {
 }
 CShTPSCharacter::~CShTPSCharacter(void)
@@ -21,27 +19,27 @@ CShTPSCharacter::~CShTPSCharacter(void)
 	delete m_pGun;
 }
 
-void CShTPSCharacter::Initialize(const CShIdentifier & levelIdentifier, const CShIdentifier & characterIdentifier, CShTPSGun * defaultGun)
+void CShTPSCharacter::Initialize(const CShIdentifier & levelIdentifier, CShTPSGun * defaultGun)
 {
-		m_characterIdentifier = characterIdentifier;
+	//set the position of the Character to the position of the sprite or the model if 3d
+	if (m_3d)
+	{
+		m_Position = ShObject::GetPosition2(m_pModel);
+		ShObject::SetPosition(m_pSprite, m_Position.m_x, m_Position.m_y, 1.0f);
+		/*float rotation = ShObject::GetRotation(m_pModel).GetZ();
+		m_Direction = CShVector2(std::acos(rotation),std::asin(rotation));*/
+	}
+	else
+	{
+		m_Position = ShObject::GetPosition2(m_pSprite);
+		/*float rotation = ShObject::GetRotation(m_pSprite).GetZ();
+		m_Direction = CShVector2(std::asin(rotation),std::acos(rotation));*/
+	}
 
-		//set the position of the Character to the position of the sprite or the model if 3d
-		if(m_3d)
-		{
-			m_Position = ShObject::GetPosition2(m_pModel);
-			ShObject::SetPosition(m_pSprite, m_Position.m_x, m_Position.m_y, 1.0f);
-			/*float rotation = ShObject::GetRotation(m_pModel).GetZ();
-			m_Direction = CShVector2(std::acos(rotation),std::asin(rotation));*/
-		}
-		else
-		{
-			m_Position = ShObject::GetPosition2(m_pSprite);
-			/*float rotation = ShObject::GetRotation(m_pSprite).GetZ();
-			m_Direction = CShVector2(std::asin(rotation),std::acos(rotation));*/
-		}
-		m_Direction = CShVector2(0.0f,1.0f);
-		m_pGun = defaultGun;
-		m_pGun->Initialize(levelIdentifier, this);
+	
+	m_Direction = CShVector2(0.0f,1.0f);
+	m_pGun = defaultGun;
+	m_pGun->Initialize(levelIdentifier, this);
 }
 
 void CShTPSCharacter::Update(float dt)
@@ -103,7 +101,6 @@ bool CShTPSCharacter::isAlive(void)
 void CShTPSCharacter::death(void)
 {
 	m_Alive = false;
-	m_3d = false;
 	ShObject::SetShow(m_pSprite, false);
 	if (m_3d)
 	{
@@ -186,32 +183,7 @@ CShTPSGun *	CShTPSCharacter::GetGun(void)
 	return m_pGun;
 }
 
-const CShIdentifier & CShTPSCharacter::GetIdentifier(void)
-{
-	return(m_characterIdentifier);
-}
-
 bool CShTPSCharacter::Is3D(void)
 {
 	return m_3d;
-}
-
-
-bool CShTPSCharacter::IsInitialized(void)
-{
-	return m_bInitialized;
-}
-
-void CShTPSCharacter::Spawn(void)
-{
-	m_Alive = true;
-	if (m_3d)
-	{
-		ShObject::SetShow(m_pModel, true);
-	}
-	else
-	{
-		ShObject::SetShow(m_pSprite, true);
-	}
-	ShCharacterController::Enable(m_pCharacterController);
 }
