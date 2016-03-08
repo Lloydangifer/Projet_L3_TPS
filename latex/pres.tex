@@ -1,4 +1,4 @@
-\documentclass[12pt,handout]{beamer}
+\documentclass[12pt]{beamer}
 
 \usepackage[frenchb]{babel}
 \usepackage[T1]{fontenc}
@@ -7,7 +7,7 @@
 
 \usepackage{pslatex} %pour un pdf lisible à l'écran
 
-\usepackage{textpos} % allows to place stuff differently
+\usepackage{tikz} % allows to place stuff differently
 
 \useinnertheme[shadow=true]{rounded}
 \useoutertheme{infolines}
@@ -24,9 +24,11 @@ Virgil MANRIQUE \\ Quentin GUILLIEN}
 
 
 \addtobeamertemplate{frametitle}{}{%
-\begin{textblock*}{100mm}(.751\textwidth,-1cm)
-\includegraphics[height=9mm]{logo_shine.png} \hspace{1mm} \includegraphics[height=9mm]{logo-ufc.png}
-\end{textblock*}}
+\begin{tikzpicture}[remember picture,overlay]
+\node[anchor=north east,yshift=-8pt] at (current page.north east) {\includegraphics[height=9mm]{logo_shine.png} \hspace{1mm} \includegraphics[height=9mm]{logo-ufc.png}};
+\end{tikzpicture}}
+
+\LetLtxMacro\olditemize\itemize
 
 
 \begin{document}
@@ -40,11 +42,13 @@ Virgil MANRIQUE \\ Quentin GUILLIEN}
 \AtBeginSection[]
 {
   \begin{frame}{Sommaire}
-  \small \tableofcontents[currentsection, hideothersubsections, pausesubsections]
+  \small \tableofcontents[currentsection, hideothersubsections]
   \end{frame} 
 }
 
 
+\renewcommand{\itemize}[1][<+(1)->]{\olditemize[#1]} %'Transition' pour les listes
+\setbeamercovered{transparent} % les éléments qui ne sont pas encore atteints sont grisés
 
 \section{Cadre du projet}
 
@@ -151,7 +155,7 @@ Différences plugin / Jeu
 \end{frame}
 
 \subsection{Éléments du plugin}
-\begin{frame}
+\begin{frame}[t]
 \frametitle{Eléments du plugins}
 \begin{itemize}
 \item
@@ -176,7 +180,7 @@ Gestionnaire de Collisions
 \end{frame}
 
 \subsection{Démonstration}
-\begin{frame}[plain,c]
+\begin{frame}[c]
 \begin{center}
 \Huge Démonstration
 \end{center}
@@ -195,9 +199,9 @@ Pas suffisamment de documentation pour Shine
 \end{frame}
 
 
+\setbeamertemplate{headline}{}
 
-
-\begin{frame}[plain,c]
+\begin{frame}[c]
 
 \begin{center}
 \Huge Bilan
@@ -206,7 +210,7 @@ Pas suffisamment de documentation pour Shine
 
 \end{frame}
 
-\begin{frame}[plain,c]
+\begin{frame}[c]
 
 \begin{center}
 \huge Des Questions ?
