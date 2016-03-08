@@ -205,13 +205,17 @@ bool CShTPSCharacter::IsInitialized(void)
 void CShTPSCharacter::Spawn(void)
 {
 	m_Alive = true;
-	if (m_3d)
+	ShCharacterController::Enable(m_pCharacterController);
+	if(m_3d)
 	{
 		ShObject::SetShow(m_pModel, true);
+		m_Position = ShObject::GetPosition2(m_pModel);
+		ShObject::SetPosition(m_pSprite, m_Position.m_x, m_Position.m_y, 1.0f);
 	}
 	else
 	{
 		ShObject::SetShow(m_pSprite, true);
+		m_Position = ShObject::GetPosition2(m_pSprite);
 	}
-	ShCharacterController::Enable(m_pCharacterController);
+	ShCharacterController::SetPosition(m_pCharacterController, m_Position);
 }
