@@ -126,6 +126,7 @@ void CShPluginGame::OnPlayStart(const CShIdentifier & levelIdentifier)
 	CShTPSGun * pDefaultGun = new CShTPSGun(DESERT_EAGLE_POWER, CShString(DESERT_EAGLE_NAME), DESERT_EAGLE_FIRERATE);
 
 	m_pTpsPlayer->Initialize(m_levelIdentifier, pDefaultGun);
+	m_pTpsPlayer->RezPosition();
 
 	m_pTpsCamera->Initialize();
 
@@ -186,7 +187,7 @@ void CShPluginGame::OnPlayStart(const CShIdentifier & levelIdentifier)
  */
 void CShPluginGame::OnPlayStop(const CShIdentifier & levelIdentifier)
 {
-	// nothing here
+	if (m_pTpsPlayer) m_pTpsPlayer->RezPosition();
 }
 
 /**
@@ -194,7 +195,13 @@ void CShPluginGame::OnPlayStop(const CShIdentifier & levelIdentifier)
  */
 void CShPluginGame::OnPlayPause(const CShIdentifier & levelIdentifier)
 {
-	// nothing here
+	/*if (m_pTpsPlayer) m_pTpsPlayer->SetSpeed(0.0f);
+	int enemiesNumber = m_aEnemies.GetCount();
+	for(int enemiesCount = 0; enemiesCount < enemiesNumber; enemiesCount++)
+	{
+		m_aEnemies.At(enemiesCount)->SetSpeed(0.0f);
+	}*/
+
 }
 
 /**

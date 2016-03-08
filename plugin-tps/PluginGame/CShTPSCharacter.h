@@ -22,6 +22,7 @@ public:
 	bool						isAlive						(void);
 	void						death						(void);
 	bool						ReadyToShoot				(void);
+	void						RezPosition					(void);
 
 		// Setters & Getters
 	void						SetPosition					(CShVector2 position);
@@ -67,6 +68,9 @@ protected:
 	bool						m_Alive;
 	bool						m_3d;
 	bool						m_bInitialized;
+
+	CShVector2					m_originalPosition;
+	CShVector2					m_originalDirection;
 };
 
 #endif // __CSHTPSCHARACTER_H

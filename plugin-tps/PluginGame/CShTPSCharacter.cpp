@@ -23,25 +23,30 @@ CShTPSCharacter::~CShTPSCharacter(void)
 
 void CShTPSCharacter::Initialize(const CShIdentifier & levelIdentifier, const CShIdentifier & characterIdentifier, CShTPSGun * defaultGun)
 {
-		m_characterIdentifier = characterIdentifier;
+	m_characterIdentifier = characterIdentifier;
 
-		//set the position of the Character to the position of the sprite or the model if 3d
-		if(m_3d)
-		{
-			m_Position = ShObject::GetPosition2(m_pModel);
-			ShObject::SetPosition(m_pSprite, m_Position.m_x, m_Position.m_y, 1.0f);
-			/*float rotation = ShObject::GetRotation(m_pModel).GetZ();
-			m_Direction = CShVector2(std::acos(rotation),std::asin(rotation));*/
-		}
-		else
-		{
-			m_Position = ShObject::GetPosition2(m_pSprite);
-			/*float rotation = ShObject::GetRotation(m_pSprite).GetZ();
-			m_Direction = CShVector2(std::asin(rotation),std::acos(rotation));*/
-		}
-		m_Direction = CShVector2(0.0f,1.0f);
-		m_pGun = defaultGun;
-		m_pGun->Initialize(levelIdentifier, this);
+	//set the position of the Character to the position of the sprite or the model if 3d
+	if(m_3d)
+	{
+		m_Position = ShObject::GetPosition2(m_pModel);
+		ShObject::SetPosition(m_pSprite, m_Position.m_x, m_Position.m_y, 1.0f);
+		/*float rotation = ShObject::GetRotation(m_pModel).GetZ();
+		m_Direction = CShVector2(std::acos(rotation),std::asin(rotation));*/
+	}
+	else
+	{
+		m_Position = ShObject::GetPosition2(m_pSprite);
+		/*float rotation = ShObject::GetRotation(m_pSprite).GetZ();
+		m_Direction = CShVector2(std::asin(rotation),std::acos(rotation));*/
+	}
+	m_Direction = CShVector2(0.0f,1.0f);
+	m_pGun = defaultGun;
+	m_pGun->Initialize(levelIdentifier, this);
+
+	m_originalDirection = CShVector2(m_Direction.m_x,m_Direction.m_y);
+	m_originalPosition = CShVector2(m_Position.m_x,m_Position.m_y);
+
+
 }
 
 void CShTPSCharacter::Update(float dt)
@@ -214,4 +219,12 @@ void CShTPSCharacter::Spawn(void)
 		ShObject::SetShow(m_pSprite, true);
 	}
 	ShCharacterController::Enable(m_pCharacterController);
+
+	RezPosition();
+}
+
+void CShTPSCharacter::RezPosition(void)
+{
+	m_Direction = m_originalDirection;
+	m_Position = m_originalPosition;
 }

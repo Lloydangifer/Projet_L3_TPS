@@ -56,6 +56,7 @@ void CShTPSPlayer::Initialize(const CShIdentifier & levelIdentifier, CShTPSGun *
 	else
 	{
 		Spawn();
+
 	}
 }
 
