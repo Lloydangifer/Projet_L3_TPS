@@ -1,7 +1,8 @@
 #include "CShTPSCharacter.h"
 
 CShTPSCharacter::CShTPSCharacter(void)
-: m_Position(0.0f,0.0f)
+: m_characterIdentifier()
+, m_Position(0.0f,0.0f)
 , m_Direction(0.0f,1.0f)
 , m_Speed(0.0f)
 , m_pSprite(shNULL)
@@ -12,6 +13,7 @@ CShTPSCharacter::CShTPSCharacter(void)
 , m_pGun(shNULL)
 , m_Alive(true)
 , m_3d(false)
+, m_bInitialized(false)
 {
 }
 CShTPSCharacter::~CShTPSCharacter(void)
@@ -19,10 +21,12 @@ CShTPSCharacter::~CShTPSCharacter(void)
 	delete m_pGun;
 }
 
-void CShTPSCharacter::Initialize(const CShIdentifier & levelIdentifier, CShTPSGun * defaultGun)
+void CShTPSCharacter::Initialize(const CShIdentifier & levelIdentifier, const CShIdentifier & characterIdentifier, CShTPSGun * defaultGun)
 {
+	m_characterIdentifier = characterIdentifier;
+
 	//set the position of the Character to the position of the sprite or the model if 3d
-	if (m_3d)
+	if(m_3d)
 	{
 		m_Position = ShObject::GetPosition2(m_pModel);
 		ShObject::SetPosition(m_pSprite, m_Position.m_x, m_Position.m_y, 1.0f);
@@ -35,11 +39,14 @@ void CShTPSCharacter::Initialize(const CShIdentifier & levelIdentifier, CShTPSGu
 		/*float rotation = ShObject::GetRotation(m_pSprite).GetZ();
 		m_Direction = CShVector2(std::asin(rotation),std::acos(rotation));*/
 	}
-
-	
 	m_Direction = CShVector2(0.0f,1.0f);
 	m_pGun = defaultGun;
 	m_pGun->Initialize(levelIdentifier, this);
+
+	m_originalDirection = CShVector2(m_Direction.m_x,m_Direction.m_y);
+	m_originalPosition = CShVector2(m_Position.m_x,m_Position.m_y);
+
+
 }
 
 void CShTPSCharacter::Update(float dt)
@@ -102,7 +109,7 @@ void CShTPSCharacter::death(void)
 {
 	m_Alive = false;
 	ShObject::SetShow(m_pSprite, false);
-	if (m_3d)
+	if(m_3d)
 	{
 		ShObject::SetShow(m_pModel, false);
 	}
@@ -183,7 +190,54 @@ CShTPSGun *	CShTPSCharacter::GetGun(void)
 	return m_pGun;
 }
 
+const CShIdentifier & CShTPSCharacter::GetIdentifier(void)
+{
+	return(m_characterIdentifier);
+}
+
 bool CShTPSCharacter::Is3D(void)
 {
 	return m_3d;
+}
+
+
+bool CShTPSCharacter::IsInitialized(void)
+{
+	return m_bInitialized;
+}
+
+void CShTPSCharacter::SetUninitialized(void)
+{
+	m_bInitialized = false;
+	m_3d = false;
+	m_characterIdentifier = CShIdentifier();
+}
+
+void CShTPSCharacter::Spawn(void)
+{
+	m_Alive = true;
+	ShCharacterController::Enable(m_pCharacterController);
+	if(m_3d)
+	{
+		ShObject::SetShow(m_pModel, true);
+		m_Position = ShObject::GetPosition2(m_pModel);
+		ShObject::SetPosition(m_pSprite, m_Position.m_x, m_Position.m_y, 1.0f);
+	}
+	else
+	{
+		ShObject::SetShow(m_pSprite, true);
+		m_Position = ShObject::GetPosition2(m_pSprite);
+	}
+	ShCharacterController::Enable(m_pCharacterController);
+
+	RezPosition();
+}
+
+void CShTPSCharacter::RezPosition(void)
+{
+	m_Direction = m_originalDirection;
+	m_Position = m_originalPosition;
+
+	ShCharacterController::SetPosition(m_pCharacterController, m_Position);
+
 }

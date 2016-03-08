@@ -14,7 +14,7 @@ public:
 								CShTPSCharacter				(void);
 	virtual						~CShTPSCharacter			(void);
 
-	void						Initialize					(const CShIdentifier & levelIdentifier, CShTPSGun * defaultGun);
+	void						Initialize					(const CShIdentifier & levelIdentifier, const CShIdentifier & characterIdentifier, CShTPSGun * defaultGun);
 	void						Update						(float dt);
 	CShTPSAmmo		*			Shoot						(void);
 	bool						GunIsEmpty					(void);
@@ -22,6 +22,7 @@ public:
 	bool						isAlive						(void);
 	void						death						(void);
 	bool						ReadyToShoot				(void);
+	void						RezPosition					(void);
 
 		// Setters & Getters
 	void						SetPosition					(CShVector2 position);
@@ -45,9 +46,16 @@ public:
 	void						SetGun						(CShTPSGun * gun);
 	CShTPSGun *					GetGun						(void);
 
+	const CShIdentifier &		GetIdentifier				(void);
+
 	bool						Is3D						(void);
+	bool						IsInitialized				(void);
+	void						SetUninitialized			(void);
+
+	void						Spawn						(void);
 
 protected:
+	CShIdentifier				m_characterIdentifier;
 	CShVector2					m_Position;
 	CShVector2					m_Direction;	
 	float						m_Speed;
@@ -60,6 +68,10 @@ protected:
 	CShTPSGun *					m_pGun;
 	bool						m_Alive;
 	bool						m_3d;
+	bool						m_bInitialized;
+
+	CShVector2					m_originalPosition;
+	CShVector2					m_originalDirection;
 };
 
 #endif // __CSHTPSCHARACTER_H

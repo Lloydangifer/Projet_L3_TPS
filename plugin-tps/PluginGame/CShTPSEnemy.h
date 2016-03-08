@@ -17,7 +17,7 @@ class CShTPSEnemy: public CShTPSCharacter
 {
 public:
 					CShTPSEnemy			(void);
-	void			Initialize			(const CShIdentifier & levelIdentifier, CShTPSGun * defaultGun, ShEntity2 *	sprite, CShString enemyCharacterControlleridentifier, ShEntity3 * model);
+	void			Initialize			(const CShIdentifier & levelIdentifier, const CShIdentifier & characterIdentifier, CShTPSGun * defaultGun, ShEntity2 *	sprite, CShString enemyCharacterControlleridentifier, ShEntity3 * model);
 	void			Update				(float dt);
 
 	// Setters & Getters
@@ -25,6 +25,8 @@ public:
 	CShVector2		GetTarget			(void);
 
 	EState			GetCurrentState		(void);
+
+	void			Spawn				(void);
 
 private:
 	EState			m_CurrentState;
