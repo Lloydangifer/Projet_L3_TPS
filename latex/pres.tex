@@ -1,19 +1,32 @@
-\documentclass[handout]{beamer}
+\documentclass[12pt,handout]{beamer}
 
 \usepackage[frenchb]{babel}
 \usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}
 \usepackage{lmodern}% http://ctan.org/pkg/lm
 
-\usetheme{Warsaw}
+\usepackage{pslatex} %pour un pdf lisible à l'écran
+
+\usepackage{textpos} % allows to place stuff differently
+
+\useinnertheme[shadow=true]{rounded}
+\useoutertheme{infolines}
+\usecolortheme{beaver}
+
+\setbeamerfont{block title}{size={}}
+\setbeamercolor{titlelike}{parent=structure,bg=white}
 
 \title[Création d’un TPS avec le Shine Engine]{Création d’un Third-Person Shooter\\ avec le Shine Engine}
-\author{Virgil MANRIQUE \hspace{2mm} Quentin GUILLIEN}
-\institute{Université de Franche-Comté}
+\author[Virgil MANRIQUE \hspace{2mm} Quentin GUILLIEN]{%
+\includegraphics[height=14mm]{logo_shine.png} \hspace{20mm} \includegraphics[height=14mm]{logo-ufc.png}\\\vspace{4mm}
+Virgil MANRIQUE \\ Quentin GUILLIEN}
 \date{\today}
 
-\logo{\includegraphics[height=10mm]{logo-ufc.jpg}}
 
+\addtobeamertemplate{frametitle}{}{%
+\begin{textblock*}{100mm}(.751\textwidth,-1cm)
+\includegraphics[height=9mm]{logo_shine.png} \hspace{1mm} \includegraphics[height=9mm]{logo-ufc.png}
+\end{textblock*}}
 
 
 \begin{document}
@@ -26,9 +39,8 @@
 
 \AtBeginSection[]
 {
-  \begin{frame}
-  \frametitle{Sommaire}
-  \tableofcontents[currentsection, hideothersubsections, pausesubsections]
+  \begin{frame}{Sommaire}
+  \small \tableofcontents[currentsection, hideothersubsections, pausesubsections]
   \end{frame} 
 }
 
