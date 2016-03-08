@@ -88,13 +88,6 @@ bool CShPluginGame::Release(void)
 	SH_SAFE_DELETE(g_pInputMinus);
 	SH_SAFE_DELETE(g_pInputC);
 
-	m_pTpsPlayer->SetUninitialized();
-
-	if(!m_aEnemies.IsEmpty())
-	{
-		m_aEnemies.RemoveAll(m_aEnemies.At(0));
-	}
-
 	return(true);
 }
 	
@@ -195,6 +188,12 @@ void CShPluginGame::OnPlayStart(const CShIdentifier & levelIdentifier)
 void CShPluginGame::OnPlayStop(const CShIdentifier & levelIdentifier)
 {
 	if (m_pTpsPlayer) m_pTpsPlayer->RezPosition();
+	m_pTpsPlayer->SetUninitialized();
+
+	if(!m_aEnemies.IsEmpty())
+	{
+		m_aEnemies.RemoveAll(m_aEnemies.At(0));
+	}
 }
 
 /**
