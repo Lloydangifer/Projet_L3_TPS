@@ -32,8 +32,6 @@ void CShTPSEnemy::Initialize(const CShIdentifier & levelIdentifier, const CShIde
 		{
 			ShObject::SetShow(m_pSprite, true);
 		}
-	
-
 
 		float radius = CHARACTER_CONTROLLER_RADIUS_2D;
 
@@ -124,7 +122,6 @@ EState CShTPSEnemy::GetCurrentState()
 	return m_CurrentState;
 }
 
-
 bool CShTPSEnemy::HasReachedTarget(void)
 {
 	if (std::abs(m_Target.m_x - m_Position.m_x) < 10.0f
@@ -134,4 +131,11 @@ bool CShTPSEnemy::HasReachedTarget(void)
 	}
 
 	return false;
+}
+
+void CShTPSEnemy::Spawn()
+{
+	CShTPSCharacter::Spawn();
+
+	m_Target = m_Position;
 }

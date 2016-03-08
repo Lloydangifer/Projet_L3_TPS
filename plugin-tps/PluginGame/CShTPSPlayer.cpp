@@ -12,16 +12,18 @@ void CShTPSPlayer::Initialize(const CShIdentifier & levelIdentifier, CShTPSGun *
 		m_bInitialized  = true;
 
 		// Load a sprite in 2D in the Sprite attribute
+		m_pSprite = shNULL;
 		m_pSprite = ShEntity2::Find(levelIdentifier, CShIdentifier(PLAYER_SPRITE_NAME));
 		float radius = CHARACTER_CONTROLLER_RADIUS_2D; // radius for the character controller
 	
 		if (shNULL == m_pSprite) // if no player sprite is on the map, one is created for 3D, to manage collision between invisible 2D stuff
 		{
 			m_pSprite = ShEntity2::Create(levelIdentifier, CShIdentifier("player_sprite_forced_2D"), GID(layer_default), CShIdentifier("tps"), CShIdentifier("player"), CShVector3(0.0f,0.0f,1.0f), CShEulerAngles(0.0f, 0.0f, 0.0f), CShVector3(1.0f, 1.0f, 1.0f));
+
 		}
 
 		SH_ASSERT(shNULL != m_pSprite);
-
+		m_pModel = shNULL;
 		m_pModel = ShEntity3::Find(levelIdentifier, CShIdentifier(PLAYER_SPRITE_NAME));
 		if(shNULL != m_pModel)
 		{
@@ -34,6 +36,10 @@ void CShTPSPlayer::Initialize(const CShIdentifier & levelIdentifier, CShTPSGun *
 			SH_ASSERT(shNULL != m_pAnimAttack);*/
 			ShEntity3::AnimationPlay(m_pModel, m_pAnimIdle,true);
 			radius= CHARACTER_CONTROLLER_RADIUS_3D;	
+		}
+		else
+		{
+			m_3d = false;
 		}
 
 		if(m_3d)
@@ -56,7 +62,6 @@ void CShTPSPlayer::Initialize(const CShIdentifier & levelIdentifier, CShTPSGun *
 	else
 	{
 		Spawn();
-
 	}
 }
 

@@ -108,9 +108,8 @@ bool CShTPSCharacter::isAlive(void)
 void CShTPSCharacter::death(void)
 {
 	m_Alive = false;
-	m_3d = false;
 	ShObject::SetShow(m_pSprite, false);
-	if (m_3d)
+	if(m_3d)
 	{
 		ShObject::SetShow(m_pModel, false);
 	}
@@ -205,6 +204,13 @@ bool CShTPSCharacter::Is3D(void)
 bool CShTPSCharacter::IsInitialized(void)
 {
 	return m_bInitialized;
+}
+
+void CShTPSCharacter::SetUninitialized(void)
+{
+	m_bInitialized = false;
+	m_3d = false;
+	m_characterIdentifier = CShIdentifier();
 }
 
 void CShTPSCharacter::Spawn(void)

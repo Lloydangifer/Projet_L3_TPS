@@ -26,6 +26,8 @@ public:
 
 	EState			GetCurrentState		(void);
 
+	void			Spawn				(void);
+
 private:
 	EState			m_CurrentState;
 	CShVector2		m_Target;

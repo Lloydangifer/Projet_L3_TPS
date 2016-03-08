@@ -50,8 +50,9 @@ public:
 
 	bool						Is3D						(void);
 	bool						IsInitialized				(void);
+	void						SetUninitialized			(void);
 
-	 void						Spawn						(void);
+	void						Spawn						(void);
 
 protected:
 	CShIdentifier				m_characterIdentifier;
