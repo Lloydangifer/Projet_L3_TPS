@@ -50,21 +50,6 @@ CShPluginGame::~CShPluginGame(void)
 bool CShPluginGame::Initialize(const CShIdentifier & identifier)
 {
 	m_levelIdentifier = identifier;
-		
-	//create inputs
-	g_pInputUp = ShInput::CreateInputPressed(ShInput::e_input_device_keyboard, ShInput::e_input_device_control_pc_key_up, 0.5f);
-	g_pInputRight = ShInput::CreateInputPressed(ShInput::e_input_device_keyboard, ShInput::e_input_device_control_pc_key_right, 0.5f);
-	g_pInputLeft = ShInput::CreateInputPressed(ShInput::e_input_device_keyboard, ShInput::e_input_device_control_pc_key_left, 0.5f);
-	g_pInputShoot = ShInput::CreateInputPressed(ShInput::e_input_device_keyboard, ShInput::e_input_device_control_pc_key_space, 0.5f);
-	
-	g_pInputZ = ShInput::CreateInputPressed(ShInput::e_input_device_keyboard, ShInput::e_input_device_control_pc_key_z, 0.5f);
-	g_pInputQ = ShInput::CreateInputPressed(ShInput::e_input_device_keyboard, ShInput::e_input_device_control_pc_key_q, 0.5f);
-	g_pInputS = ShInput::CreateInputPressed(ShInput::e_input_device_keyboard, ShInput::e_input_device_control_pc_key_s, 0.5f);
-	g_pInputD = ShInput::CreateInputPressed(ShInput::e_input_device_keyboard, ShInput::e_input_device_control_pc_key_d, 0.5f);
-
-	g_pInputPlus = ShInput::CreateInputPressed(ShInput::e_input_device_keyboard, ShInput::e_input_device_control_pc_key_num_plus, 0.5f);
-	g_pInputMinus = ShInput::CreateInputPressed(ShInput::e_input_device_keyboard, ShInput::e_input_device_control_pc_key_num_minus, 0.5f);
-	g_pInputC = ShInput::CreateInputJustPressed(ShInput::e_input_device_keyboard, ShInput::e_input_device_control_pc_key_c, 0.5f);
 
 	return(true);
 }
@@ -75,18 +60,6 @@ bool CShPluginGame::Initialize(const CShIdentifier & identifier)
 bool CShPluginGame::Release(void)
 {
 	m_levelIdentifier = GID(NULL);
-
-	SH_SAFE_DELETE(g_pInputUp);
-	SH_SAFE_DELETE(g_pInputRight);
-	SH_SAFE_DELETE(g_pInputLeft);
-	SH_SAFE_DELETE(g_pInputShoot);
-	SH_SAFE_DELETE(g_pInputZ);
-	SH_SAFE_DELETE(g_pInputQ);
-	SH_SAFE_DELETE(g_pInputS);
-	SH_SAFE_DELETE(g_pInputD);
-	SH_SAFE_DELETE(g_pInputPlus);
-	SH_SAFE_DELETE(g_pInputMinus);
-	SH_SAFE_DELETE(g_pInputC);
 
 	return(true);
 }
@@ -122,7 +95,7 @@ void CShPluginGame::OnPlayStart(const CShIdentifier & levelIdentifier)
 		}
 	}
 	SH_ASSERT(!m_aBackground.IsEmpty());*/
-		
+
 	CShTPSGun * pDefaultGun = new CShTPSGun(DESERT_EAGLE_POWER, CShString(DESERT_EAGLE_NAME), DESERT_EAGLE_FIRERATE);
 
 	m_pTpsPlayer->Initialize(m_levelIdentifier, pDefaultGun);
@@ -130,6 +103,21 @@ void CShPluginGame::OnPlayStart(const CShIdentifier & levelIdentifier)
 	m_pTpsCamera->Initialize();
 
 	m_pCollisionsManager->Initialize(m_levelIdentifier);
+
+	//create inputs
+	g_pInputUp = ShInput::CreateInputPressed(ShInput::e_input_device_keyboard, ShInput::e_input_device_control_pc_key_up, 0.5f);
+	g_pInputRight = ShInput::CreateInputPressed(ShInput::e_input_device_keyboard, ShInput::e_input_device_control_pc_key_right, 0.5f);
+	g_pInputLeft = ShInput::CreateInputPressed(ShInput::e_input_device_keyboard, ShInput::e_input_device_control_pc_key_left, 0.5f);
+	g_pInputShoot = ShInput::CreateInputPressed(ShInput::e_input_device_keyboard, ShInput::e_input_device_control_pc_key_space, 0.5f);
+	
+	g_pInputZ = ShInput::CreateInputPressed(ShInput::e_input_device_keyboard, ShInput::e_input_device_control_pc_key_z, 0.5f);
+	g_pInputQ = ShInput::CreateInputPressed(ShInput::e_input_device_keyboard, ShInput::e_input_device_control_pc_key_q, 0.5f);
+	g_pInputS = ShInput::CreateInputPressed(ShInput::e_input_device_keyboard, ShInput::e_input_device_control_pc_key_s, 0.5f);
+	g_pInputD = ShInput::CreateInputPressed(ShInput::e_input_device_keyboard, ShInput::e_input_device_control_pc_key_d, 0.5f);
+
+	g_pInputPlus = ShInput::CreateInputPressed(ShInput::e_input_device_keyboard, ShInput::e_input_device_control_pc_key_num_plus, 0.5f);
+	g_pInputMinus = ShInput::CreateInputPressed(ShInput::e_input_device_keyboard, ShInput::e_input_device_control_pc_key_num_minus, 0.5f);
+	g_pInputC = ShInput::CreateInputJustPressed(ShInput::e_input_device_keyboard, ShInput::e_input_device_control_pc_key_c, 0.5f);
 
 	//create and initialize the ennemies
 	bool searchEnemies = true;
@@ -142,41 +130,30 @@ void CShPluginGame::OnPlayStart(const CShIdentifier & levelIdentifier)
 		enemyIdentifier += CShString::FromInt(nbEnemies);
 		enemyCharacterControlleridentifier += CShString::FromInt(nbEnemies);
 		
-		ShEntity2 * pEnemySprite = shNULL;
+		ShEntity2 * pEnemySprite;
+		pEnemySprite = ShEntity2::Find(levelIdentifier, CShIdentifier(enemyIdentifier));
 		ShEntity3 * pEnemyModel = shNULL;
-		CShTPSEnemy * pEnemy = FindEnemy(CShIdentifier(enemyIdentifier)); 
-		if (pEnemy == shNULL)
+		if(shNULL == pEnemySprite) // if there is no 2D sprite, the game searches for a 3D model, and creates its 2D equivalent to manage collision between 2D stuff
 		{
-			pEnemySprite = ShEntity2::Find(m_levelIdentifier, CShIdentifier(enemyIdentifier));
-			ShEntity3 * pEnemyModel = shNULL;
-			if(shNULL == pEnemySprite) // if there is no 2D sprite, the game searches for a 3D model, and creates its 2D equivalent to manage collision between 2D stuff
+			pEnemyModel = ShEntity3::Find(levelIdentifier, CShIdentifier(enemyIdentifier));
+			if(shNULL != pEnemyModel)
 			{
-				pEnemyModel = ShEntity3::Find(m_levelIdentifier, CShIdentifier(enemyIdentifier));
-				if(shNULL != pEnemyModel)
-				{
-					CShString enemyIdentifierForced2D(ENEMY_SPRITE_NAME);
-					enemyIdentifierForced2D += "forced_2D_";
-					enemyIdentifierForced2D += CShString::FromInt(nbEnemies);
-					pEnemySprite = ShEntity2::Create(m_levelIdentifier, CShIdentifier(enemyIdentifierForced2D), GID(layer_default), CShIdentifier("tps"), CShIdentifier("enemy"), CShVector3(0.0f,0.0f,1.0f), CShEulerAngles(0.0f, 0.0f, 0.0f), CShVector3(1.0f, 1.0f, 1.0f));
-				}
-			}
-			
-			if(shNULL == pEnemySprite) // if there is no more enemies in the level we stop the research
-			{
-				searchEnemies = false;
-			}
-			else
-			{
-				CShTPSGun * pEnemyGun = new CShTPSGun(DESERT_EAGLE_POWER, CShString(DESERT_EAGLE_NAME), DESERT_EAGLE_FIRERATE);
-				pEnemy = new CShTPSEnemy();
-				pEnemy->Initialize(m_levelIdentifier, CShIdentifier(enemyIdentifier), pEnemyGun, pEnemySprite, enemyCharacterControlleridentifier, pEnemyModel);
-				m_aEnemies.Add(pEnemy);
+				CShString enemyIdentifierForced2D(ENEMY_SPRITE_NAME);
+				enemyIdentifierForced2D += "forced_2D_";
+				enemyIdentifierForced2D += CShString::FromInt(nbEnemies);
+				pEnemySprite = ShEntity2::Create(levelIdentifier, CShIdentifier(enemyIdentifierForced2D), GID(layer_default), CShIdentifier("tps"), CShIdentifier("enemy"), CShVector3(0.0f,0.0f,1.0f), CShEulerAngles(0.0f, 0.0f, 0.0f), CShVector3(1.0f, 1.0f, 1.0f));
 			}
 		}
-	
-		if (shNULL != pEnemy)
+		if(shNULL == pEnemySprite) // if there is no more enemies in the level we stop the research
 		{
-			pEnemy->Spawn();
+			searchEnemies = false;
+		}
+		else
+		{
+			CShTPSGun * pEnemyGun = new CShTPSGun(DESERT_EAGLE_POWER, CShString(DESERT_EAGLE_NAME), DESERT_EAGLE_FIRERATE);
+			CShTPSEnemy * enemy = new CShTPSEnemy();
+			enemy->Initialize(m_levelIdentifier, pEnemyGun, pEnemySprite, enemyCharacterControlleridentifier, pEnemyModel);
+			m_aEnemies.Add(enemy);
 		}
 	}
 }
@@ -228,10 +205,13 @@ void CShPluginGame::OnPostUpdate(float dt)
 		m_pTpsCamera->FovDec();
 	}
 
+
 	if (ShInput::GetValue(g_pInputC) > 0.2f)
 	{
 		m_pTpsCamera->SwitchCameraStyle();
 	}
+
+
 
 	// Change the walk speed/direction
 	if (ShInput::GetValue(g_pInputUp) > 0.2f || ShInput::GetValue(g_pInputZ) > 0.2f)
@@ -256,10 +236,7 @@ void CShPluginGame::OnPostUpdate(float dt)
 		direction.Rotate(ROTATION_SPEED);
 		m_pTpsPlayer->SetDirection(direction);
 		ShEntity2::Rotate(m_pTpsPlayer->GetSprite(),CShEulerAngles(0, 0, ROTATION_SPEED));
-		if (m_pTpsPlayer->Is3D())
-		{
-			ShEntity3::Rotate(m_pTpsPlayer->GetModel(),CShEulerAngles(0, 0, ROTATION_SPEED));
-		}
+		ShEntity3::Rotate(m_pTpsPlayer->GetModel(),CShEulerAngles(0, 0, ROTATION_SPEED));
 	}
 	
 	if (ShInput::GetValue(g_pInputRight) > 0.2f || ShInput::GetValue(g_pInputD) > 0.2f)
@@ -268,10 +245,7 @@ void CShPluginGame::OnPostUpdate(float dt)
 		direction.Rotate(-ROTATION_SPEED);
 		m_pTpsPlayer->SetDirection(direction);
 		ShEntity2::Rotate(m_pTpsPlayer->GetSprite(),CShEulerAngles(0, 0, -ROTATION_SPEED));
-		if (m_pTpsPlayer->Is3D())
-		{
-			ShEntity3::Rotate(m_pTpsPlayer->GetModel(),CShEulerAngles(0, 0, -ROTATION_SPEED));
-		}
+		ShEntity3::Rotate(m_pTpsPlayer->GetModel(),CShEulerAngles(0, 0, -ROTATION_SPEED));
 	}
 
 	if (ShInput::GetValue(g_pInputShoot) > 0.2f)
@@ -298,7 +272,7 @@ void CShPluginGame::OnPostUpdate(float dt)
 		m_pCollisionsManager->CheckBulletCharacterCollision(m_aBullets.At(bulletCount), m_pTpsPlayer);
 		for(int enemiesCount = 0; enemiesCount < m_aEnemies.GetCount(); enemiesCount++)
 		{
-			if (m_pCollisionsManager->CheckBulletCharacterCollision(m_aBullets.At(bulletCount), m_aEnemies.At(enemiesCount)))
+			if (m_pCollisionsManager->CheckBulletCharacterCollision(m_aBullets.At(bulletCount), m_aEnemies.At(enemiesCount)));
 			{
 				Lose();
 			}
@@ -306,6 +280,7 @@ void CShPluginGame::OnPostUpdate(float dt)
 			{
 				CShTPSEnemy * enemy = m_aEnemies.At(enemiesCount);
 				m_aEnemies.Remove(enemiesCount);
+				//delete enemy;
 				if (m_aEnemies.IsEmpty())
 				{
 					Win();
@@ -325,20 +300,6 @@ void CShPluginGame::OnPostUpdate(float dt)
 	m_pTpsCamera->Update(m_pTpsPlayer->GetPosition(), m_pTpsPlayer->GetDirection());
 }
 
-CShTPSEnemy * CShPluginGame::FindEnemy(const CShIdentifier & enemyIdentifier)
-{
-	int iEnemyCount = m_aEnemies.GetCount();
-	for (int nEnemy = 0; nEnemy < iEnemyCount; ++nEnemy)
-	{
-		if (m_aEnemies[nEnemy]->GetIdentifier() == enemyIdentifier)
-		{
-			return(m_aEnemies[nEnemy]);
-		}
-	}
-
-	return(shNULL);
-
-}
 
 void CShPluginGame::Win()
 {

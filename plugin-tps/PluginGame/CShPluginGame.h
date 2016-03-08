@@ -31,8 +31,6 @@ public:
 	virtual	void				OnPreUpdate					(void);
 	virtual	void				OnPostUpdate				(float dt);
 
-	CShTPSEnemy *				FindEnemy					(const CShIdentifier & enemyIdentifier);
-
 	DECLARE_VARIABLES();
 
 private:
